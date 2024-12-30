@@ -1,0 +1,276 @@
+/*==================== BASE ====================*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main {
+  background-image: url("./assets/paven.png");
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading-font);
+  color: var(--title-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  font-size: var(--normal-font-size);
+  line-height: 2.25rem;
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+.section {
+  padding: 2rem 0 4rem;
+}
+
+.navbar-brand,
+.footer-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.navbar-brand div,
+.footer-name div {
+  width: 90px;
+  height: 32px;
+  background-image: var(--logo);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .navbar-brand div,
+  .footer-name div {
+    width: 105px;
+    height: 36px;
+  }
+}
+
+.social-handles {
+  align-items: center;
+  gap: 1rem;
+}
+.social-handles .social-circle {
+  background: var(--container-color);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: var(--text-color-light);
+  opacity: 0.8;
+  font-size: 1.25rem;
+}
+.social-handles .social-circle:hover {
+  transform: scale(1);
+  color: #fff;
+  opacity: 1;
+}
+.social-handles .social-circle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--first-color);
+  transform: scale(0);
+  transition: 0.3s;
+  border-radius: 50%;
+  z-index: -1;
+}
+.social-handles .social-circle:hover:before {
+  transform: scale(1.1);
+}
+
+.hero-title,
+.section-title {
+  background: var(--first-color);
+  background: var(--gradient-4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-title {
+  font-family: var(--h1-font);
+  font-weight: var(--font-black);
+  line-height: 5rem;
+}
+
+.section-title {
+  font-size: 45px;
+  line-height: 3.5rem;
+  text-align: center;
+}
+
+.spotlight {
+  position: absolute;
+  width: 322px;
+  height: 308px;
+  background: var(--first-color);
+  background: linear-gradient(190deg, var(--first-color) 0%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+/*==================== LAYOUT ====================*/
+.container {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.w-half {
+  width: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+  .w-half {
+    width: 100%;
+  }
+}
+.box {
+  background: var(--container-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.25rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/*==================== BUTTONS ====================*/
+.btn-primary {
+  text-decoration: none;
+  font-family: sans-serif;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--normal-font-size);
+  line-height: 1;
+  font-weight: var(--font-semibold);
+  color: #fff;
+  background-size: 200%;
+  background-image: var(--gradient-1);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  transition: 0.4s;
+}
+
+.btn-primary i {
+  transform: rotate(-45deg);
+  transition: 0.4s;
+}
+
+.btn-primary:hover {
+  background-position: -100%;
+}
+
+.btn-primary:hover i {
+  transform: rotate(0);
+}
+
+.button-icon {
+  font-size: 1.75rem;
+  margin-left: 0.5rem;
+  transition: 0.3s;
+}
+
+button[type=submit] {
+  font-size: 1.1em;
+  font-weight: var(--font-semibold);
+}
+
+/*========== SCROLL BAR ==========*/
+::-webkit-scrollbar {
+  width: 0.3rem;
+  background-color: var(--container-color);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--first-color);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--first-color-alt);
+}
+
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+@media screen and (max-width: 350px) {
+  .container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 0 1rem;
+  }
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section {
+    height: 88vh;
+    padding: 4rem 0 2rem;
+  }
+  .section-title {
+    padding-top: 4rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 106%;
+  }
+  .main {
+    padding: 0;
+  }
+}/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,575 @@
+.about {
+  .section-title {
+    padding-bottom: 1.5rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem 1.25rem 0;
+    overflow: hidden;
+
+    .grid {
+      grid-template-columns: 1fr;
+
+      .box {
+        .spotlight {
+          width: 180px;
+          right: 0;
+        }
+
+        .cluster {
+          padding: 1.25rem;
+          position: relative;
+          z-index: 2;
+          gap: 1.25rem;
+          width: 100%;
+
+          .section-subtitle {
+            font-size: 2rem;
+          }
+
+          .description {
+            margin: 0.5rem 0;
+          }
+
+          .code-block {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            margin-bottom: 2rem;
+
+            .dot-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+
+              height: 3rem;
+              justify-content: flex-start;
+              padding: 0 1.25rem;
+              background: var(--input-color);
+
+              .dot {
+                width: 0.7rem;
+                height: 0.7rem;
+                min-width: 0.7rem;
+                min-height: 0.7rem;
+                max-width: 0.7rem;
+                max-height: 0.7rem;
+                border-radius: 100%;
+                background: #33c648;
+
+                &:nth-child(1) {
+                  background: #fc605b;
+                }
+
+                &:nth-child(2) {
+                  background: #ffa500;
+                }
+              }
+            }
+
+            pre {
+              .type.animate {
+                animation: type 1s steps(30) forwards;
+              }
+
+              .type.fade-out {
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+              }
+
+              @keyframes type {
+                0% {
+                  width: 0;
+                }
+                99% {
+                  width: 100%;
+                }
+                100% {
+                  width: 0;
+                }
+              }
+
+              code {
+                span {
+                  font-size: var(--small-font-size);
+                }
+                .line01,
+                .line02,
+                .line03,
+                .line04,
+                .line05,
+                .line06,
+                .line07,
+                .line08,
+                .line09,
+                .line10,
+                .line11,
+                .line12 {
+                  position: relative;
+                  display: block;
+                  width: fit-content;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  padding: 0.1rem 0;
+                }
+
+                .line01::before,
+                .line02::before,
+                .line03::before,
+                .line04::before,
+                .line05::before,
+                .line06::before,
+                .line07::before,
+                .line08::before,
+                .line09::before,
+                .line10::before,
+                .line11::before {
+                  content: "";
+                  position: absolute;
+                  top: -0.1rem;
+                  right: -1ch;
+                  height: calc(100% + 0.2rem);
+                  width: calc(100% + 1ch);
+                  background-color: var(--body-color);
+                  border-left: 2px solid white;
+                }
+
+                .line01::before {
+                  width: 18ch; /* "const developer = {" */
+                  animation: typing calc(18 * 150ms) steps(18) 0s 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line02::before {
+                  width: 26ch; /* "  firstName: "DeQuentin"," */
+                  animation: typing calc(26 * 150ms) steps(26) calc(18 * 150ms)
+                      1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line03::before {
+                  width: 21ch; /* "  lastName: "Heard"," */
+                  animation: typing calc(21 * 150ms) steps(21)
+                      calc((18 + 26) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line04::before {
+                  width: 20ch; /* "  type: "Front End"," */
+                  animation: typing calc(20 * 150ms) steps(20)
+                      calc((18 + 26 + 21) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line05::before {
+                  width: 25ch; /* "  hobby: repeat = () => {" */
+                  animation: typing calc(24 * 150ms) steps(24)
+                      calc((18 + 26 + 21 + 20) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line06::before {
+                  width: 16ch; /* "      //eat();" */
+                  animation: typing calc(15 * 150ms) steps(15)
+                      calc((18 + 26 + 21 + 20 + 24) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line07::before {
+                  width: 18ch; /* "      //sleep();" */
+                  animation: typing calc(18 * 150ms) steps(18)
+                      calc((18 + 26 + 21 + 20 + 24 + 15) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line08::before {
+                  width: 17ch; /* "      //code();" */
+                  animation: typing calc(17 * 150ms) steps(17)
+                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18) * 150ms) 1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line09::before {
+                  width: 19ch; /* "      //repeat();" */
+                  animation: typing calc(18 * 150ms) steps(18)
+                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18 + 17) * 150ms) 1
+                      both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line10::before {
+                  width: 5ch; /* "    }" */
+                  animation: typing calc(5 * 150ms) steps(5)
+                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18 + 17 + 18) * 150ms)
+                      1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                .line11::before {
+                  width: 3ch; /* "};" */
+                  animation: typing calc(3 * 150ms) steps(3)
+                      calc(
+                        (18 + 26 + 21 + 20 + 24 + 15 + 18 + 17 + 18 + 5) * 150ms
+                      )
+                      1 both,
+                    blinking 150ms linear infinite alternate;
+                }
+
+                @keyframes typing {
+                  from {
+                    max-width: calc(100% + 1ch);
+                  }
+                  to {
+                    max-width: 0ch;
+                  }
+                }
+
+                @keyframes blinking {
+                  from {
+                    border-color: var(--title-color);
+                  }
+                  to {
+                    border-color: transparent;
+                  }
+                }
+              }
+            }
+          }
+
+          .text {
+            flex: 0 0 55%;
+            padding-top: 1.25rem;
+            border-radius: var(--border-radius);
+          }
+        }
+
+        &.my-craft .cluster {
+          height: 38rem;
+          width: 100%;
+        }
+
+        .stage-cube-cont {
+          margin-left: 0;
+          position: absolute;
+          right: 20%;
+          bottom: 45%;
+          width: 15%;
+
+          .cubespinner {
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-name: spincube;
+            animation-timing-function: ease-in-out;
+            margin-left: calc(50% - 100px);
+            transform-origin: 100px 100px 0;
+            transform-style: preserve-3d;
+
+            div {
+              align-items: center;
+              background: #fff6;
+              border: 1px solid var(--text-color-light);
+              box-shadow: 0 0 10px 0 var(--text-color-light);
+              display: flex;
+              font-size: 6.25rem;
+              width: 12.5rem;
+              height: 12.5rem;
+              justify-content: center;
+              position: absolute;
+              text-align: center;
+
+              svg:not(:root).svg-inline--fa,
+              svg:not(:host).svg-inline--fa {
+                overflow: visible;
+                box-sizing: content-box;
+              }
+
+              .svg-inline--fa {
+                display: inline-block;
+                height: 8rem;
+                overflow: visible;
+                vertical-align: -0.125rem;
+              }
+            }
+
+            .face1 {
+              color: #dd0031;
+              transform: translateZ(100px);
+            }
+
+            .face2 {
+              color: #f06529;
+              transform: rotateY(90deg) translateZ(100px);
+            }
+
+            .face3 {
+              color: #28a4d9;
+              transform: rotateY(90deg) rotateX(90deg) translateZ(100px);
+            }
+
+            .face4 {
+              color: #5ed4f4;
+              transform: rotateY(180deg) rotate(90deg) translateZ(100px);
+            }
+
+            .face5 {
+              color: #efd81d;
+              transform: rotateY(-90deg) rotate(90deg) translateZ(100px);
+            }
+
+            .face6 {
+              color: #ec4d28;
+              transform: rotateX(-90deg) translateZ(100px);
+            }
+          }
+
+          @keyframes spincube {
+            from,
+            to {
+              transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            16% {
+              transform: rotateY(-90deg);
+            }
+            33% {
+              transform: rotateY(-90deg) rotateZ(90deg);
+            }
+            50% {
+              transform: rotateY(-180deg) rotateZ(90deg);
+            }
+            66% {
+              transform: rotateY(-270deg) rotateX(90deg);
+            }
+            83% {
+              transform: rotateX(90deg);
+            }
+          }
+        }
+
+        .kit {
+          position: absolute;
+          bottom: -0.5rem;
+          right: 0;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  .skills-container {
+    width: 100%;
+    gap: 2rem;
+    justify-content: center;
+
+    .skills-content {
+      position: relative;
+      width: 100%;
+      background-color: var(--container-color);
+      border-radius: var(--border-radius);
+      padding: 1rem 2rem;
+      margin: 0 auto 2rem;
+
+      .skills-header {
+        .skills-icon {
+          font-size: 2rem;
+          color: var(--first-color);
+          margin-right: 0.5rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .skills-category {
+          color: var(--title-color);
+          font-size: 1.75rem;
+          font-weight: var(--font-semibold);
+          margin-bottom: 1.25rem;
+          text-align: center;
+        }
+      }
+
+      .skills-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+
+        .skills-item {
+          border: 1px solid var(--text-color-light);
+          border-radius: 0.75rem;
+          padding: 0.75rem 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          z-index: 2;
+
+          .skills-img {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+
+          .skills-title {
+            color: var(--text-color);
+            font-weight: var(--font-medium);
+          }
+
+          &:hover {
+            box-shadow: 0 0 2rem var(--title-color);
+          }
+        }
+      }
+
+      .kit.window {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+@media screen and (max-width: 620px) {
+  .about .container .grid .box {
+    &.my-craft .cluster {
+      height: fit-content;
+      margin-top: 22rem;
+    }
+
+    .stage-cube-cont {
+      top: 12%;
+      right: 42%;
+    }
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .about .container .grid .box {
+    .cluster .code-block pre code span {
+      font-size: 0.9rem !important;
+    }
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .about {
+    .section-title {
+      padding-bottom: 1rem;
+    }
+
+    .container .grid .box.my-craft {
+      height: 32rem;
+
+      .cluster {
+        width: 50%;
+
+        .description {
+          max-width: 350px;
+        }
+      }
+
+      .stage-cube-cont {
+        margin-left: 0;
+        position: absolute;
+        right: 20%;
+        top: 30%;
+        width: 15%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about .container .grid .box .cluster {
+    &.row {
+      display: block;
+      gap: 2rem;
+    }
+
+    .code-block {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 900px) {
+  .about .container .grid .box.my-craft .cluster {
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about {
+    .container .grid .box.my-craft {
+      height: 29rem;
+
+      .cluster .description {
+        max-width: 400px;
+      }
+    }
+    .container .grid .box.my-drive .cluster {
+      .code-block {
+        margin-bottom: 0;
+      }
+
+      .text {
+        max-width: 500px;
+        padding: 1.25rem;
+      }
+    }
+
+    .skills-container {
+      display: flex;
+
+      .skills-content {
+        max-width: 550px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .about {
+    p {
+      font-size: 1.8rem;
+    }
+
+    .section-title {
+      padding-bottom: 1.5rem;
+    }
+
+    .container .grid .box {
+      &.my-craft {
+        height: 27rem;
+
+        .cluster .description {
+          max-width: 500px;
+        }
+
+        .stage-cube-cont {
+          top: 30%;
+        }
+      }
+
+      .cluster {
+        .section-subtitle {
+          font-size: 2.5rem;
+        }
+
+        .code-block pre code span {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

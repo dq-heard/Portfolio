@@ -1,0 +1,445 @@
+.about .section-title {
+  padding-bottom: 1.5rem;
+}
+.about .container {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.25rem 0;
+  overflow: hidden;
+}
+.about .container .grid {
+  grid-template-columns: 1fr;
+}
+.about .container .grid .box .spotlight {
+  width: 180px;
+  right: 0;
+}
+.about .container .grid .box .cluster {
+  padding: 1.25rem;
+  position: relative;
+  z-index: 2;
+  gap: 1.25rem;
+  width: 100%;
+}
+.about .container .grid .box .cluster .section-subtitle {
+  font-size: 2rem;
+}
+.about .container .grid .box .cluster .description {
+  margin: 0.5rem 0;
+}
+.about .container .grid .box .cluster .code-block {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.about .container .grid .box .cluster .code-block .dot-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3rem;
+  justify-content: flex-start;
+  padding: 0 1.25rem;
+  background: var(--input-color);
+}
+.about .container .grid .box .cluster .code-block .dot-container .dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  min-width: 0.7rem;
+  min-height: 0.7rem;
+  max-width: 0.7rem;
+  max-height: 0.7rem;
+  border-radius: 100%;
+  background: #33c648;
+}
+.about .container .grid .box .cluster .code-block .dot-container .dot:nth-child(1) {
+  background: #fc605b;
+}
+.about .container .grid .box .cluster .code-block .dot-container .dot:nth-child(2) {
+  background: #ffa500;
+}
+.about .container .grid .box .cluster .code-block pre .type.animate {
+  animation: type 1s steps(30) forwards;
+}
+.about .container .grid .box .cluster .code-block pre .type.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+.about .container .grid .box .cluster .code-block pre code span {
+  font-size: var(--small-font-size);
+}
+.about .container .grid .box .cluster .code-block pre code .line01,
+.about .container .grid .box .cluster .code-block pre code .line02,
+.about .container .grid .box .cluster .code-block pre code .line03,
+.about .container .grid .box .cluster .code-block pre code .line04,
+.about .container .grid .box .cluster .code-block pre code .line05,
+.about .container .grid .box .cluster .code-block pre code .line06,
+.about .container .grid .box .cluster .code-block pre code .line07,
+.about .container .grid .box .cluster .code-block pre code .line08,
+.about .container .grid .box .cluster .code-block pre code .line09,
+.about .container .grid .box .cluster .code-block pre code .line10,
+.about .container .grid .box .cluster .code-block pre code .line11,
+.about .container .grid .box .cluster .code-block pre code .line12 {
+  position: relative;
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.1rem 0;
+}
+.about .container .grid .box .cluster .code-block pre code .line01::before,
+.about .container .grid .box .cluster .code-block pre code .line02::before,
+.about .container .grid .box .cluster .code-block pre code .line03::before,
+.about .container .grid .box .cluster .code-block pre code .line04::before,
+.about .container .grid .box .cluster .code-block pre code .line05::before,
+.about .container .grid .box .cluster .code-block pre code .line06::before,
+.about .container .grid .box .cluster .code-block pre code .line07::before,
+.about .container .grid .box .cluster .code-block pre code .line08::before,
+.about .container .grid .box .cluster .code-block pre code .line09::before,
+.about .container .grid .box .cluster .code-block pre code .line10::before,
+.about .container .grid .box .cluster .code-block pre code .line11::before {
+  content: "";
+  position: absolute;
+  top: -0.1rem;
+  right: -1ch;
+  height: calc(100% + 0.2rem);
+  width: calc(100% + 1ch);
+  background-color: var(--body-color);
+  border-left: 2px solid white;
+}
+.about .container .grid .box .cluster .code-block pre code .line01::before {
+  width: 18ch; /* "const developer = {" */
+  animation: typing 2700ms steps(18) 0s 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line02::before {
+  width: 26ch; /* "  firstName: "DeQuentin"," */
+  animation: typing 3900ms steps(26) 2700ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line03::before {
+  width: 21ch; /* "  lastName: "Heard"," */
+  animation: typing 3150ms steps(21) 6600ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line04::before {
+  width: 20ch; /* "  type: "Front End"," */
+  animation: typing 3000ms steps(20) 9750ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line05::before {
+  width: 25ch; /* "  hobby: repeat = () => {" */
+  animation: typing 3600ms steps(24) 12750ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line06::before {
+  width: 16ch; /* "      //eat();" */
+  animation: typing 2250ms steps(15) 16350ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line07::before {
+  width: 18ch; /* "      //sleep();" */
+  animation: typing 2700ms steps(18) 18600ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line08::before {
+  width: 17ch; /* "      //code();" */
+  animation: typing 2550ms steps(17) 21300ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line09::before {
+  width: 19ch; /* "      //repeat();" */
+  animation: typing 2700ms steps(18) 23850ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line10::before {
+  width: 5ch; /* "    }" */
+  animation: typing 750ms steps(5) 26550ms 1 both, blinking 150ms linear infinite alternate;
+}
+.about .container .grid .box .cluster .code-block pre code .line11::before {
+  width: 3ch; /* "};" */
+  animation: typing 450ms steps(3) 27300ms 1 both, blinking 150ms linear infinite alternate;
+}
+@keyframes typing {
+  from {
+    max-width: calc(100% + 1ch);
+  }
+  to {
+    max-width: 0ch;
+  }
+}
+@keyframes blinking {
+  from {
+    border-color: var(--title-color);
+  }
+  to {
+    border-color: transparent;
+  }
+}
+.about .container .grid .box .cluster .text {
+  flex: 0 0 55%;
+  padding-top: 1.25rem;
+  border-radius: var(--border-radius);
+}
+.about .container .grid .box.my-craft .cluster {
+  height: 38rem;
+  width: 100%;
+}
+.about .container .grid .box .stage-cube-cont {
+  margin-left: 0;
+  position: absolute;
+  right: 20%;
+  bottom: 45%;
+  width: 15%;
+}
+.about .container .grid .box .stage-cube-cont .cubespinner {
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-name: spincube;
+  animation-timing-function: ease-in-out;
+  margin-left: calc(50% - 100px);
+  transform-origin: 100px 100px 0;
+  transform-style: preserve-3d;
+}
+.about .container .grid .box .stage-cube-cont .cubespinner div {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--text-color-light);
+  box-shadow: 0 0 10px 0 var(--text-color-light);
+  display: flex;
+  font-size: 6.25rem;
+  width: 12.5rem;
+  height: 12.5rem;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+}
+.about .container .grid .box .stage-cube-cont .cubespinner div svg:not(:root).svg-inline--fa,
+.about .container .grid .box .stage-cube-cont .cubespinner div svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+.about .container .grid .box .stage-cube-cont .cubespinner div .svg-inline--fa {
+  display: inline-block;
+  height: 8rem;
+  overflow: visible;
+  vertical-align: -0.125rem;
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face1 {
+  color: #dd0031;
+  transform: translateZ(100px);
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face2 {
+  color: #f06529;
+  transform: rotateY(90deg) translateZ(100px);
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face3 {
+  color: #28a4d9;
+  transform: rotateY(90deg) rotateX(90deg) translateZ(100px);
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face4 {
+  color: #5ed4f4;
+  transform: rotateY(180deg) rotate(90deg) translateZ(100px);
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face5 {
+  color: #efd81d;
+  transform: rotateY(-90deg) rotate(90deg) translateZ(100px);
+}
+.about .container .grid .box .stage-cube-cont .cubespinner .face6 {
+  color: #ec4d28;
+  transform: rotateX(-90deg) translateZ(100px);
+}
+@keyframes spincube {
+  from, to {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  16% {
+    transform: rotateY(-90deg);
+  }
+  33% {
+    transform: rotateY(-90deg) rotateZ(90deg);
+  }
+  50% {
+    transform: rotateY(-180deg) rotateZ(90deg);
+  }
+  66% {
+    transform: rotateY(-270deg) rotateX(90deg);
+  }
+  83% {
+    transform: rotateX(90deg);
+  }
+}
+.about .container .grid .box .kit {
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0;
+  z-index: 1;
+}
+.about .skills-container {
+  width: 100%;
+  gap: 2rem;
+  justify-content: center;
+}
+.about .skills-container .skills-content {
+  position: relative;
+  width: 100%;
+  background-color: var(--container-color);
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+  margin: 0 auto 2rem;
+}
+.about .skills-container .skills-content .skills-header .skills-icon {
+  font-size: 2rem;
+  color: var(--first-color);
+  margin-right: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.about .skills-container .skills-content .skills-header .skills-category {
+  color: var(--title-color);
+  font-size: 1.75rem;
+  font-weight: var(--font-semibold);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.about .skills-container .skills-content .skills-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.about .skills-container .skills-content .skills-list .skills-item {
+  border: 1px solid var(--text-color-light);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+.about .skills-container .skills-content .skills-list .skills-item .skills-img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.about .skills-container .skills-content .skills-list .skills-item .skills-title {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+.about .skills-container .skills-content .skills-list .skills-item:hover {
+  box-shadow: 0 0 2rem var(--title-color);
+}
+.about .skills-container .skills-content .kit.window {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/*==================== MEDIA QUERIES ====================*/
+/* For small devices */
+@media screen and (max-width: 620px) {
+  .about .container .grid .box.my-craft .cluster {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: 22rem;
+  }
+  .about .container .grid .box .stage-cube-cont {
+    top: 12%;
+    right: 42%;
+  }
+}
+@media screen and (max-width: 413px) {
+  .about .container .grid .box .cluster .code-block pre code span {
+    font-size: 0.9rem !important;
+  }
+}
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .about .section-title {
+    padding-bottom: 1rem;
+  }
+  .about .container .grid .box.my-craft {
+    height: 32rem;
+  }
+  .about .container .grid .box.my-craft .cluster {
+    width: 50%;
+  }
+  .about .container .grid .box.my-craft .cluster .description {
+    max-width: 350px;
+  }
+  .about .container .grid .box.my-craft .stage-cube-cont {
+    margin-left: 0;
+    position: absolute;
+    right: 20%;
+    top: 30%;
+    width: 15%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .about .container .grid .box .cluster.row {
+    display: block;
+    gap: 2rem;
+  }
+  .about .container .grid .box .cluster .code-block {
+    margin-bottom: 0;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 900px) {
+  .about .container .grid .box.my-craft .cluster {
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .about .container .grid .box.my-craft {
+    height: 29rem;
+  }
+  .about .container .grid .box.my-craft .cluster .description {
+    max-width: 400px;
+  }
+  .about .container .grid .box.my-drive .cluster .code-block {
+    margin-bottom: 0;
+  }
+  .about .container .grid .box.my-drive .cluster .text {
+    max-width: 500px;
+    padding: 1.25rem;
+  }
+  .about .skills-container {
+    display: flex;
+  }
+  .about .skills-container .skills-content {
+    max-width: 550px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .about p {
+    font-size: 1.8rem;
+  }
+  .about .section-title {
+    padding-bottom: 1.5rem;
+  }
+  .about .container .grid .box.my-craft {
+    height: 27rem;
+  }
+  .about .container .grid .box.my-craft .cluster .description {
+    max-width: 500px;
+  }
+  .about .container .grid .box.my-craft .stage-cube-cont {
+    top: 30%;
+  }
+  .about .container .grid .box .cluster .section-subtitle {
+    font-size: 2.5rem;
+  }
+  .about .container .grid .box .cluster .code-block pre code span {
+    font-size: 1.6rem;
+  }
+}/*# sourceMappingURL=About.css.map */
