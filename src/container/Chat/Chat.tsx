@@ -14,12 +14,13 @@ export const Chat = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { name, email, message } = formData;
+  const { name, email, phone, message } = formData;
 
   const handleChangeInput = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -33,6 +34,7 @@ export const Chat = () => {
       _type: "contact",
       name: formData.name,
       email: formData.email,
+      phone: formData.phone,
       message: formData.message,
     };
 
@@ -88,9 +90,13 @@ export const Chat = () => {
                   <div className="contact-input">
                     <input
                       type="tel"
-                      name="conPhone"
-                      id="conPhone"
+                      name="phone"
+                      id="phone"
                       placeholder="Phone"
+                      value={phone}
+                      required
+                      autoComplete="on"
+                      onChange={handleChangeInput}
                     />
                   </div>
                 </div>
@@ -139,7 +145,7 @@ export const Chat = () => {
           <div className="box">
             <ul className="cluster">
               <li className="flex option">
-                <div className="icon-box">
+                <div className="icon-box flex">
                   <FaPhone />
                 </div>
                 <div className="text-box">
@@ -148,7 +154,7 @@ export const Chat = () => {
                 </div>
               </li>
               <li className="flex option">
-                <div className="icon-box">
+                <div className="icon-box flex">
                   <FaEnvelope />
                 </div>
                 <div className="text-box">
@@ -157,7 +163,7 @@ export const Chat = () => {
                 </div>
               </li>
               <li className="flex option">
-                <div className="icon-box">
+                <div className="icon-box flex">
                   <FaLocationDot />
                 </div>
                 <div className="text-box">
