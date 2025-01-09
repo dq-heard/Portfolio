@@ -31,7 +31,7 @@ export const Work: React.FC = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
-    const query = '*[_type == "projects"] | order(_updatedAt asc)';
+    const query = '*[_type == "projects"] | order(_updatedAt desc)';
     client.fetch<Project[]>(query).then((data) => {
       setProjects(data);
     });
