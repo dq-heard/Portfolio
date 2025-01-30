@@ -1,6 +1,6 @@
 import React from "react";
 import { NavType, IconType } from "./types";
-import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaUpwork } from "react-icons/fa6";
 
 interface NavItemProps extends NavType {
   section: IconType;
@@ -76,15 +76,15 @@ export const NavItems: React.FC<NavItemsProps> = ({
 };
 
 export const Socials: IconType[] = [
-  { title: "github", icon: FaGithub, url: "https://www.github.com/dq-heard" },
   {
     title: "linkedin",
     icon: FaLinkedinIn,
     url: "https://www.linkedin.com/in/dq-heard/",
   },
+  { title: "github", icon: FaGithub, url: "https://www.github.com/dq-heard" },
   {
-    title: "facebook",
-    icon: FaFacebook,
-    url: "https://www.facebook.com/dq.heard/",
+    title: "upwork",
+    icon: FaUpwork,
+    url: "https://www.upwork.com/freelancers/~01756fe10487af94c8",
   },
 ];
