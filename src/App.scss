@@ -115,8 +115,8 @@ p {
 
 .hero-title,
 .section-title {
-  background: var(--first-color);
   background: var(--gradient-4);
+  color: var(--first-color);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
