@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa6";
-// import { motion } from "framer-motion";
-// import { NavItems } from "../../constants/utils";
 import { NavType, IconType } from "../../constants/types";
 import useLocalStorage from "./useLocalStorage";
 
@@ -12,24 +10,24 @@ interface ThemeSwitchProps extends Omit<NavType, "toggle" | "setToggle"> {
 }
 
 const ThemeSwitch: React.FC<ThemeSwitchProps> = () => {
-  const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
+  const [lightMode, setLightMode] = useLocalStorage("lightMode", false);
 
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
+    localStorage.setItem("lightMode", JSON.stringify(lightMode));
+    if (lightMode) {
+      document.body.classList.add("light-mode");
     } else {
-      document.body.classList.remove("dark-mode");
+      document.body.classList.remove("light-mode");
     }
-  }, [darkMode]);
+  }, [lightMode]);
 
   const handleThemeChange = () => {
-    setDarkMode(!darkMode);
+    setLightMode(!lightMode);
   };
 
   return (
     <div className="theme-toggle" onClick={handleThemeChange}>
-      {darkMode ? <FaSun /> : <FaMoon />}
+      {lightMode ? <FaMoon /> : <FaSun />}
     </div>
   );
 };

@@ -11,8 +11,8 @@
 /*==================== VARIABLES CSS ====================*/
 :root {
   --header-height: 3rem;
-  --logo: url("./assets/short-signature.png");
-  --h1: url("./assets/full-signature.png");
+  --logo: url("./assets/short-signature(2).png");
+  --h1: url("./assets/full-signature(2).png");
 
   --border-radius: 1.2rem;
   --box-shadow: inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.188),
@@ -29,14 +29,14 @@
   --first-color-second: hsl(var(--primary-color), 80%, 50%);
   --first-color-alt: hsl(var(--primary-color), 100%, 63%);
   --first-color-lighter: hsl(var(--primary-color), 100%, 78%);
-  --title-color: hsl(var(--primary-color), 8%, 30%);
-  --text-color: hsl(var(--primary-color), 8%, 45%);
+  --title-color: hsl(var(--secondary-color), 8%, 95%);
+  --text-color: hsl(var(--secondary-color), 8%, 85%);
   --text-color-light: hsl(var(--primary-color), 8%, 65%);
-  --input-color: hsl(var(--primary-color), 70%, 90%);
-  --body-color: hsl(var(--primary-color), 60%, 99%);
-  --container-color: #fff;
-  --scroll-bar-color: hsl(var(--primary-color), 12%, 90%);
-  --scroll-thumb-color: hsl(var(--primary-color), 12%, 80%);
+  --input-color: hsl(var(--primary-color), 8%, 65%);
+  --body-color: hsl(var(--secondary-color), 0%, 20%);
+  --container-color: hsl(var(--secondary-color), 2%, 35%);
+  --scroll-bar-color: hsl(var(--secondary-color), 12%, 48%);
+  --scroll-thumb-color: hsl(var(--secondary-color), 12%, 36%);
 
   --gradient-1: linear-gradient(
     to right,
@@ -110,17 +110,17 @@
   }
 }
 
-/*========== Dark Theme ==========*/
-body.dark-mode {
-  --logo: url("./assets/short-signature(2).png");
-  --h1: url("./assets/full-signature(2).png");
+/*========== Light Theme ==========*/
+body.light-mode {
+  --logo: url("./assets/short-signature.png");
+  --h1: url("./assets/full-signature.png");
 
   /* HSL color mode */
-  --title-color: hsl(var(--secondary-color), 8%, 95%);
-  --text-color: hsl(var(--secondary-color), 8%, 85%);
-  --input-color: hsl(var(--primary-color), 8%, 65%);
-  --body-color: hsl(var(--secondary-color), 0%, 20%);
-  --container-color: hsl(var(--secondary-color), 2%, 35%);
-  --scroll-bar-color: hsl(var(--secondary-color), 12%, 48%);
-  --scroll-thumb-color: hsl(var(--secondary-color), 12%, 36%);
+  --title-color: hsl(var(--primary-color), 8%, 30%);
+  --text-color: hsl(var(--primary-color), 8%, 45%);
+  --input-color: hsl(var(--primary-color), 70%, 90%);
+  --body-color: hsl(var(--primary-color), 60%, 99%);
+  --container-color: #fff;
+  --scroll-bar-color: hsl(var(--primary-color), 12%, 90%);
+  --scroll-thumb-color: hsl(var(--primary-color), 12%, 80%);
 }
