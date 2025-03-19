@@ -458,6 +458,12 @@
   }
 }
 
+@media screen and (max-width: 323px) {
+  .about .container .grid .box .cluster .section-subtitle {
+    font-size: 1.75rem;
+  }
+}
+
 /* For medium devices */
 @media screen and (min-width: 768px) {
   .about {

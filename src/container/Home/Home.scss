@@ -103,6 +103,17 @@
 
 /*==================== MEDIA QUERIES ====================*/
 /* For small devices */
+@media screen and (max-width: 500px) {
+  .home .content {
+    gap: 1.5rem;
+
+    .left .hero-content-box .button-box {
+      flex-direction: column-reverse;
+      gap: 1.25rem;
+    }
+  }
+}
+
 @media screen and (max-width: 481px) {
   .home .content {
     .left .hero-content-box {
@@ -121,14 +132,9 @@
   }
 }
 
-@media screen and (max-width: 500px) {
-  .home .content {
-    gap: 1.5rem;
-
-    .left .hero-content-box .button-box {
-      flex-direction: column-reverse;
-      gap: 1.25rem;
-    }
+@media screen and (max-width: 350px) {
+  .home .content .left .hero-content-box .lead {
+    width: 300px;
   }
 }
 

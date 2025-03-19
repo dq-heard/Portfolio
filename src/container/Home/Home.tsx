@@ -56,7 +56,7 @@ export const Home: React.FC<HomeProps> = ({ onContentLoaded }) => {
                   <span className="web">Web </span> Developer
                 </h1>
                 <p className="lead">
-                  I'm a meticulous, self-taught programmer who's working hard to
+                  I'm a meticulous, self-taught programmer working hard to
                   establish my name within the tech field.
                 </p>
 

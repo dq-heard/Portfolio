@@ -224,12 +224,19 @@
   .services {
     margin: 6rem auto 0;
   }
+
   .services .wrap .content > div h2 {
     font-size: var(--small-font-size);
   }
 
   .services .wrap .content {
     min-height: 568px;
+  }
+}
+
+@media screen and (max-width: 323px) {
+  .services {
+    margin: 7rem auto 0;
   }
 }
 
