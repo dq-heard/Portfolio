@@ -99,18 +99,8 @@
                 span {
                   font-size: var(--small-font-size);
                 }
-                .line01,
-                .line02,
-                .line03,
-                .line04,
-                .line05,
-                .line06,
-                .line07,
-                .line08,
-                .line09,
-                .line10,
-                .line11,
-                .line12 {
+
+                .lines {
                   position: relative;
                   display: block;
                   width: fit-content;
@@ -119,106 +109,111 @@
                   padding: 0.1rem 0;
                 }
 
-                .line01::before,
-                .line02::before,
-                .line03::before,
-                .line04::before,
-                .line05::before,
-                .line06::before,
-                .line07::before,
-                .line08::before,
-                .line09::before,
-                .line10::before,
-                .line11::before {
-                  content: "";
+                .lines::before {
+                  content: " ";
                   position: absolute;
                   top: -0.1rem;
                   right: -1ch;
                   height: calc(100% + 0.2rem);
                   width: calc(100% + 1ch);
                   background-color: var(--body-color);
-                  border-left: 2px solid white;
+                  border-left: 2px solid transparent;
                 }
 
-                .line01::before {
-                  width: 18ch; /* "const developer = {" */
-                  animation: typing calc(18 * 150ms) steps(18) 0s 1 both,
+                #line01::before {
+                  width: 19ch; /* "const developer = {" */
+                  animation: typing calc(19 * 150ms) steps(19) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(19 * 150ms), 150ms;
+                  animation-delay: 0s;
                 }
 
-                .line02::before {
-                  width: 26ch; /* "  firstName: "DeQuentin"," */
-                  animation: typing calc(26 * 150ms) steps(26) calc(18 * 150ms)
-                      1 both,
+                #line02::before {
+                  width: 25ch; /* "  firstName: "DeQuentin"," */
+                  animation: typing calc(25 * 150ms) steps(25) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(25 * 150ms), 150ms;
+                  animation-delay: calc(19 * 150ms);
                 }
 
-                .line03::before {
-                  width: 21ch; /* "  lastName: "Heard"," */
-                  animation: typing calc(21 * 150ms) steps(21)
-                      calc((18 + 26) * 150ms) 1 both,
+                #line03::before {
+                  width: 20ch; /* "  lastName: "Heard"," */
+                  animation: typing calc(20 * 150ms) steps(20) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(20 * 150ms), 150ms;
+                  animation-delay: calc((19 + 25) * 150ms);
                 }
 
-                .line04::before {
+                #line04::before {
                   width: 20ch; /* "  type: "Front End"," */
-                  animation: typing calc(20 * 150ms) steps(20)
-                      calc((18 + 26 + 21) * 150ms) 1 both,
+                  animation: typing calc(20 * 150ms) steps(20) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(20 * 150ms), 150ms;
+                  animation-delay: calc((19 + 25 + 20) * 150ms);
                 }
 
-                .line05::before {
+                #line05::before {
                   width: 25ch; /* "  hobby: repeat = () => {" */
-                  animation: typing calc(24 * 150ms) steps(24)
-                      calc((18 + 26 + 21 + 20) * 150ms) 1 both,
+                  animation: typing calc(25 * 150ms) steps(25) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(24 * 150ms), 150ms;
+                  animation-delay: calc((19 + 25 + 20 + 20) * 150ms);
                 }
 
-                .line06::before {
-                  width: 16ch; /* "      //eat();" */
-                  animation: typing calc(15 * 150ms) steps(15)
-                      calc((18 + 26 + 21 + 20 + 24) * 150ms) 1 both,
+                #line06::before {
+                  width: 14ch; /* "      //eat();" */
+                  animation: typing calc(14 * 150ms) steps(14) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(14 * 150ms), 150ms;
+                  animation-delay: calc((19 + 25 + 20 + 20 + 25) * 150ms);
                 }
 
-                .line07::before {
-                  width: 18ch; /* "      //sleep();" */
-                  animation: typing calc(18 * 150ms) steps(18)
-                      calc((18 + 26 + 21 + 20 + 24 + 15) * 150ms) 1 both,
+                #line07::before {
+                  width: 16ch; /* "      //sleep();" */
+                  animation: typing calc(16 * 150ms) steps(17) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(16 * 150ms), 150ms;
+                  animation-delay: calc((19 + 25 + 20 + 20 + 25 + 14) * 150ms);
                 }
 
-                .line08::before {
-                  width: 17ch; /* "      //code();" */
-                  animation: typing calc(17 * 150ms) steps(17)
-                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18) * 150ms) 1 both,
+                #line08::before {
+                  width: 15ch; /* "      //code();" */
+                  animation: typing calc(15 * 150ms) steps(15) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(15 * 150ms), 150ms;
+                  animation-delay: calc(
+                    (19 + 25 + 20 + 20 + 25 + 14 + 16) * 150ms
+                  );
                 }
 
-                .line09::before {
-                  width: 19ch; /* "      //repeat();" */
-                  animation: typing calc(18 * 150ms) steps(18)
-                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18 + 17) * 150ms) 1
-                      both,
+                #line09::before {
+                  width: 17ch; /* "      //repeat();" */
+                  animation: typing calc(17 * 150ms) steps(17) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(17 * 150ms), 150ms;
+                  animation-delay: calc(
+                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15) * 150ms
+                  );
                 }
 
-                .line10::before {
+                #line10::before {
                   width: 5ch; /* "    }" */
-                  animation: typing calc(5 * 150ms) steps(5)
-                      calc((18 + 26 + 21 + 20 + 24 + 15 + 18 + 17 + 18) * 150ms)
-                      1 both,
+                  animation: typing calc(5 * 150ms) steps(5) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(5 * 150ms), 150ms;
+                  animation-delay: calc(
+                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17) * 150ms
+                  );
                 }
 
-                .line11::before {
+                #line11::before {
                   width: 3ch; /* "};" */
-                  animation: typing calc(3 * 150ms) steps(3)
-                      calc(
-                        (18 + 26 + 21 + 20 + 24 + 15 + 18 + 17 + 18 + 5) * 150ms
-                      )
-                      1 both,
+                  animation: typing calc(2 * 150ms) steps(2) both,
                     blinking 150ms linear infinite alternate;
+                  animation-duration: calc(2 * 150ms), calc(3 * 150ms);
+                  animation-delay: calc(
+                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17 + 5) * 150ms
+                  );
                 }
 
                 @keyframes typing {
