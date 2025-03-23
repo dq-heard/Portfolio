@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaDownload } from "react-icons/fa";
-import { motion } from "framer-motion";
 import { client } from "../../client";
 import { Socials } from "../../constants/utils";
 import { images } from "../../constants";
@@ -39,56 +38,43 @@ export const Home: React.FC<HomeProps> = ({ onContentLoaded }) => {
         <div className="content flex">
           <div className="left w-half">
             <div className="hero-content-box">
-              <motion.div
-                whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-              >
-                <div
-                  className="hero-name"
-                  role="img"
-                  aria-label="DQ Heard"
-                ></div>
-                <h1 className="hero-title">
-                  <span className="front-end">
-                    Front&nbsp;End
-                    <br />
-                  </span>
-                  <span className="web">Web </span> Developer
-                </h1>
-                <p className="lead">
-                  I'm a meticulous, self-taught programmer working hard to
-                  establish my name within the tech field.
-                </p>
+              <div className="hero-name" role="img" aria-label="DQ Heard"></div>
+              <h1 className="hero-title">
+                <span className="front-end">
+                  Front&nbsp;End
+                  <br />
+                </span>
+                <span className="web">Web </span> Developer
+              </h1>
+              <p className="lead">
+                I'm a meticulous, self-taught programmer working hard to
+                establish my name within the tech field.
+              </p>
 
-                <div className="button-box flex">
-                  <div className="social-handles flex">
-                    {Socials.map((social) => (
-                      <a
-                        href={social.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="social-circle flex"
-                        key={social.title}
-                      >
-                        <social.icon />
-                      </a>
-                    ))}
-                  </div>
-                  <a href={downloadUrl} className="btn-primary" download>
-                    Résumé <FaDownload />
-                  </a>
+              <div className="button-box flex">
+                <div className="social-handles flex">
+                  {Socials.map((social) => (
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="social-circle flex"
+                      key={social.title}
+                    >
+                      <social.icon />
+                    </a>
+                  ))}
                 </div>
-              </motion.div>
+                <a href={downloadUrl} className="btn-primary" download>
+                  Résumé <FaDownload />
+                </a>
+              </div>
             </div>
           </div>
           <div className="right w-half">
-            <motion.div
-              whileInView={{ y: [100, 0], opacity: [0, 1] }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="hero-image-box text-center"
-            >
+            <div className="hero-image-box text-center">
               <img src={images.user} alt="logo" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
