@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-
 import { About } from "./About";
-import CodeBlock from "../../graphics/CodeBlock";
+import checklist from "../../assets/checklist.gif";
+// import CodeBlock from "../../graphics/CodeBlock";
 import Cube from "../../graphics/Cube";
 import Grid from "../../graphics/Grid";
 
@@ -12,18 +11,18 @@ interface BioProps {
 }
 
 export const Bio: React.FC<BioProps> = ({ data }) => {
-  const [key, setKey] = useState(0);
+  // const [key, setKey] = useState(0);
 
-  useEffect(() => {
-    const delay =
-      (19 + 25 + 20 + 20 + 25 + 15 + 17 + 17 + 18 + 5 + 2) * 150 + 3000;
+  // useEffect(() => {
+  //   const delay =
+  //     (19 + 25 + 20 + 20 + 25 + 15 + 17 + 17 + 18 + 5 + 2) * 150 + 3000;
 
-    const intervalID = setInterval(() => {
-      setKey((prevKey) => prevKey + 1); // Increment the key to remount CodeBlock
-    }, delay + 1000); // Adjust timing as necessary
+  //   const intervalID = setInterval(() => {
+  //     setKey((prevKey) => prevKey + 1); // Increment the key to remount CodeBlock
+  //   }, delay + 1000); // Adjust timing as necessary
 
-    return () => clearInterval(intervalID); // Clean up on unmount
-  }, []);
+  //   return () => clearInterval(intervalID); // Clean up on unmount
+  // }, []);
 
   return (
     <div className="grid">
@@ -40,7 +39,8 @@ export const Bio: React.FC<BioProps> = ({ data }) => {
       <div className="box my-drive">
         <div className="flex row cluster">
           <div className="code-block">
-            <div className="dot-container">
+            <img src={checklist} alt="animated checklist" />
+            {/* <div className="dot-container">
               <span className="dot"></span>
               <span className="dot"></span>
               <span className="dot"></span>
@@ -55,7 +55,7 @@ export const Bio: React.FC<BioProps> = ({ data }) => {
               }}
             >
               <CodeBlock key={key} />
-            </pre>
+            </pre> */}
           </div>
           {data.map((item, index) => (
             <div className="text" key={index}>

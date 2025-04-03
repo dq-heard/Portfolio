@@ -35,206 +35,206 @@
           }
 
           .code-block {
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            // border-radius: var(--border-radius);
+            // box-shadow: var(--box-shadow);
             overflow: hidden;
             height: 100%;
             width: 100%;
             margin-bottom: 2rem;
 
-            .dot-container {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 0.5rem;
+            // .dot-container {
+            //   display: flex;
+            //   align-items: center;
+            //   justify-content: center;
+            //   gap: 0.5rem;
 
-              height: 3rem;
-              justify-content: flex-start;
-              padding: 0 1.25rem;
-              background: var(--input-color);
+            //   height: 3rem;
+            //   justify-content: flex-start;
+            //   padding: 0 1.25rem;
+            //   background: var(--input-color);
 
-              .dot {
-                width: 0.7rem;
-                height: 0.7rem;
-                min-width: 0.7rem;
-                min-height: 0.7rem;
-                max-width: 0.7rem;
-                max-height: 0.7rem;
-                border-radius: 100%;
-                background: #33c648;
+            //   .dot {
+            //     width: 0.7rem;
+            //     height: 0.7rem;
+            //     min-width: 0.7rem;
+            //     min-height: 0.7rem;
+            //     max-width: 0.7rem;
+            //     max-height: 0.7rem;
+            //     border-radius: 100%;
+            //     background: #33c648;
 
-                &:nth-child(1) {
-                  background: #fc605b;
-                }
+            //     &:nth-child(1) {
+            //       background: #fc605b;
+            //     }
 
-                &:nth-child(2) {
-                  background: #ffa500;
-                }
-              }
-            }
+            //     &:nth-child(2) {
+            //       background: #ffa500;
+            //     }
+            //   }
+            // }
 
-            pre {
-              .type.animate {
-                animation: type 1s steps(30) forwards;
-              }
+            // pre {
+            //   .type.animate {
+            //     animation: type 1s steps(30) forwards;
+            //   }
 
-              .type.fade-out {
-                opacity: 0;
-                transition: opacity 1s ease-in-out;
-              }
+            //   .type.fade-out {
+            //     opacity: 0;
+            //     transition: opacity 1s ease-in-out;
+            //   }
 
-              @keyframes type {
-                0% {
-                  width: 0;
-                }
-                99% {
-                  width: 100%;
-                }
-                100% {
-                  width: 0;
-                }
-              }
+            //   @keyframes type {
+            //     0% {
+            //       width: 0;
+            //     }
+            //     99% {
+            //       width: 100%;
+            //     }
+            //     100% {
+            //       width: 0;
+            //     }
+            //   }
 
-              code {
-                span {
-                  font-size: var(--small-font-size);
-                }
+            //   code {
+            //     span {
+            //       font-size: var(--small-font-size);
+            //     }
 
-                .lines {
-                  position: relative;
-                  display: block;
-                  width: fit-content;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  padding: 0.1rem 0;
-                }
+            //     .lines {
+            //       position: relative;
+            //       display: block;
+            //       width: fit-content;
+            //       white-space: nowrap;
+            //       overflow: hidden;
+            //       padding: 0.1rem 0;
+            //     }
 
-                .lines::before {
-                  content: " ";
-                  position: absolute;
-                  top: -0.1rem;
-                  right: -1ch;
-                  height: calc(100% + 0.2rem);
-                  width: calc(100% + 1ch);
-                  background-color: var(--body-color);
-                  border-left: 2px solid transparent;
-                }
+            //     // .lines::before {
+            //     //   content: " ";
+            //     //   position: absolute;
+            //     //   top: -0.1rem;
+            //     //   right: -1ch;
+            //     //   height: calc(100% + 0.2rem);
+            //     //   width: calc(100% + 1ch);
+            //     //   background-color: var(--body-color);
+            //     //   // border-left: 2px solid transparent;
+            //     // }
 
-                #line01::before {
-                  width: 19ch; /* "const developer = {" */
-                  animation: typing calc(19 * 150ms) steps(19) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(19 * 150ms), 150ms;
-                  animation-delay: 0s;
-                }
+            //     // #line01::before {
+            //     //   width: 19ch; /* "const developer = {" */
+            //     //   animation: typing calc(19 * 150ms) steps(19) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(19 * 150ms), 150ms;
+            //     //   animation-delay: 0s;
+            //     // }
 
-                #line02::before {
-                  width: 25ch; /* "  firstName: "DeQuentin"," */
-                  animation: typing calc(25 * 150ms) steps(25) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(25 * 150ms), 150ms;
-                  animation-delay: calc(19 * 150ms);
-                }
+            //     // #line02::before {
+            //     //   width: 25ch; /* "  firstName: "DeQuentin"," */
+            //     //   animation: typing calc(25 * 150ms) steps(25) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(25 * 150ms), 150ms;
+            //     //   animation-delay: calc(19 * 150ms);
+            //     // }
 
-                #line03::before {
-                  width: 20ch; /* "  lastName: "Heard"," */
-                  animation: typing calc(20 * 150ms) steps(20) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(20 * 150ms), 150ms;
-                  animation-delay: calc((19 + 25) * 150ms);
-                }
+            //     // #line03::before {
+            //     //   width: 20ch; /* "  lastName: "Heard"," */
+            //     //   animation: typing calc(20 * 150ms) steps(20) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(20 * 150ms), 150ms;
+            //     //   animation-delay: calc((19 + 25) * 150ms);
+            //     // }
 
-                #line04::before {
-                  width: 20ch; /* "  type: "Front End"," */
-                  animation: typing calc(20 * 150ms) steps(20) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(20 * 150ms), 150ms;
-                  animation-delay: calc((19 + 25 + 20) * 150ms);
-                }
+            //     // #line04::before {
+            //     //   width: 20ch; /* "  type: "Front End"," */
+            //     //   animation: typing calc(20 * 150ms) steps(20) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(20 * 150ms), 150ms;
+            //     //   animation-delay: calc((19 + 25 + 20) * 150ms);
+            //     // }
 
-                #line05::before {
-                  width: 25ch; /* "  hobby: repeat = () => {" */
-                  animation: typing calc(25 * 150ms) steps(25) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(24 * 150ms), 150ms;
-                  animation-delay: calc((19 + 25 + 20 + 20) * 150ms);
-                }
+            //     // #line05::before {
+            //     //   width: 25ch; /* "  hobby: repeat = () => {" */
+            //     //   animation: typing calc(25 * 150ms) steps(25) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(24 * 150ms), 150ms;
+            //     //   animation-delay: calc((19 + 25 + 20 + 20) * 150ms);
+            //     // }
 
-                #line06::before {
-                  width: 14ch; /* "      //eat();" */
-                  animation: typing calc(14 * 150ms) steps(14) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(14 * 150ms), 150ms;
-                  animation-delay: calc((19 + 25 + 20 + 20 + 25) * 150ms);
-                }
+            //     // #line06::before {
+            //     //   width: 14ch; /* "      //eat();" */
+            //     //   animation: typing calc(14 * 150ms) steps(14) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(14 * 150ms), 150ms;
+            //     //   animation-delay: calc((19 + 25 + 20 + 20 + 25) * 150ms);
+            //     // }
 
-                #line07::before {
-                  width: 16ch; /* "      //sleep();" */
-                  animation: typing calc(16 * 150ms) steps(17) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(16 * 150ms), 150ms;
-                  animation-delay: calc((19 + 25 + 20 + 20 + 25 + 14) * 150ms);
-                }
+            //     // #line07::before {
+            //     //   width: 16ch; /* "      //sleep();" */
+            //     //   animation: typing calc(16 * 150ms) steps(17) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(16 * 150ms), 150ms;
+            //     //   animation-delay: calc((19 + 25 + 20 + 20 + 25 + 14) * 150ms);
+            //     // }
 
-                #line08::before {
-                  width: 15ch; /* "      //code();" */
-                  animation: typing calc(15 * 150ms) steps(15) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(15 * 150ms), 150ms;
-                  animation-delay: calc(
-                    (19 + 25 + 20 + 20 + 25 + 14 + 16) * 150ms
-                  );
-                }
+            //     // #line08::before {
+            //     //   width: 15ch; /* "      //code();" */
+            //     //   animation: typing calc(15 * 150ms) steps(15) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(15 * 150ms), 150ms;
+            //     //   animation-delay: calc(
+            //     //     (19 + 25 + 20 + 20 + 25 + 14 + 16) * 150ms
+            //     //   );
+            //     // }
 
-                #line09::before {
-                  width: 17ch; /* "      //repeat();" */
-                  animation: typing calc(17 * 150ms) steps(17) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(17 * 150ms), 150ms;
-                  animation-delay: calc(
-                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15) * 150ms
-                  );
-                }
+            //     // #line09::before {
+            //     //   width: 17ch; /* "      //repeat();" */
+            //     //   animation: typing calc(17 * 150ms) steps(17) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(17 * 150ms), 150ms;
+            //     //   animation-delay: calc(
+            //     //     (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15) * 150ms
+            //     //   );
+            //     // }
 
-                #line10::before {
-                  width: 5ch; /* "    }" */
-                  animation: typing calc(5 * 150ms) steps(5) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(5 * 150ms), 150ms;
-                  animation-delay: calc(
-                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17) * 150ms
-                  );
-                }
+            //     // #line10::before {
+            //     //   width: 5ch; /* "    }" */
+            //     //   animation: typing calc(5 * 150ms) steps(5) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(5 * 150ms), 150ms;
+            //     //   animation-delay: calc(
+            //     //     (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17) * 150ms
+            //     //   );
+            //     // }
 
-                #line11::before {
-                  width: 3ch; /* "};" */
-                  animation: typing calc(2 * 150ms) steps(2) both,
-                    blinking 150ms linear infinite alternate;
-                  animation-duration: calc(2 * 150ms), calc(3 * 150ms);
-                  animation-delay: calc(
-                    (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17 + 5) * 150ms
-                  );
-                }
+            //     // #line11::before {
+            //     //   width: 3ch; /* "};" */
+            //     //   animation: typing calc(2 * 150ms) steps(2) both,
+            //     //     blinking 150ms linear infinite alternate;
+            //     //   animation-duration: calc(2 * 150ms), calc(3 * 150ms);
+            //     //   animation-delay: calc(
+            //     //     (19 + 25 + 20 + 20 + 25 + 14 + 16 + 15 + 17 + 5) * 150ms
+            //     //   );
+            //     // }
 
-                @keyframes typing {
-                  from {
-                    max-width: calc(100% + 1ch);
-                  }
-                  to {
-                    max-width: 0ch;
-                  }
-                }
+            //     // @keyframes typing {
+            //     //   from {
+            //     //     max-width: calc(100% + 1ch);
+            //     //   }
+            //     //   to {
+            //     //     max-width: 0ch;
+            //     //   }
+            //     // }
 
-                @keyframes blinking {
-                  from {
-                    border-color: var(--title-color);
-                  }
-                  to {
-                    border-color: transparent;
-                  }
-                }
-              }
-            }
+            //     // @keyframes blinking {
+            //     //   from {
+            //     //     border-color: var(--title-color);
+            //     //   }
+            //     //   to {
+            //     //     border-color: transparent;
+            //     //   }
+            //     // }
+            //   }
+            // }
           }
 
           .text {
@@ -445,13 +445,13 @@
   }
 }
 
-@media screen and (max-width: 413px) {
-  .about .container .grid .box {
-    .cluster .code-block pre code span {
-      font-size: 0.9rem !important;
-    }
-  }
-}
+// @media screen and (max-width: 413px) {
+//   .about .container .grid .box {
+//     .cluster .code-block pre code span {
+//       font-size: 0.9rem !important;
+//     }
+//   }
+// }
 
 @media screen and (max-width: 323px) {
   .about .container .grid .box .cluster .section-subtitle {
@@ -523,10 +523,10 @@
         margin-bottom: 0;
       }
 
-      .text {
-        max-width: 500px;
-        padding: 1.25rem;
-      }
+      // .text {
+      //   max-width: 500px;
+      //   padding: 1.25rem;
+      // }
     }
 
     .skills-container {
@@ -567,9 +567,9 @@
           font-size: 2.5rem;
         }
 
-        .code-block pre code span {
-          font-size: 1.6rem;
-        }
+        // .code-block pre code span {
+        //   font-size: 1.6rem;
+        // }
       }
     }
   }
