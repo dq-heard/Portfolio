@@ -150,7 +150,7 @@ export const Chat = () => {
                 </div>
                 <div className="text-box">
                   <h3>Phone:</h3>
-                  <a href="tel:+1 (423) 603-6466">(423) 603-6466</a>
+                  <a href="#!">Ask Me!</a>
                 </div>
               </li>
               <li className="flex option">
