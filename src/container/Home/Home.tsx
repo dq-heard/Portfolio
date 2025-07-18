@@ -41,14 +41,14 @@ export const Home: React.FC<HomeProps> = ({ onContentLoaded }) => {
               <div className="hero-name" role="img" aria-label="DQ Heard"></div>
               <h1 className="hero-title">
                 <span className="front-end">
-                  Front&nbsp;End
+                  Under
                   <br />
                 </span>
-                <span className="web">Web </span> Developer
+                Re-Construction
               </h1>
               <p className="lead">
-                I'm a meticulous, self-taught programmer working hard to
-                establish my name within the tech field.
+                Please disregard any graphical inconsistencies you see and check
+                back at a later date.
               </p>
 
               <div className="button-box flex">
