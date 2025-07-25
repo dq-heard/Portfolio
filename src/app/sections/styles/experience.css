@@ -1,0 +1,53 @@
+.timeline {
+  position: relative;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--primary-light);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 11px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  z-index: 1;
+  will-change: transform;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.timeline-date {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+  position: relative;
+}
+
+.more-experiences {
+  display: none;
+}
+
+/*==================== MEDIA QUERIES ====================*/
+@media screen and (max-width: 600px) {
+  .timeline-content ul {
+    display: none;
+  }
+}

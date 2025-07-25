@@ -1,0 +1,6 @@
+/*==================== MEDIA QUERIES ====================*/
+@media screen and (max-width: 550px) {
+  #about p:last-of-type {
+    display: none;
+  }
+}

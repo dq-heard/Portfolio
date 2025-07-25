@@ -1,0 +1,36 @@
+{
+  "name": "next_portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@posthog/react": "^1.0.0",
+    "@sanity/client": "^7.7.0",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/vision": "^3.99.0",
+    "@types/createjs": "^0.0.32",
+    "framer-motion": "^12.23.6",
+    "next": "15.4.1",
+    "next-sanity": "^9.12.3",
+    "posthog-js": "^1.258.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0",
+    "react-is": "^19.1.0",
+    "react-toastify": "^11.0.5",
+    "sanity": "^3.99.0",
+    "styled-components": "^6.1.19",
+    "swiper": "^11.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,31 @@
+.scroll-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: -20%;
+  background: var(--primary);
+  opacity: 0.8;
+  padding: 0 0.3rem;
+  border-radius: 0.4rem;
+  z-index: 10;
+}
+
+.scroll-toggle:hover {
+  opacity: 0.6;
+}
+
+.scroll-icon {
+  font-size: 3rem;
+  color: #fff;
+  padding: 0.5rem 0.3rem;
+}
+
+/* Show scroll */
+.show-scroll {
+  bottom: 5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .show-scroll {
+    bottom: 3rem;
+  }
+}
