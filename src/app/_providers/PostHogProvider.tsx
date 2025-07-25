@@ -4,7 +4,7 @@ import { useEffect, Suspense } from "react";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider } from "posthog-js/react";
 import PostHogPageView from "../components/PostHogPageView";
-import { posthogKey, posthogHost } from "@/sanity/env";
+import { posthogKey, posthogHost } from "@/app/env";
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
