@@ -67,6 +67,10 @@ const ContactForm: React.FC<Props> = ({
           />
           <label htmlFor="name">Name</label>
 
+          <span id="name-error" className="sr-only">
+            {/* Empty fallback to avoid broken reference */}
+          </span>
+
           {touchedFields.name && errors.name && (
             <span role="alert" id="name-error" className="error-tooltip">
               {errors.name}
@@ -89,6 +93,10 @@ const ContactForm: React.FC<Props> = ({
             aria-describedby="email-error"
           />
           <label htmlFor="email">E-mail Address</label>
+
+          <span id="email-error" className="sr-only">
+            {/* Empty fallback to avoid broken reference */}
+          </span>
 
           {touchedFields.email && errors.email && (
             <span role="alert" id="email-error" className="error-tooltip">
@@ -114,6 +122,10 @@ const ContactForm: React.FC<Props> = ({
         />
         <label htmlFor="subject">Subject Line</label>
 
+        <span id="subject-error" className="sr-only">
+          {/* Empty fallback to avoid broken reference */}
+        </span>
+
         {touchedFields.subject && errors.subject && (
           <span role="alert" id="subject-error" className="error-tooltip">
             {errors.subject}
@@ -136,6 +148,10 @@ const ContactForm: React.FC<Props> = ({
         />
         <label htmlFor="message">Message</label>
 
+        <span id="message-error" className="sr-only">
+          {/* Empty fallback to avoid broken reference */}
+        </span>
+
         {touchedFields.message && errors.message && (
           <span role="alert" id="message-error" className="error-tooltip">
             {errors.message}
@@ -144,7 +160,7 @@ const ContactForm: React.FC<Props> = ({
       </div>
 
       <div className="form_btn">
-        <div aria-live="polite" className="sr-only">
+        <div id="status-update" aria-live="polite" className="sr-only">
           {loading ? "Sending message" : "Ready to submit"}
         </div>
         <button

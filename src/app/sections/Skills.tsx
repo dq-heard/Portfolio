@@ -74,7 +74,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
     <div className="skills-item skills-tag">
       <img
         src={urlFor(skill.icon).url()}
-        alt={skill.name}
+        alt={`${skill.name} logo`}
         className="skills-img"
         loading="lazy"
       />
