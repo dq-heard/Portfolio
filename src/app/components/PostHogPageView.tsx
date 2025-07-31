@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { usePostHog } from "posthog-js/react";
@@ -9,7 +10,14 @@ export default function PostHogPageView() {
   const posthog = usePostHog();
 
   useEffect(() => {
-    const url = `${window.location.origin}${pathname}?${searchParams?.toString() || ""}`;
+    if (!posthog || !pathname) return;
+
+    let url = window.origin + pathname;
+    const query = searchParams?.toString();
+    if (query) {
+      url += "?" + query;
+    }
+
     posthog.capture("$pageview", { $current_url: url });
   }, [pathname, searchParams, posthog]);
 
