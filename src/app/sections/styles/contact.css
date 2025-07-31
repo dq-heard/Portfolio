@@ -135,8 +135,9 @@
   border-radius: 4px;
 }
 
-.contact-input input::placeholder,
-.contact-input textarea::placeholder {
+.contact-input input:not(:focus)::placeholder,
+.contact-input textarea:not(:focus)::placeholder {
+  opacity: 0;
   visibility: hidden;
 }
 
@@ -161,9 +162,19 @@
   border-color: transparent transparent red transparent;
 }
 
-#message-error.error-tooltip {
-  bottom: -10px;
+@supports (-webkit-appearance: none) {
+  /* Chromium (Chrome, Edge, etc.) */
+  #message-error.error-tooltip {
+    bottom: -10px;
+  }
 }
+@supports (-moz-appearance: none) {
+  /* Firefox-specific */
+  #message-error.error-tooltip {
+    bottom: -16px;
+  }
+}
+
 /*==================== MEDIA QUERIES ====================*/
 @media screen and (max-width: 1024px) {
   .contact-wrapper {

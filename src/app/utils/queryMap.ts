@@ -10,7 +10,7 @@ export const queryMap = {
     type: {} as Bio,
   },
   experience: {
-    query: `*[_type == "experience"]`,
+    query: `*[_type == "experience"] | order(startDate desc)`,
     type: {} as Exp[],
   },
   projects: {
