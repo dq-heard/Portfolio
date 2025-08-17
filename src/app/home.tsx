@@ -1,6 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+
+import { usePortfolioData } from "@/app/hooks/usePortfolioData";
+import { sectionMap } from "./utils/sections";
+import { Header, Nav, Footer } from "./sections";
+import { PortfolioData } from "./utils/types";
 import {
   Preloader,
   TiltedCard,
@@ -8,11 +13,6 @@ import {
   ThemeToggle,
   TopScroller,
 } from "./components";
-
-import { usePortfolioData } from "@/app/hooks/usePortfolioData";
-import { sectionMap } from "./utils/sections";
-import { Header, Nav, Footer } from "./sections";
-import { PortfolioData } from "./utils/types";
 
 export default function Home(props: PortfolioData) {
   const [isMobileMenuActive, setMobileMenuActive] = useState(false);

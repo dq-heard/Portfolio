@@ -3,11 +3,14 @@ import dynamic from "next/dynamic";
 import { sedgwick } from "./utils/fonts";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import { PostHogProvider } from "./provider";
+import Banner from "./banner";
 
 export const metadata: Metadata = {
-  title: "D. (Quentin) Heard",
+  title: "D. Heard | Front End Developer",
+  authors: [{ name: "DeQuentin Heard" }],
   description:
-    "I'm a meticulous, self-taught programmer working hard to establish myself as a brand builder.",
+    "I'm a meticulous, self-taught programmer working tirelessly to establish myself as a brand building, multi-talented creative.",
 };
 
 const ParticleCanvas = dynamic(
@@ -22,9 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={sedgwick.className}>
-        <ParticleCanvas />
-        <div className="container">{children}</div>
-        <ToastContainer position="bottom-right" />
+        <PostHogProvider>
+          <ParticleCanvas />
+          <div className="container">{children}</div>
+          <ToastContainer position="bottom-right" />
+          <Banner />
+        </PostHogProvider>
       </body>
     </html>
   );
