@@ -11,6 +11,17 @@ import { cookieConsentGiven } from "./banner";
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
+      const isLocalhost =
+        typeof window !== "undefined" &&
+        window.location.hostname === "localhost";
+
+      const isProduction = process.env.NODE_ENV === "production";
+
+      if (!isProduction || isLocalhost) {
+        console.info("PostHog not initialized: running in development.");
+        return;
+      }
+
       if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
         console.warn("PostHog key is missing.");
         return;
