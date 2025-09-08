@@ -78,27 +78,29 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
               ))}
           </AnimatePresence>
         </div>
-        <motion.button
-          aria-expanded={showMore}
-          aria-label={
-            showMore ? "Collapse experience list" : "Expand experience list"
-          }
-          className="toggle-btn glass-button"
-          onClick={() => setShowMore((prev) => !prev)}
-          whileTap={{ scale: 0.95 }}
-        >
-          {showMore ? (
-            <>
-              Show Less
-              <FaArrowRotateLeft aria-hidden="true" focusable="false" />
-            </>
-          ) : (
-            <>
-              Show More
-              <FaArrowRotateRight aria-hidden="true" focusable="false" />
-            </>
-          )}
-        </motion.button>
+        {pastJobs.length > 0 && (
+          <motion.button
+            aria-expanded={showMore}
+            aria-label={
+              showMore ? "Collapse experience list" : "Expand experience list"
+            }
+            className="toggle-btn glass-button"
+            onClick={() => setShowMore((prev) => !prev)}
+            whileTap={{ scale: 0.95 }}
+          >
+            {showMore ? (
+              <>
+                Show Less
+                <FaArrowRotateLeft aria-hidden="true" focusable="false" />
+              </>
+            ) : (
+              <>
+                Show More
+                <FaArrowRotateRight aria-hidden="true" focusable="false" />
+              </>
+            )}
+          </motion.button>
+        )}
       </div>
     </section>
   );
