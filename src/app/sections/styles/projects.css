@@ -68,8 +68,7 @@
 }
 
 .swiper-btn:hover {
-  background: var(--primary-light);
-  color: var(--text-primary);
+  background: var(--primary-darker);
 }
 
 .swiper-btn:active {
