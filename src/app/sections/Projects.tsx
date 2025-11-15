@@ -21,7 +21,44 @@ import "swiper/css/navigation";
 
 const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
   useSectionReady(onContentLoaded);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const prevBtn =
+              sectionEl.querySelector<HTMLButtonElement>(".swiper-btn.prev");
+            const nextBtn =
+              sectionEl.querySelector<HTMLButtonElement>(".swiper-btn.next");
+
+            prevBtn?.classList.remove("flash");
+            nextBtn?.classList.remove("flash");
+            void prevBtn?.offsetWidth; // force reflow
+            void nextBtn?.offsetWidth;
+
+            prevBtn?.classList.add("flash");
+            nextBtn?.classList.add("flash");
+          }
+        });
+      },
+      { threshold: 0.4 } // adjust sensitivity
+    );
+
+    observer.observe(sectionEl);
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (swiperRef.current && data.length >= 3) {
@@ -32,7 +69,11 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
   if (!data) return null;
 
   return (
-    <section className="section-card" aria-labelledby="projects-heading">
+    <section
+      ref={sectionRef}
+      className="section-card"
+      aria-labelledby="projects-heading"
+    >
       <h2
         id="projects-heading"
         className={`${bigShoulders.className} section-title`}
@@ -40,12 +81,16 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
         <BsFolderFill aria-hidden="true" focusable="false" />
         Projects
       </h2>
+      <p className="sr-only mobile-swipe-instruction">
+        Swipe left or right to explore projects
+      </p>
       <button className="swiper-btn prev" aria-label="Previous project">
         <FaArrowLeft aria-hidden="true" focusable="false" />
       </button>
       <button className="swiper-btn next" aria-label="Next project">
         <FaArrowRight aria-hidden="true" focusable="false" />
       </button>
+
       {data.length >= 3 && (
         <Swiper
           onSwiper={(swiper) => {

@@ -1,3 +1,7 @@
+.mobile-swipe-instruction {
+  display: none;
+}
+
 .card {
   padding: 0;
 }
@@ -90,7 +94,34 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .mobile-swipe-instruction {
+    display: block;
+  }
+
   .swiper-btn {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .swiper-btn.flash {
+    opacity: 1;
+    pointer-events: auto;
+    animation: flashButtons 3s ease forwards;
+  }
+
+  @keyframes flashButtons {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 }
