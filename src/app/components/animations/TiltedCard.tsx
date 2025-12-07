@@ -41,13 +41,12 @@ export const TiltedCard = <T extends ElementType = "section">({
         rect.width,
         rect.height
       );
-      card.classList.add("shining");
       card.style.setProperty("--shine-angle", `${angle}deg`);
       card.style.setProperty("--shine-opacity", `${intensity * 0.7}`);
     };
 
     const handleLeave = () => {
-      card.classList.remove("tilted", "shining");
+      card.classList.remove("tilted");
       card.style.transition = "all 0.5s ease";
       card.style.transform = "";
       card.style.removeProperty("--shine-angle");

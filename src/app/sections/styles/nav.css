@@ -1,7 +1,6 @@
 .glass-nav {
   background: var(--glass-background);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
   padding: 0.75rem;
