@@ -1,7 +1,7 @@
 import type { Resume } from "@/app/utils/types";
 import { DynamicIcon } from "../DynamicIcon";
 import { toast } from "react-toastify";
-import { oswald, sedgwick } from "@/app/utils/fonts";
+import { oswald, body } from "@/app/utils/fonts";
 
 const ResumeLink = ({ resume }: { resume: Resume }) => {
   const getFallbackResumeUrl = async (): Promise<string | null> => {
@@ -89,7 +89,7 @@ const ResumeLink = ({ resume }: { resume: Resume }) => {
         >
           Resumé:
         </h4>
-        <span className={sedgwick.className}>{resume.prompt}</span>
+        <span className={body.className}>{resume.prompt}</span>
       </div>
     </button>
   );

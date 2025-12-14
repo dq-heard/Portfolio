@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { sedgwick } from "./utils/fonts";
+import { body } from "./utils/fonts";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import { PostHogProvider } from "./provider";
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={sedgwick.className}>
+      <body className={body.className}>
         <PostHogProvider>
           <ParticleCanvas />
           <div className="container">{children}</div>

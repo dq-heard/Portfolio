@@ -2,7 +2,7 @@
 import {
   Oswald,
   Beth_Ellen,
-  Sedgwick_Ave,
+  Special_Elite,
   Big_Shoulders_Stencil,
 } from "next/font/google";
 
@@ -16,7 +16,7 @@ export const bethEllen = Beth_Ellen({
   weight: "400",
   display: "swap",
 });
-export const sedgwick = Sedgwick_Ave({
+export const body = Special_Elite({
   subsets: ["latin"],
   weight: "400",
   display: "swap",

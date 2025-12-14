@@ -54,7 +54,7 @@
 
 .social-icon {
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 /* Footer */
@@ -73,9 +73,5 @@ footer {
 @media screen and (max-width: 768px) {
   .social-links {
     justify-content: center;
-  }
-
-  .social-icon {
-    margin-bottom: 0.25rem;
   }
 }

@@ -52,7 +52,8 @@ html {
 }
 
 body {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
@@ -121,6 +122,10 @@ h2,
 
 h3 {
   font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 p {
@@ -387,7 +392,7 @@ button {
 
 .Toastify__toast {
   background-color: #1a1a1a;
-  font-family: "Sedgwick Ave", cursive;
+  font-family: "Special Elite", system-ui;
   color: #fefefe;
   border-radius: 6px;
   padding: 1rem;
