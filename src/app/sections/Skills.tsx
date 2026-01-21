@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo, useState } from "react";
+import React, { ReactElement, useMemo } from "react";
 import { urlFor } from "@/sanity/lib/image";
 import { Skill, SectionProps } from "@/app/utils/types";
 import { useSectionReady } from "../hooks/useSectionReady";
@@ -8,9 +8,10 @@ import {
   BsGearFill,
   BsImageFill,
   BsPieChartFill,
+  BsGlobeEuropeAfrica,
 } from "react-icons/bs";
 
-import { bigShoulders, oswald } from "../utils/fonts";
+import { stencil, heading } from "../utils/fonts";
 import "./styles/skills.css";
 
 const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
@@ -20,6 +21,13 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
     const icons: Record<string, ReactElement> = {
       frontend: (
         <BsImageFill
+          className="skills-icon"
+          aria-hidden="true"
+          focusable="false"
+        />
+      ),
+      coreweb: (
+        <BsGlobeEuropeAfrica
           className="skills-icon"
           aria-hidden="true"
           focusable="false"
@@ -44,6 +52,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
 
     const categoryTitles: Record<string, string> = {
       frontend: "Front End",
+      coreweb: "Core Web",
       backend: "Back End",
       datatools: "Data Tools",
       // Add more as needed
@@ -95,7 +104,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
       <div className="glass-inner-card skills-content">
         <div className="skills-header">
           {icon}
-          <h3 className={`${oswald.className} skills-category`}>{title}</h3>
+          <h3 className={`${heading.className} skills-category`}>{title}</h3>
         </div>
         <div className="skills-list">
           {skills.map((skill) => (
@@ -110,10 +119,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
 
   return (
     <section className="section-card" aria-labelledby="skills-heading">
-      <h2
-        id="skills-heading"
-        className={`${bigShoulders.className} section-title`}
-      >
+      <h2 id="skills-heading" className={`${stencil.className} section-title`}>
         <BsGearFill aria-hidden="true" focusable="false" /> Skills
       </h2>
       <div className="section-content skills-container">

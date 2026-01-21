@@ -4,7 +4,7 @@ import { useSectionReady } from "../hooks/useSectionReady";
 import { getReadableSocialLabel } from "../utils/aria";
 import { Avatar } from "../components";
 
-import { bethEllen, bigShoulders } from "../utils/fonts";
+import { sig, stencil } from "../utils/fonts";
 import "./styles/header.css";
 
 const Header = ({ data, onContentLoaded }: SectionProps<Hero>) => {
@@ -20,12 +20,10 @@ const Header = ({ data, onContentLoaded }: SectionProps<Hero>) => {
         <Avatar asset={data.avatar} aria-hidden="true" />
 
         <div className="profile-details">
-          <h1 className={bethEllen.className} id="header-heading">
+          <h1 className={sig.className} id="header-heading">
             {data.title}
           </h1>
-          <p className={`${bigShoulders.className} profile-role`}>
-            {data.role}
-          </p>
+          <p className={`${stencil.className} profile-role`}>{data.role}</p>
           <p>{data.desc}</p>
           <div className="social-links">
             {data.socials.map((social) => {

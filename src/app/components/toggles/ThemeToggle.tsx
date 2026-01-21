@@ -5,35 +5,35 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import "./toggles.css";
 
 const ThemeToggle = () => {
-  const [isLight, setIsLight] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = () => {
-    const newThemeIsLight = !isLight;
-    setIsLight(newThemeIsLight);
-    document.body.classList.toggle("light-theme", newThemeIsLight);
-    localStorage.setItem("theme", newThemeIsLight ? "light" : "dark");
+    const newThemeIsDark = !isDark;
+    setIsDark(newThemeIsDark);
+    document.body.classList.toggle("dark-mode", newThemeIsDark);
+    localStorage.setItem("theme", newThemeIsDark ? "dark" : "light");
   };
 
   useEffect(() => {
-    document.body.classList.toggle("light-theme", isLight);
-  }, [isLight]);
+    document.body.classList.toggle("dark-mode", isDark);
+  }, [isDark]);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    setIsLight(savedTheme === "light");
+    setIsDark(savedTheme === "dark");
   }, []);
 
   return (
     <button
       className="theme-toggle glass-button"
       onClick={toggleTheme}
-      aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
-      aria-pressed={isLight}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-pressed={isDark}
     >
-      {isLight ? (
-        <BsMoonFill aria-hidden="true" focusable="false" />
-      ) : (
+      {isDark ? (
         <BsSunFill aria-hidden="true" focusable="false" />
+      ) : (
+        <BsMoonFill aria-hidden="true" focusable="false" />
       )}
     </button>
   );

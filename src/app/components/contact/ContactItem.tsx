@@ -1,4 +1,4 @@
-import { oswald } from "@/app/utils/fonts";
+import { heading } from "@/app/utils/fonts";
 import { DynamicIcon } from "../DynamicIcon";
 
 const ContactItem = ({
@@ -15,7 +15,7 @@ const ContactItem = ({
       <DynamicIcon name={icon} />
     </div>
     <div className="text-box">
-      <h4 className={oswald.className}>{label}:</h4>
+      <h4 className={heading.className}>{label}:</h4>
       <span>{value}</span>
     </div>
   </div>

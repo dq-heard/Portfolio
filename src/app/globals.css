@@ -5,34 +5,33 @@
   --primary-dark: #cc6700;
   --primary-darker: #bd5b0e;
   --secondary: #5ab3f2;
-  --glass-background: rgba(32, 20, 0, 0.7);
+  --glass-background: rgba(255, 245, 235, 0.1);
   --glass-alt-light: rgba(255, 130, 0, 0.1);
   --glass-alt-mid: rgba(255, 130, 0, 0.2);
   --glass-alt-dark: rgba(255, 130, 0, 0.3);
-  --glass-border: rgba(255, 235, 200, 0.1);
+  --glass-border: rgba(255, 245, 235, 0.2);
   --glass-shadow: rgba(0, 0, 0, 0.08);
   --focus-shadow: rgba(255, 250, 242, 0.5);
+  --text-primary: #1f2937;
+  --text-secondary: #4b4b3f;
+  --text-light: #bfa68a;
+  --bg-primary: #fff5e6;
+  --bg-secondary: #ffe8cc;
+  --bg-card: rgba(255, 245, 235, 0.05);
+  --transition: all 0.3s ease;
+  --border-radius: 15px;
+  --box-shadow: 0 8px 32px 0 rgba(128, 64, 0, 0.15);
+}
+
+.dark-mode {
+  --glass-background: rgba(32, 20, 0, 0.7);
+  --glass-border: rgba(255, 235, 200, 0.1);
   --text-primary: #fef9f3;
   --text-secondary: #f0dac2;
   --text-light: #fffaf2;
   --bg-primary: #1a1205;
   --bg-secondary: #2b1f0a;
   --bg-card: rgba(41, 30, 15, 0.5);
-  --transition: all 0.3s ease;
-  --border-radius: 15px;
-  --box-shadow: 0 8px 32px 0 rgba(128, 64, 0, 0.15);
-}
-
-.light-theme {
-  --glass-background: rgba(255, 245, 235, 0.1);
-  --glass-border: rgba(255, 245, 235, 0.2);
-  --glass-shadow: rgba(0, 0, 0, 0.08);
-  --text-primary: #1f2937;
-  --text-secondary: #4b4b3f;
-  --text-light: #606c76;
-  --bg-primary: #fff5e6;
-  --bg-secondary: #ffe8cc;
-  --bg-card: rgba(255, 245, 235, 0.05);
 }
 
 * {
@@ -53,8 +52,8 @@ html {
 
 body {
   font-size: 1.2rem;
-  letter-spacing: 0.02em;
-  line-height: 1.6;
+  letter-spacing: 0em;
+  line-height: 1.5;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   overflow-x: hidden;
@@ -141,14 +140,14 @@ button {
 }
 
 .glass-button {
-  background: var(--glass-background);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   border: 1px solid var(--primary-dark);
   border-radius: 25px;
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--primary);
+  color: var(--primary-dark);
   cursor: pointer;
   transition: var(--transition);
   display: inline-flex;
@@ -156,9 +155,9 @@ button {
   gap: 0.5rem;
 }
 
-.light-theme .glass-button:not(.scroll-toggle) {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: var(--primary-dark);
+.dark-mode .glass-button:not(.scroll-toggle) {
+  background-color: var(--glass-background);
+  color: var(--primary);
 }
 
 .glass-button svg:not(.theme-toggle, .mobile-nav-toggle) {
@@ -166,7 +165,7 @@ button {
 }
 
 .glass-button:hover,
-.light-theme .glass-button:hover {
+.dark-mode .glass-button:hover {
   background-color: var(--primary-darker);
   color: white;
   border-color: var(--primary-darker);
@@ -326,8 +325,12 @@ button {
 }
 
 .badge:hover {
-  background: var(--primary-darker);
+  background: var(--primary-dark);
   color: white;
+}
+
+.dark-mode .badge:hover {
+  background: var(--primary-darker);
 }
 
 /* Cookie Banner */
@@ -369,20 +372,20 @@ button {
 }
 
 .cookie-buttons .accept,
-.light-theme .cookie-buttons .accept {
+.dark-mode .cookie-buttons .accept {
   background: var(--primary-darker);
   border: 1px solid var(--primary-darker);
   color: white;
 }
 
 .cookie-buttons .glass-button:hover,
-.light-theme .cookie-buttons .glass-button:hover {
+.dark-mode .cookie-buttons .glass-button:hover {
   background: var(--glass-alt-dark);
   border: 1px solid var(--glass-alt-dark);
 }
 
-.light-theme .cookie-buttons .glass-button:hover {
-  color: var(--primary-darker);
+.dark-mode .cookie-buttons .glass-button:hover {
+  color: var(--primary-dark);
 }
 
 /* Toastify */

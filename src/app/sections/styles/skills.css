@@ -54,13 +54,17 @@
 }
 
 .skills-item:hover {
+  background: var(--primary-dark);
+}
+
+.dark-mode .skills-item:hover {
   background: var(--primary-darker);
 }
 
 .skills-img {
   width: 1.5rem;
   height: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .skills-title {

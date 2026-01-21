@@ -2,7 +2,7 @@ import { Cert, Edu, SectionProps, Topics } from "../utils/types";
 import { useSectionReady } from "../hooks/useSectionReady";
 
 import { BsAwardFill, BsMortarboardFill } from "react-icons/bs";
-import { bigShoulders, oswald } from "../utils/fonts";
+import { stencil, heading } from "../utils/fonts";
 import "./styles/education.css";
 
 const Education = ({ data, onContentLoaded }: SectionProps<Edu[]>) => {
@@ -14,7 +14,7 @@ const Education = ({ data, onContentLoaded }: SectionProps<Edu[]>) => {
     <section className="section-card" aria-labelledby="education-heading">
       <h2
         id="education-heading"
-        className={`${bigShoulders.className} section-title`}
+        className={`${stencil.className} section-title`}
       >
         <BsMortarboardFill aria-hidden="true" focusable="false" /> Education
       </h2>
@@ -34,10 +34,10 @@ const Education = ({ data, onContentLoaded }: SectionProps<Edu[]>) => {
                   <BsAwardFill aria-hidden="true" focusable="false" />
                 </div>
                 <div className="education-details">
-                  <h3 className={oswald.className}>{edu.name}</h3>
+                  <h3 className={heading.className}>{edu.name}</h3>
                   {edu.certs.map((cert: Cert, j: number) => (
                     <div key={`${cert.course}-${j}`}>
-                      <h4 className={oswald.className}>{cert.issuer}</h4>
+                      <h4 className={heading.className}>{cert.issuer}</h4>
                       <p className="education-degree">{cert.course}</p>
                     </div>
                   ))}

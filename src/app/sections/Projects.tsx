@@ -10,7 +10,7 @@ import {
   FaCode,
 } from "react-icons/fa6";
 import { BsFolderFill } from "react-icons/bs";
-import { bigShoulders, oswald } from "../utils/fonts";
+import { stencil, heading } from "../utils/fonts";
 import "./styles/projects.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -76,7 +76,7 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
     >
       <h2
         id="projects-heading"
-        className={`${bigShoulders.className} section-title`}
+        className={`${stencil.className} section-title`}
       >
         <BsFolderFill aria-hidden="true" focusable="false" />
         Projects
@@ -123,7 +123,7 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
                 />
               </div>
               <div className="card-content">
-                <h3 className={`${oswald.className} card-title`}>
+                <h3 className={`${heading.className} card-title`}>
                   {project.title}
                 </h3>
                 <p className="card-text">{project.desc}</p>

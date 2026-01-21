@@ -7,10 +7,10 @@ import { PostHogProvider } from "./provider";
 import Banner from "./banner";
 
 export const metadata: Metadata = {
-  title: "D. Heard | Front End Developer",
+  title: "D. Heard | Web Content Specialist",
   authors: [{ name: "DeQuentin Heard" }],
   description:
-    "I'm a meticulous, self-taught programmer working tirelessly to establish myself as a brand building, multi-talented creative.",
+    "A meticulous, self‑taught front end developer with a thing for clean structure and loud ideas.",
 };
 
 const ParticleCanvas = dynamic(

@@ -6,7 +6,7 @@ import { format } from "date-fns";
 
 import { FaArrowRotateLeft, FaArrowRotateRight } from "react-icons/fa6";
 import { BsBriefcaseFill } from "react-icons/bs";
-import { bigShoulders, oswald } from "../utils/fonts";
+import { stencil, heading } from "../utils/fonts";
 import "./styles/experience.css";
 
 const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
@@ -28,8 +28,8 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
         {formatDateRange(exp.startDate, exp.endDate)}
       </div>
       <div className="timeline-content glass-inner-card">
-        <h3 className={oswald.className}>{exp.role}</h3>
-        <h4 className={oswald.className}>{`${exp.name} | ${exp.location}`}</h4>
+        <h3 className={heading.className}>{exp.role}</h3>
+        <h4 className={heading.className}>{`${exp.name} | ${exp.location}`}</h4>
         <ul>
           {exp.tasks.map((task, i) => (
             <li key={i}>·{task}</li>
@@ -44,7 +44,7 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
   return (
     <section id="experience-heading" className="section-card">
       <h2
-        className={`${bigShoulders.className} section-title`}
+        className={`${stencil.className} section-title`}
         aria-labelledby="experience-heading"
       >
         <BsBriefcaseFill aria-hidden="true" focusable="false" />

@@ -1,4 +1,4 @@
-import { oswald } from "@/app/utils/fonts";
+import { heading } from "@/app/utils/fonts";
 import { BsSendArrowUpFill, BsSendFill } from "react-icons/bs";
 
 interface Props {
@@ -49,7 +49,7 @@ const ContactForm: React.FC<Props> = ({
       onSubmit={handleSubmit}
       noValidate
     >
-      <h3 className={oswald.className}>{chat.heading2}</h3>
+      <h3 className={heading.className}>{chat.heading2}</h3>
       <div role="group" className="form-group">
         <div className="contact-input">
           <input

@@ -1,7 +1,7 @@
 import { Bio, SectionProps } from "@/app/utils/types";
 import { useSectionReady } from "../hooks/useSectionReady";
 import { BsPersonFill } from "react-icons/bs";
-import { bigShoulders } from "../utils/fonts";
+import { stencil } from "../utils/fonts";
 import "./styles/about.css";
 
 const About = ({ data, onContentLoaded }: SectionProps<Bio>) => {
@@ -9,10 +9,7 @@ const About = ({ data, onContentLoaded }: SectionProps<Bio>) => {
 
   return (
     <section className="section-card" aria-labelledby="about-heading">
-      <h2
-        id="about-heading"
-        className={`${bigShoulders.className} section-title`}
-      >
+      <h2 id="about-heading" className={`${stencil.className} section-title`}>
         <BsPersonFill aria-hidden="true" focusable="false" />
         About Me
       </h2>

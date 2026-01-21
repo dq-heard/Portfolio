@@ -106,7 +106,7 @@
 
 .contact-input input:not([type="submit"]),
 .contact-input textarea {
-  background: var(--glass-background);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--glass-border);
   padding: 1.2rem 0.8rem 0.6rem;
   width: 100%;
@@ -117,9 +117,9 @@
   transition: var(--transition);
 }
 
-.light-theme .contact-input input:not([type="submit"]),
-.light-theme .contact-input textarea {
-  background-color: rgba(255, 255, 255, 0.6);
+.dark-mode .contact-input input:not([type="submit"]),
+.dark-mode .contact-input textarea {
+  background-color: var(--glass-background);
 }
 
 .contact-input input:focus + label,

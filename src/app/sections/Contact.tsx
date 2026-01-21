@@ -2,7 +2,7 @@ import { Chat, Resume } from "@/app/utils/types";
 import { ContactForm, ContactItem, ResumeLink } from "@/app/components";
 import { useSectionReady } from "../hooks/useSectionReady";
 import { useContactForm } from "../hooks/useContactForm";
-import { bigShoulders, oswald } from "../utils/fonts";
+import { stencil, heading } from "../utils/fonts";
 import { BsChatDotsFill } from "react-icons/bs";
 import "./styles/contact.css";
 
@@ -42,17 +42,14 @@ const Contact = ({ data, onContentLoaded }: SectionProps) => {
 
   return (
     <section className="section-card" aria-labelledby="contact-heading">
-      <h2
-        id="contact-heading"
-        className={`${bigShoulders.className} section-title`}
-      >
+      <h2 id="contact-heading" className={`${stencil.className} section-title`}>
         <BsChatDotsFill aria-hidden="true" focusable="false" /> Contact Me
       </h2>
 
       <div className="section-content">
         <div className="contact-wrapper">
           <div className="glass-inner-card">
-            <h3 className={oswald.className}>{contact.heading1}</h3>
+            <h3 className={heading.className}>{contact.heading1}</h3>
             <div className="contact-items">
               {contact.info.map((item) => (
                 <ContactItem key={item.label} {...item} />
