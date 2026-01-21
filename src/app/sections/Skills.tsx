@@ -33,8 +33,8 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
           focusable="false"
         />
       ),
-      backend: (
-        <BsDatabaseFill
+      platforms: (
+        <BsGearFill
           className="skills-icon"
           aria-hidden="true"
           focusable="false"
@@ -47,14 +47,22 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
           focusable="false"
         />
       ),
+      backend: (
+        <BsDatabaseFill
+          className="skills-icon"
+          aria-hidden="true"
+          focusable="false"
+        />
+      ),
       // add more icons as needed
     };
 
     const categoryTitles: Record<string, string> = {
       frontend: "Front End",
       coreweb: "Core Web",
-      backend: "Back End",
+      platforms: "Platforms",
       datatools: "Data Tools",
+      backend: "Back End",
       // Add more as needed
     };
 

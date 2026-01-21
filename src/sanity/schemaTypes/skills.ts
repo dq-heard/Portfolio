@@ -23,8 +23,10 @@ export default {
       options: {
         list: [
           { title: "Front End", value: "frontend" },
-          { title: "Back End", value: "backend" },
+          { title: "Core Web", value: "coreweb" },
+          { title: "Platforms", value: "platforms" },
           { title: "Data Tools", value: "datatools" },
+          { title: "Back End", value: "backend" },
         ],
       },
     },
