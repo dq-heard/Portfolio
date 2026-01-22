@@ -1,5 +1,6 @@
 .skills-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   gap: 2rem;
   justify-content: center;
@@ -77,11 +78,6 @@
 /*==================== MEDIA QUERIES ====================*/
 @media screen and (max-width: 1023.98px) {
   .skills-container {
-    display: block;
-  }
-}
-@media screen and (max-width: 425px) {
-  .skills-container > :not(:first-child) {
-    display: none;
+    grid-template-columns: 1fr;
   }
 }

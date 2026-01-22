@@ -4,10 +4,11 @@ import { Skill, SectionProps } from "@/app/utils/types";
 import { useSectionReady } from "../hooks/useSectionReady";
 
 import {
-  BsDatabaseFill,
   BsGearFill,
   BsImageFill,
+  BsLayersFill,
   BsPieChartFill,
+  BsDatabaseFill,
   BsGlobeEuropeAfrica,
 } from "react-icons/bs";
 
@@ -33,8 +34,8 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
           focusable="false"
         />
       ),
-      platforms: (
-        <BsGearFill
+      workflow: (
+        <BsLayersFill
           className="skills-icon"
           aria-hidden="true"
           focusable="false"
@@ -60,7 +61,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
     const categoryTitles: Record<string, string> = {
       frontend: "Front End",
       coreweb: "Core Web",
-      platforms: "Platforms",
+      workflow: "Workflow",
       datatools: "Data Tools",
       backend: "Back End",
       // Add more as needed

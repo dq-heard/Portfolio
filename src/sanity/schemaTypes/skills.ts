@@ -24,7 +24,7 @@ export default {
         list: [
           { title: "Front End", value: "frontend" },
           { title: "Core Web", value: "coreweb" },
-          { title: "Platforms", value: "platforms" },
+          { title: "Workflow", value: "workflow" },
           { title: "Data Tools", value: "datatools" },
           { title: "Back End", value: "backend" },
         ],
