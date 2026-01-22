@@ -199,19 +199,17 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .contact-item:nth-of-type(1):not(button) {
-    display: flex;
-  }
-
-  .contact-item:nth-of-type(2):not(button) {
-    display: none;
-  }
   .contact-form {
     display: none;
   }
-}
-@media screen and (max-width: 424px) {
+
   .icon-box {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .contact-item:nth-of-type(2):not(button) {
     display: none;
   }
 }

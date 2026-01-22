@@ -14,7 +14,7 @@ const Footer = ({ data, onContentLoaded }: SectionProps<Hero>) => {
     <footer role="contentinfo">
       <div className="footer-content">
         <div className="footer-text">
-          <p>&copy; 2025 {data.title}. All Rights Reserved.</p>
+          <p>Next.js on the front. Sanity at the core.</p>
         </div>
         <div className="footer-links">
           {data.socials.map((social) => {
