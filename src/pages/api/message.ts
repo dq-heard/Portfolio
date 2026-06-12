@@ -9,16 +9,29 @@ export default async function handler(
     return res.status(405).json({ message: "Method not allowed" });
   }
 
+  const { nickname, startTime, ...rest } = req.body;
+
+  // Honeypot check
+  if (nickname && nickname.trim() !== "") {
+    return res.status(400).json({ success: false, spam: true });
+  }
+
+  // Time-based honeypot check
+  if (typeof startTime !== "number" || Date.now() - startTime < 1500) {
+    return res.status(400).json({ success: false, spam: true });
+  }
+
   try {
     const doc = {
       _type: "message",
-      ...req.body,
+      ...rest, // excludes nickname + startTime
     };
 
     const result = await client.create(doc);
-    res.status(200).json({ success: true, result });
+
+    return res.status(200).json({ success: true, result });
   } catch (error) {
     console.error("Sanity create error:", error);
-    res.status(500).json({ success: false, message: "Server error" });
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 }

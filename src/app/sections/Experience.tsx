@@ -17,8 +17,8 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
   const pastJobs = data.filter((exp) => exp.endDate);
 
   const formatDateRange = (start: Date, end: Date | null) => {
-    const startFormatted = format(new Date(start), "yyyy");
-    const endFormatted = end ? format(new Date(end), "yyyy") : "Present";
+    const startFormatted = format(new Date(start), "MMM yyyy");
+    const endFormatted = end ? format(new Date(end), "MMM yyyy") : "Present";
     return `${startFormatted} – ${endFormatted}`;
   };
 

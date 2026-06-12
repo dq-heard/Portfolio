@@ -8,6 +8,7 @@ export const useContactForm = () => {
     email: "",
     subject: "",
     message: "",
+    nickname: "", // honeypot
   });
 
   const [errors, setErrors] = useState({
@@ -26,6 +27,7 @@ export const useContactForm = () => {
 
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [startTime] = useState(Date.now());
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -91,6 +93,7 @@ export const useContactForm = () => {
         body: JSON.stringify({
           _type: "inbox",
           ...formData,
+          startTime,
         }),
       });
 
@@ -98,7 +101,13 @@ export const useContactForm = () => {
 
       if (res.ok && response.success) {
         toast.success("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          nickname: "",
+        });
         setTouchedFields({
           name: false,
           email: false,

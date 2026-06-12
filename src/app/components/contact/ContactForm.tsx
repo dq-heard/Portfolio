@@ -7,6 +7,7 @@ interface Props {
     email: string;
     subject: string;
     message: string;
+    nickname: string; // honeypot
   };
   errors: {
     name: string;
@@ -184,6 +185,19 @@ const ContactForm: React.FC<Props> = ({
             </>
           )}
         </button>
+      </div>
+
+      <div className="sr-only">
+        <label htmlFor="nickname">Nickname</label>
+        <input
+          id="nickname"
+          name="nickname"
+          type="text"
+          value={formData.nickname}
+          onChange={onChange}
+          autoComplete="off"
+          tabIndex={-1}
+        />
       </div>
     </form>
   );

@@ -34,7 +34,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
           focusable="false"
         />
       ),
-      workflow: (
+      platforms: (
         <BsLayersFill
           className="skills-icon"
           aria-hidden="true"
@@ -61,7 +61,7 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
     const categoryTitles: Record<string, string> = {
       frontend: "Front End",
       coreweb: "Core Web",
-      workflow: "Workflow",
+      platforms: "Platforms",
       datatools: "Data Tools",
       backend: "Back End",
       // Add more as needed
@@ -85,6 +85,14 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
       {} as Record<string, { icon: ReactElement; skills: Skill[] }>
     );
   };
+
+  const CATEGORY_ORDER = [
+    "Front End",
+    "Core Web",
+    "Platforms",
+    "Data Tools",
+    "Back End",
+  ];
 
   const groupedSkills = useMemo(() => getGroupedSkills(data), [data]);
 
@@ -132,9 +140,19 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
         <BsGearFill aria-hidden="true" focusable="false" /> Skills
       </h2>
       <div className="section-content skills-container">
-        {Object.entries(groupedSkills).map(([title, { icon, skills }]) => (
-          <SkillCard key={title} title={title} icon={icon} skills={skills} />
-        ))}
+        {Object.entries(groupedSkills)
+          .sort(([a], [b]) => {
+            const indexA = CATEGORY_ORDER.indexOf(a);
+            const indexB = CATEGORY_ORDER.indexOf(b);
+
+            // fallback: unknown categories go to the end
+            return (
+              (indexA === -1 ? 999 : indexA) - (indexB === -1 ? 999 : indexB)
+            );
+          })
+          .map(([title, { icon, skills }]) => (
+            <SkillCard key={title} title={title} icon={icon} skills={skills} />
+          ))}
       </div>
     </section>
   );
