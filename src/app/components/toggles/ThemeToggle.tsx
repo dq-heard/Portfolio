@@ -5,35 +5,44 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import "./toggles.css";
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isBright, setIsBright] = useState(false);
 
   const toggleTheme = () => {
-    const newThemeIsDark = !isDark;
-    setIsDark(newThemeIsDark);
-    document.body.classList.toggle("dark-mode", newThemeIsDark);
-    localStorage.setItem("theme", newThemeIsDark ? "dark" : "light");
+    const newThemeIsBright = !isBright;
+    setIsBright(newThemeIsBright);
+    document.body.classList.toggle("light-mode", newThemeIsBright);
+    localStorage.setItem("theme", newThemeIsBright ? "light" : "dark");
   };
 
   useEffect(() => {
-    document.body.classList.toggle("dark-mode", isDark);
-  }, [isDark]);
-
-  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    setIsDark(savedTheme === "dark");
+
+    if (savedTheme) {
+      // 1. If user previously selected a theme manually, use it
+      const isLight = savedTheme === "light";
+      setIsBright(isLight);
+      document.body.classList.toggle("light-mode", isLight);
+    } else {
+      // 2. If first time visiting, match the OS system light preference
+      const systemPrefersLight = window.matchMedia(
+        "(prefers-color-scheme: light)"
+      ).matches;
+      setIsBright(systemPrefersLight);
+      document.body.classList.toggle("light-mode", systemPrefersLight);
+    }
   }, []);
 
   return (
     <button
       className="theme-toggle glass-button"
       onClick={toggleTheme}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      aria-pressed={isDark}
+      aria-label={isBright ? "Switch to dark theme" : "Switch to light theme"}
+      aria-pressed={isBright}
     >
-      {isDark ? (
-        <BsSunFill aria-hidden="true" focusable="false" />
-      ) : (
+      {isBright ? (
         <BsMoonFill aria-hidden="true" focusable="false" />
+      ) : (
+        <BsSunFill aria-hidden="true" focusable="false" />
       )}
     </button>
   );

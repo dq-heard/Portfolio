@@ -24,7 +24,6 @@
   padding: 0.75rem 1rem;
   cursor: pointer;
   color: var(--text-secondary);
-  text-shadow: var(--nav-halo);
   border-radius: 0.5rem;
   transition: var(--transition);
 }
@@ -40,7 +39,10 @@
   background: var(--glass-alt-mid);
 }
 
-.dark-mode .glass-nav button,
+.light-mode .glass-nav button {
+  text-shadow: var(--nav-halo);
+}
+
 .glass-nav button:hover,
 .glass-nav button.active,
 .glass-nav button:focus-visible {

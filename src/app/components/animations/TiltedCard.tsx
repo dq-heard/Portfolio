@@ -20,6 +20,10 @@ export const TiltedCard = <T extends ElementType = "section">({
     if (!card) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // 🦊 FIREFOX ESCAPE HATCH: Skip tilt logic entirely if the browser is Firefox
+    const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
+    if (isFirefox) return;
+
     const handleTilt = (e: MouseEvent) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;

@@ -55,11 +55,11 @@
 }
 
 .skills-item:hover {
-  background: var(--primary-dark);
+  background: var(--primary-darker);
 }
 
-.dark-mode .skills-item:hover {
-  background: var(--primary-darker);
+.light-mode .skills-item:hover {
+  background: var(--primary-dark);
 }
 
 .skills-img {
