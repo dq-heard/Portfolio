@@ -5,13 +5,13 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import "./toggles.css";
 
 const ThemeToggle = () => {
-  const [isBright, setIsBright] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = () => {
-    const newThemeIsBright = !isBright;
-    setIsBright(newThemeIsBright);
-    document.body.classList.toggle("light-mode", newThemeIsBright);
-    localStorage.setItem("theme", newThemeIsBright ? "light" : "dark");
+    const newThemeIsDark = !isDark;
+    setIsDark(newThemeIsDark);
+    document.body.classList.toggle("dark-mode", newThemeIsDark);
+    localStorage.setItem("theme", newThemeIsDark ? "light" : "dark");
   };
 
   useEffect(() => {
@@ -19,16 +19,16 @@ const ThemeToggle = () => {
 
     if (savedTheme) {
       // 1. If user previously selected a theme manually, use it
-      const isLight = savedTheme === "light";
-      setIsBright(isLight);
-      document.body.classList.toggle("light-mode", isLight);
+      const isBright = savedTheme === "light";
+      setIsDark(isBright);
+      document.body.classList.toggle("dark-mode", isBright);
     } else {
       // 2. If first time visiting, match the OS system light preference
-      const systemPrefersLight = window.matchMedia(
-        "(prefers-color-scheme: light)"
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
       ).matches;
-      setIsBright(systemPrefersLight);
-      document.body.classList.toggle("light-mode", systemPrefersLight);
+      setIsDark(systemPrefersDark);
+      document.body.classList.toggle("dark-mode", systemPrefersDark);
     }
   }, []);
 
@@ -36,13 +36,13 @@ const ThemeToggle = () => {
     <button
       className="theme-toggle glass-button"
       onClick={toggleTheme}
-      aria-label={isBright ? "Switch to dark theme" : "Switch to light theme"}
-      aria-pressed={isBright}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-pressed={isDark}
     >
-      {isBright ? (
-        <BsMoonFill aria-hidden="true" focusable="false" />
-      ) : (
+      {isDark ? (
         <BsSunFill aria-hidden="true" focusable="false" />
+      ) : (
+        <BsMoonFill aria-hidden="true" focusable="false" />
       )}
     </button>
   );

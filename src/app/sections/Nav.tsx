@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import type { IconType } from "react-icons";
 import {
+  BsGearFill,
   BsPersonFill,
   BsBriefcaseFill,
   BsFolderFill,
-  BsGearFill,
   BsMortarboardFill,
   BsChatDotsFill,
 } from "react-icons/bs";
@@ -22,10 +22,10 @@ type NavItem = {
 };
 
 const ITEMS: NavItem[] = [
-  { id: "about", label: "About", Icon: BsPersonFill },
-  { id: "experience", label: "Experience", Icon: BsBriefcaseFill },
-  { id: "projects", label: "Projects", Icon: BsFolderFill },
   { id: "skills", label: "Skills", Icon: BsGearFill },
+  { id: "about", label: "About", Icon: BsPersonFill },
+  { id: "projects", label: "Projects", Icon: BsFolderFill },
+  { id: "experience", label: "Experience", Icon: BsBriefcaseFill },
   { id: "education", label: "Education", Icon: BsMortarboardFill },
   { id: "contact", label: "Contact", Icon: BsChatDotsFill },
 ];
@@ -34,45 +34,64 @@ const Nav: React.FC<NavProps & { onLinkClick?: () => void }> = ({
   isMobileActive,
   onLinkClick,
 }) => {
-  const [current, setCurrent] = useState<string>("about");
+  const [current, setCurrent] = useState<string>("skills");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let visibleEntry = entries.find(
-          (entry) => entry.isIntersecting && entry.intersectionRatio > 0.2
-        );
-        if (visibleEntry && visibleEntry.target.id !== current) {
-          setCurrent(visibleEntry.target.id);
+    const sections = ITEMS.map(({ id }) => document.getElementById(id)).filter(
+      Boolean
+    ) as HTMLElement[];
+
+    const offset = window.innerWidth <= 768 ? 40 : 100;
+    const trigger = offset + 20;
+
+    let ticking = false;
+
+    const updateCurrent = () => {
+      let active = sections[0]?.id;
+
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= trigger) {
+          active = section.id;
+        } else {
+          break;
         }
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -50% 0px",
-        threshold: [0.25, 0.5, 0.75],
       }
-    );
 
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
+      if (active) {
+        setCurrent((prev) => (prev === active ? prev : active));
+      }
 
-    return () => observer.disconnect();
-  }, [current]);
+      ticking = false;
+    };
 
-  const getScrollOffset = () => {
-    const isMobile = window.innerWidth <= 768;
-    return isMobile ? 40 : 100;
-  };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateCurrent);
+        ticking = true;
+      }
+    };
+
+    updateCurrent();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateCurrent);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateCurrent);
+    };
+  }, []);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const offset = getScrollOffset();
+      const getScrollOffset = () => {
+        return window.innerWidth <= 768 ? 40 : 100;
+      };
       window.scrollTo({
-        top: section.offsetTop - offset,
+        top: section.offsetTop - getScrollOffset(),
         behavior: "smooth",
       });
-      setCurrent(id);
     }
     if (onLinkClick) onLinkClick();
   };

@@ -7,7 +7,7 @@ import { PostHogProvider } from "./provider";
 import Banner from "./banner";
 
 export const metadata: Metadata = {
-  title: "D. Heard | Front End Engineer",
+  title: "D. Heard | Web Experience Specialist",
   authors: [{ name: "DeQuentin Heard" }],
   description:
     "A meticulous, self‑taught web developer with a real thing for clean structure and loud ideas.",

@@ -60,10 +60,10 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
 
     const categoryTitles: Record<string, string> = {
       frontend: "Front End",
-      coreweb: "Core Web",
       platforms: "Platforms",
-      datatools: "Data Tools",
-      backend: "Back End",
+      // coreweb: "Core Web",
+      // datatools: "Data Tools",
+      // backend: "Back End",
       // Add more as needed
     };
 
@@ -88,10 +88,10 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
 
   const CATEGORY_ORDER = [
     "Front End",
-    "Core Web",
     "Platforms",
-    "Data Tools",
-    "Back End",
+    // "Core Web",
+    // "Data Tools",
+    // "Back End",
   ];
 
   const groupedSkills = useMemo(() => getGroupedSkills(data), [data]);

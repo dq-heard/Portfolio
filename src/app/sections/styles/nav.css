@@ -26,6 +26,11 @@
   color: var(--text-secondary);
   border-radius: 0.5rem;
   transition: var(--transition);
+  text-shadow: var(--nav-halo);
+}
+
+.dark-mode .glass-nav button {
+  text-shadow: none;
 }
 
 .glass-nav button:hover,
@@ -37,10 +42,6 @@
 .glass-nav button:focus-visible {
   box-shadow: 0 0 0 4px var(--glass-alt-dark);
   background: var(--glass-alt-mid);
-}
-
-.light-mode .glass-nav button {
-  text-shadow: var(--nav-halo);
 }
 
 .glass-nav button:hover,

@@ -1,8 +1,8 @@
 import {
-  About,
-  Experience,
-  Projects,
   Skills,
+  About,
+  Projects,
+  Experience,
   Education,
   Contact,
 } from "@/app/sections";
@@ -20,10 +20,10 @@ export const sectionMap: {
   id: string | null;
   component: React.ComponentType<any>;
 }[] = [
-  { key: "about", id: "about", component: About },
-  { key: "experience", id: "experience", component: Experience },
-  { key: "projects", id: "projects", component: Projects },
   { key: "skills", id: "skills", component: Skills },
+  { key: "about", id: "about", component: About },
+  { key: "projects", id: "projects", component: Projects },
+  { key: "experience", id: "experience", component: Experience },
   { key: "education", id: "education", component: Education },
   { key: "contact", id: "contact", component: Contact },
 ];
