@@ -59,8 +59,8 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
     };
 
     const categoryTitles: Record<string, string> = {
-      frontend: "Front End",
       platforms: "Platforms",
+      frontend: "Front End",
       // coreweb: "Core Web",
       // datatools: "Data Tools",
       // backend: "Back End",
@@ -87,8 +87,8 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
   };
 
   const CATEGORY_ORDER = [
-    "Front End",
     "Platforms",
+    "Front End",
     // "Core Web",
     // "Data Tools",
     // "Back End",

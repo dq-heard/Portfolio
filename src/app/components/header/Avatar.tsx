@@ -11,7 +11,7 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
       <div className="avatar" ref={avatarRef}>
         <Image
           src={urlFor(asset).url()}
-          alt="Pixel image headshot of D. Heard, Front End Developer"
+          alt="Glitched mouse cursor with orange and blue highlights"
           width={150}
           height={150}
           className="avatar-img"

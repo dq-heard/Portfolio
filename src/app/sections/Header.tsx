@@ -12,7 +12,7 @@ const Header = ({ data, onContentLoaded }: SectionProps<Hero>) => {
 
   if (!data) return null;
   return (
-    <header
+    <section
       aria-labelledby="header-heading"
       aria-label="Site introduction and profile"
     >
@@ -48,7 +48,7 @@ const Header = ({ data, onContentLoaded }: SectionProps<Hero>) => {
           </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 };
 
