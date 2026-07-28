@@ -5,7 +5,9 @@ export default class Particles {
     public rad: number,
     public alpha: number,
     public fadeSpeed: number,
-    public color: string
+    public color: string,
+    public vx: number,
+    public vy: number
   ) {}
 
   draw(ctx: CanvasRenderingContext2D) {

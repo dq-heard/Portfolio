@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function useFloatEffect(amplitude = 10, speed = 0.01) {
+export function useFloatEffect(amplitude = 10, speed = 0.01, delay = 0) {
   const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ export function useFloatEffect(amplitude = 10, speed = 0.01) {
 
     let offset = 0;
     let frameId: number;
+    let timeoutId: number;
 
     const animate = () => {
       offset += speed;
@@ -20,10 +21,15 @@ export function useFloatEffect(amplitude = 10, speed = 0.01) {
       frameId = requestAnimationFrame(animate);
     };
 
-    frameId = requestAnimationFrame(animate);
+    timeoutId = window.setTimeout(() => {
+      frameId = requestAnimationFrame(animate);
+    }, delay);
 
-    return () => cancelAnimationFrame(frameId);
-  }, [amplitude, speed]);
+    return () => {
+      window.clearTimeout(timeoutId);
+      cancelAnimationFrame(frameId);
+    };
+  }, [amplitude, speed, delay]);
 
   return ref;
 }

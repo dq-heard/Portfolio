@@ -13,6 +13,7 @@ import {
   ThemeToggle,
   TopScroller,
 } from "./components";
+import ImpactCanvas from "./components/animations/ImpactCanvas";
 
 export default function Home(props: PortfolioData) {
   const [isMobileMenuActive, setMobileMenuActive] = useState(false);
@@ -52,38 +53,42 @@ export default function Home(props: PortfolioData) {
       />
       <ThemeToggle />
 
-      {portfolioData.header && (
-        <TiltedCard as="header">
-          <Header
-            data={portfolioData.header}
-            onContentLoaded={handleSectionLoaded}
-          />
-        </TiltedCard>
-      )}
+      <div className="portfolio-wrapper">
+        <ImpactCanvas />
 
-      <Nav
-        isMobileActive={isMobileMenuActive}
-        onLinkClick={() => setMobileMenuActive(false)}
-      />
-
-      <section id="main">
-        {sectionMap.map(({ key, id, component: Section }) => (
-          <TiltedCard key={key} id={id ?? undefined}>
-            <Section
-              data={portfolioData[key]}
-              onContentLoaded={handlers[key]}
+        {portfolioData.header && (
+          <TiltedCard as="header">
+            <Header
+              data={portfolioData.header}
+              onContentLoaded={handleSectionLoaded}
             />
           </TiltedCard>
-        ))}
-      </section>
-      {portfolioData.header && (
-        <TiltedCard as="footer">
-          <Footer
-            data={portfolioData.header}
-            onContentLoaded={handleSectionLoaded}
-          />
-        </TiltedCard>
-      )}
+        )}
+
+        <Nav
+          isMobileActive={isMobileMenuActive}
+          onLinkClick={() => setMobileMenuActive(false)}
+        />
+
+        <section id="main">
+          {sectionMap.map(({ key, id, component: Section }) => (
+            <TiltedCard key={key} id={id ?? undefined}>
+              <Section
+                data={portfolioData[key]}
+                onContentLoaded={handlers[key]}
+              />
+            </TiltedCard>
+          ))}
+        </section>
+        {portfolioData.header && (
+          <TiltedCard as="footer">
+            <Footer
+              data={portfolioData.header}
+              onContentLoaded={handleSectionLoaded}
+            />
+          </TiltedCard>
+        )}
+      </div>
 
       <TopScroller />
     </>

@@ -54,9 +54,13 @@ const ParticleCanvas = () => {
         const offsetX = (Math.random() - 0.5) * Math.random() * spread;
         const offsetY = (Math.random() - 0.5) * Math.random() * spread;
         const alpha = Math.random();
-        const fadeSpeed = 0.006 + Math.random() * 0.01;
+        const fadeSpeed = 0.009 + Math.random() * 0.001;
 
         let rad = 2 + Math.random() * 5;
+
+        if (spread > DEFAULT_SPREAD) {
+          rad = 4 + Math.random() * 12;
+        }
 
         rad *= spread / DEFAULT_SPREAD;
 
@@ -74,7 +78,9 @@ const ParticleCanvas = () => {
             rad,
             alpha,
             fadeSpeed,
-            particleColor
+            particleColor,
+            0,
+            0
           )
         );
       }
@@ -164,7 +170,7 @@ const ParticleCanvas = () => {
     let animationId = 0;
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       if (isTouchSpraying) {
         const now = performance.now();
 
