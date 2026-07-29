@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { body } from "./utils/fonts";
 import { ToastContainer } from "react-toastify";
 
 import { PostHogProvider } from "./provider";
-import Banner from "./banner";
 import { ParticleProvider } from "./context/ParticleContext";
-import GlobalImpactListener from "./components/animations/GlobalImpactListener";
+import {
+  AmbientCanvas,
+  InteractionCanvas,
+  GlobalImpactListener,
+} from "./components";
+import Banner from "./banner";
 import "./globals.css";
-import ImpactCanvas from "./components/animations/ImpactCanvas";
 
 export const metadata: Metadata = {
   title: "D. Heard | Web Experience Specialist",
@@ -16,10 +18,6 @@ export const metadata: Metadata = {
   description:
     "A modern technologist with a real thing for clean structure and loud ideas.",
 };
-
-const ParticleCanvas = dynamic(
-  () => import("./components/animations/ParticleCanvas")
-);
 
 export default function RootLayout({
   children,
@@ -31,8 +29,8 @@ export default function RootLayout({
       <body className={body.className}>
         <PostHogProvider>
           <ParticleProvider>
-            <ParticleCanvas />
-            <ImpactCanvas />
+            <AmbientCanvas />
+            <InteractionCanvas />
             <GlobalImpactListener />
             <div className="container">{children}</div>
             <ToastContainer position="bottom-right" />

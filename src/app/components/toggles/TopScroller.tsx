@@ -21,7 +21,7 @@ const TopScroller = () => {
 
   return (
     <button
-      className={`scroll-toggle glass-button ${showScroll ? "show-scroll" : ""}`}
+      className={`scroll-toggle button-surface ${showScroll ? "show-scroll" : ""}`}
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >

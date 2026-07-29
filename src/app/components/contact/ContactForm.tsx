@@ -166,7 +166,7 @@ const ContactForm: React.FC<Props> = ({
         </div>
         <button
           type="submit"
-          className="glass-button"
+          className="glass-button button-surface"
           disabled={buttonDisabled}
           aria-label={
             loading ? "Message sent confirmation" : "Submit contact form"

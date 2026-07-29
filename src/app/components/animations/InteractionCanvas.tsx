@@ -6,7 +6,7 @@ import { useParticleBurst } from "@/app/context/ParticleContext";
 import { BurstOptions } from "@/app/utils/types";
 import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
-const ImpactCanvas = () => {
+const InteractionCanvas = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -46,13 +46,16 @@ const ImpactCanvas = () => {
 
       for (let i = 0; i < quantity; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 0.5 + Math.random() * 1.2;
+        const speed =
+          Math.random() < 0.35
+            ? 0.2 + Math.random() * 0.5
+            : 0.6 + Math.random() * 1;
         const fadeSpeed = 0.008 + Math.random() * 0.004;
 
         const radius =
           Math.random() < 0.08 ? 6 + Math.random() * 3 : 2 + Math.random() * 3;
 
-        const particleColor = Math.random() < 0.12 ? "#FF8200" : "#5AB3F2";
+        const particleColor = Math.random() < 0.18 ? "#FF8200" : "#5AB3F2";
 
         particles.push(
           new Particle(
@@ -63,7 +66,8 @@ const ImpactCanvas = () => {
             fadeSpeed,
             particleColor,
             Math.cos(angle) * speed,
-            Math.sin(angle) * speed
+            Math.sin(angle) * speed,
+            0.96
           )
         );
       }
@@ -100,4 +104,4 @@ const ImpactCanvas = () => {
   );
 };
 
-export default ImpactCanvas;
+export default InteractionCanvas;

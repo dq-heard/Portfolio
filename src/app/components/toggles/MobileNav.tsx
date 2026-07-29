@@ -9,7 +9,7 @@ const MobileNav = ({
   toggleActive: () => void;
 }) => (
   <button
-    className="mobile-nav-toggle glass-button"
+    className="mobile-nav-toggle button-surface"
     onClick={toggleActive}
     aria-label={isActive ? "Close navigation menu" : "Open navigation menu"}
     aria-expanded={isActive}

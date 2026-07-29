@@ -8,7 +8,6 @@ import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
 const Avatar = ({ asset }: { asset: SanityImage }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
-  // const [hasLanded, setHasLanded] = useState(false);
   const [showShockwave, setShowShockwave] = useState(false);
   const impactRef = useRef<AvatarCanvasHandle>(null);
   const avatarRef = useFloatEffect({
@@ -25,8 +24,6 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
     .join(" ");
 
   const handleThunkComplete = () => {
-    // setHasLanded(true);
-
     if (!prefersReducedMotion) {
       setShowShockwave(true);
       impactRef.current?.play();

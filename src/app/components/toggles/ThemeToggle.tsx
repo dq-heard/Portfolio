@@ -34,7 +34,7 @@ const ThemeToggle = () => {
 
   return (
     <button
-      className="theme-toggle glass-button"
+      className="theme-toggle button-surface"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={isDark}

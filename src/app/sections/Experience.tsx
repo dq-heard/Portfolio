@@ -84,7 +84,7 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
             aria-label={
               showMore ? "Collapse experience list" : "Expand experience list"
             }
-            className="toggle-btn glass-button"
+            className="toggle-btn glass-button button-surface"
             onClick={() => setShowMore((prev) => !prev)}
             whileTap={{ scale: 0.95 }}
           >

@@ -142,30 +142,47 @@ button {
   all: unset;
 }
 
-.glass-button {
+.button-surface {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   border: 1px solid var(--primary-dark);
+  transition: var(--transition);
+}
+
+.button-surface:not(.scroll-toggle),
+.dark-mode .button-surface:not(.scroll-toggle) {
+  background-color: var(--glass-background);
+  color: var(--primary);
+}
+
+.button-surface.scroll-toggle,
+.dark-mode .button-surface.scroll-toggle {
+  background-color: var(--primary);
+}
+
+.button-surface.theme-toggle:hover,
+.button-surface.mobile-nav-toggle:hover,
+.button-surface.scroll-toggle:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.glass-button {
   border-radius: 25px;
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--primary-dark);
   cursor: pointer;
-  transition: var(--transition);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.dark-mode .glass-button:not(.scroll-toggle) {
-  background-color: var(--glass-background);
-  color: var(--primary);
-}
-
-.glass-button svg:not(.theme-toggle, .mobile-nav-toggle) {
+/* .button-surface svg:not(.theme-toggle, .mobile-nav-toggle) {
   margin-bottom: 0.25rem;
-}
+} */
 
 .glass-button:hover,
 .dark-mode .glass-button:hover {
@@ -174,13 +191,6 @@ button {
   border-color: var(--primary-darker);
   transform: translateY(-3px);
   box-shadow: 0 8px 15px var(--glass-alt-dark);
-}
-
-.glass-button.theme-toggle:hover,
-.glass-button.mobile-nav-toggle:hover,
-.glass-button.scroll-toggle:hover {
-  background-color: var(--primary);
-  border-color: var(--primary);
 }
 
 :focus-visible {
@@ -287,6 +297,24 @@ button {
   transition:
     opacity 0.25s ease,
     background 0.05s ease;
+}
+
+.glass-card::after,
+.glass-inner-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--secondary),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
 }
 
 .glass-card:hover,
@@ -443,8 +471,7 @@ button {
   z-index: 10;
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.2),
-    2px 2px 15px var(--glass-alt-mid),
-    0 0 18px color-mix(in srgb, var(--secondary) 45%, transparent);
+    2px 2px 15px var(--glass-alt-mid);
   will-change: transform;
 }
 
@@ -452,6 +479,11 @@ button {
 .glass-card.tilted::before,
 .glass-inner-card.tilted::before {
   opacity: 1;
+}
+
+.glass-card.tilted::after,
+.glass-inner-card.tilted::after {
+  opacity: 0.12;
 }
 
 /* Pulse animation when visible */

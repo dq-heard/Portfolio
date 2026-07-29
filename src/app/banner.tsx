@@ -43,11 +43,14 @@ export default function Banner() {
             By accepting, you take part in helping me improve it.
           </p>
           <div className="cookie-buttons">
-            <button className="glass-button" onClick={handleDeclineCookies}>
+            <button
+              className="glass-button button-surface"
+              onClick={handleDeclineCookies}
+            >
               Decline
             </button>
             <button
-              className="glass-button accept"
+              className="glass-button button-surface accept"
               onClick={handleAcceptCookies}
             >
               Accept

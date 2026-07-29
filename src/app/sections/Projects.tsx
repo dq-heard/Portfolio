@@ -140,7 +140,7 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
                       href={project.code}
                       target="_blank"
                       rel="noreferrer"
-                      className="glass-button"
+                      className="glass-button button-surface"
                     >
                       <FaCode aria-hidden="true" focusable="false" />
                       View Code
@@ -150,7 +150,7 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
                     href={project.demo}
                     target="_blank"
                     rel="noreferrer"
-                    className="glass-button"
+                    className="glass-button button-surface"
                   >
                     <FaArrowUpRightFromSquare
                       aria-hidden="true"

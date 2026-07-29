@@ -4,7 +4,7 @@ import { useRef, useLayoutEffect } from "react";
 import Particle from "./Particle";
 import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
-const ParticleCanvas = () => {
+const AmbientCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const color = "#5AB3F2";
   const amount = 80;
@@ -79,7 +79,8 @@ const ParticleCanvas = () => {
             fadeSpeed,
             particleColor,
             0,
-            0
+            0,
+            1
           )
         );
       }
@@ -239,4 +240,4 @@ const ParticleCanvas = () => {
   );
 };
 
-export default ParticleCanvas;
+export default AmbientCanvas;

@@ -2,11 +2,11 @@
   position: fixed;
   right: 20px;
   bottom: -20%;
-  background: var(--primary);
   opacity: 0.8;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
   z-index: 10;
+  cursor: pointer;
 }
 
 .scroll-toggle:hover {
@@ -16,7 +16,7 @@
 .scroll-icon {
   font-size: 3rem;
   color: #fff;
-  padding: 0.5rem 0.3rem;
+  padding: 0.5rem 0.3rem 0;
 }
 
 /* Show scroll */
