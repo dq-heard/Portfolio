@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useLayoutEffect } from "react";
-import Particles from "./Particles";
+import Particle from "./Particle";
+import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
 const ParticleCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,11 +13,9 @@ const ParticleCanvas = () => {
   const MIN_TOUCH_SPREAD = 60;
   const MAX_SPREAD = 180;
 
-  useLayoutEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  const prefersReducedMotion = usePrefersReducedMotion();
 
+  useLayoutEffect(() => {
     if (prefersReducedMotion) return;
 
     const canvas = canvasRef.current;
@@ -42,7 +41,7 @@ const ParticleCanvas = () => {
     };
     window.addEventListener("resize", handleResize);
 
-    let particles: Particles[] = [];
+    let particle: Particle[] = [];
 
     const randomizeParticles = (
       x: number,
@@ -71,8 +70,8 @@ const ParticleCanvas = () => {
 
         const particleColor = Math.random() < 0.06 ? "#FF8200" : color;
 
-        particles.push(
-          new Particles(
+        particle.push(
+          new Particle(
             x + offsetX,
             y + offsetY,
             rad,
@@ -191,8 +190,8 @@ const ParticleCanvas = () => {
           lastTouchBurst = now;
         }
       }
-      particles = particles.filter((p) => p.alpha > 0.01);
-      particles.forEach((p) => {
+      particle = particle.filter((p) => p.alpha > 0.01);
+      particle.forEach((p) => {
         p.alpha -= p.fadeSpeed;
         p.draw(ctx);
       });
@@ -216,7 +215,7 @@ const ParticleCanvas = () => {
 
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <div
@@ -232,12 +231,10 @@ const ParticleCanvas = () => {
     >
       <canvas
         ref={canvasRef}
-        aria-label="Particle animation"
+        aria-hidden="true"
         role="img"
         style={{ width: "100%", height: "100%" }}
-      >
-        Particle-based decorative animation.
-      </canvas>
+      ></canvas>
     </div>
   );
 };

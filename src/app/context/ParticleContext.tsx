@@ -2,19 +2,23 @@
 
 import { createContext, useContext, useRef } from "react";
 
-type BurstFunction = (x: number, y: number, quantity?: number) => void;
+type BurstOptions = {
+  x: number;
+  y: number;
+  quantity?: number;
+};
+
+type BurstFunction = (options: BurstOptions) => void;
 
 type ParticleContextType = {
   registerBurst: (burst: BurstFunction) => () => void;
-  triggerBurst: (x: number, y: number, quantity?: number) => void;
+  triggerBurst: (options: BurstOptions) => void;
 };
 
 const ParticleContext = createContext<ParticleContextType | null>(null);
 
 export function ParticleProvider({ children }: { children: React.ReactNode }) {
-  const burstHandlers = useRef(
-    new Set<(x: number, y: number, quantity?: number) => void>()
-  );
+  const burstHandlers = useRef(new Set<BurstFunction>());
 
   const registerBurst = (handler: BurstFunction) => {
     burstHandlers.current.add(handler);
@@ -24,9 +28,9 @@ export function ParticleProvider({ children }: { children: React.ReactNode }) {
     };
   };
 
-  const triggerBurst = (x: number, y: number, quantity?: number) => {
+  const triggerBurst = (options: BurstOptions) => {
     burstHandlers.current.forEach((handler) => {
-      handler(x, y, quantity);
+      handler(options);
     });
   };
 

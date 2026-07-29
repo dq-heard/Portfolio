@@ -5,7 +5,7 @@ import {
   useLayoutEffect,
   useRef,
 } from "react";
-import Particles from "./Particles";
+import Particle from "./Particle";
 
 export type AvatarCanvasHandle = {
   play: () => void;
@@ -44,7 +44,7 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
     window.addEventListener("resize", resizeCanvas);
 
-    let particles: Particles[] = [];
+    let particle: Particle[] = [];
     let animationId = 0;
 
     const burst = (quantity = 140) => {
@@ -63,8 +63,8 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
         const vx = Math.cos(angle) * speed;
         const vy = Math.sin(angle) * speed;
 
-        particles.push(
-          new Particles(
+        particle.push(
+          new Particle(
             x + (Math.random() - 0.5) * spread,
             y + (Math.random() - 0.5) * spread,
             radius,
@@ -83,9 +83,9 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles = particles.filter((p) => p.alpha > 0.01);
+      particle = particle.filter((p) => p.alpha > 0.01);
 
-      particles.forEach((p) => {
+      particle.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
 
@@ -111,8 +111,12 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
   }, []);
 
   return (
-    <div className="impact-wrapper">
-      <canvas ref={canvasRef} className="avatar-canvas" />
+    <div className="avatar-impact-wrapper">
+      <canvas
+        ref={canvasRef}
+        className="avatar-impact-canvas"
+        aria-hidden="true"
+      />
     </div>
   );
 });

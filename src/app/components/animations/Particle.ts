@@ -1,4 +1,4 @@
-export default class Particles {
+export default class Particle {
   constructor(
     public x: number,
     public y: number,

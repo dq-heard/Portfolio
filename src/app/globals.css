@@ -222,15 +222,13 @@ button {
   position: relative;
 }
 
-.portfolio-wrapper {
-  position: relative;
-}
-
 .impact-wrapper {
-  position: absolute;
+  position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: 3;
+  z-index: 20;
 }
 
 .impact-canvas {
@@ -463,13 +461,13 @@ button {
 /* Pulse keyframes */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0.7);
+    box-shadow: 0 0 0 0 rgba(90, 179, 242, 0.7);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(255, 130, 0, 0);
+    box-shadow: 0 0 0 10px rgba(90, 179, 242, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0);
+    box-shadow: 0 0 0 0 rgba(90, 179, 242, 0);
   }
 }
 
@@ -490,15 +488,19 @@ button {
 
 /* Accessibility: Disable all animation effects */
 @media (prefers-reduced-motion: reduce) {
-  .avatar,
-  .timeline-dot,
-  .tilted,
-  .cookie-banner {
-    animation: none !important;
+  .tilted {
     transition: none !important;
+  }
+
+  .timeline-dot {
+    animation: none !important;
+  }
+
+  .cookie-banner,
+  .avatar-enter {
+    animation: none !important;
+    opacity: 1 !important;
     transform: none !important;
-    box-shadow: none !important;
-    background: none !important;
   }
 }
 

@@ -1,15 +1,20 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import Particles from "./Particles";
+import Particle from "./Particle";
 import { useParticleBurst } from "@/app/context/ParticleContext";
+import { BurstOptions } from "@/app/utils/types";
+import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
 const ImpactCanvas = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { registerBurst } = useParticleBurst();
 
   useLayoutEffect(() => {
+    if (prefersReducedMotion) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -32,34 +37,34 @@ const ImpactCanvas = () => {
 
     window.addEventListener("resize", resizeCanvas);
 
-    let particles: Particles[] = [];
+    let particles: Particle[] = [];
     let animationId = 0;
 
-    const burst = (x: number, y: number, quantity = 140) => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-
-      const localX = x - rect.left;
-      const localY = y - rect.top;
+    const burst = ({ x, y, quantity = 40 }: BurstOptions) => {
+      const localX = x;
+      const localY = y;
 
       for (let i = 0; i < quantity; i++) {
-        const spread = 160;
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 35;
 
-        const radius =
-          Math.random() < 0.2 ? 10 + Math.random() * 8 : 2 + Math.random() * 6;
+        const offsetX = Math.cos(angle) * distance;
+        const offsetY = Math.sin(angle) * distance;
+
+        const radius = 2 + Math.random() * 5;
+
+        const particleColor = Math.random() < 0.12 ? "#FF8200" : "#5AB3F2";
 
         particles.push(
-          new Particles(
-            localX + (Math.random() - 0.5) * spread,
-            localY + (Math.random() - 0.5) * spread,
+          new Particle(
+            localX + offsetX,
+            localY + offsetY,
             radius,
             Math.random(),
             0.01,
-            "#5AB3F2",
-            0,
-            0
+            particleColor,
+            Math.cos(angle) * 0.8,
+            Math.sin(angle) * 0.8
           )
         );
       }
@@ -87,11 +92,11 @@ const ImpactCanvas = () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resizeCanvas);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <div ref={containerRef} className="impact-wrapper">
-      <canvas ref={canvasRef} className="impact-canvas" />
+      <canvas ref={canvasRef} className="impact-canvas" aria-hidden="true" />
     </div>
   );
 };

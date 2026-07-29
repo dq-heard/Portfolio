@@ -111,3 +111,11 @@ export type SectionProps<T> = {
   data: T;
   onContentLoaded: () => void;
 };
+
+export type BurstOptions = {
+  x: number;
+  y: number;
+  quantity?: number;
+};
+
+export type BurstFunction = (options: BurstOptions) => void;

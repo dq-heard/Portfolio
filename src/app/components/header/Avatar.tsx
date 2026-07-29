@@ -1,25 +1,35 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { useFloatEffect } from "@/app/hooks/useFloatEffect";
 import { SanityImage } from "@/app/utils/types";
 import AvatarCanvas, { AvatarCanvasHandle } from "../animations/AvatarCanvas";
+import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
 const Avatar = ({ asset }: { asset: SanityImage }) => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  // const [hasLanded, setHasLanded] = useState(false);
   const impactRef = useRef<AvatarCanvasHandle>(null);
-  const avatarRef = useFloatEffect(
-    10,
-    0.01,
-    950
-  ) as React.RefObject<HTMLDivElement>;
+  const avatarRef = useFloatEffect({
+    amplitude: 10,
+    speed: 0.01,
+    delay: 950,
+  });
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
+  const avatarClass = [
+    "avatar",
+    prefersReducedMotion ? "avatar-thunk-reduced" : "avatar-thunk",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const handleThunkComplete = () => {
+    // setHasLanded(true);
+
+    if (!prefersReducedMotion) {
       impactRef.current?.play();
-    }, 550);
-
-    return () => window.clearTimeout(timer);
-  }, []);
+    }
+  };
 
   return (
     <div className="profile-image">
@@ -27,7 +37,7 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
         <div className="avatar-wrapper">
           <AvatarCanvas ref={impactRef} />
 
-          <div className="avatar avatar-enter">
+          <div className={avatarClass} onAnimationEnd={handleThunkComplete}>
             <Image
               src={urlFor(asset).url()}
               alt="Glitched mouse cursor with orange and blue highlights"
