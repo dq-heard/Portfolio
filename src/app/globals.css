@@ -443,7 +443,8 @@ button {
   z-index: 10;
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.2),
-    2px 2px 15px var(--glass-alt-mid); /* fallback */
+    2px 2px 15px var(--glass-alt-mid),
+    0 0 18px color-mix(in srgb, var(--secondary) 45%, transparent);
   will-change: transform;
 }
 

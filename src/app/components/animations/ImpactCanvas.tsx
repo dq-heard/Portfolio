@@ -46,25 +46,24 @@ const ImpactCanvas = () => {
 
       for (let i = 0; i < quantity; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const distance = Math.random() * 35;
+        const speed = 0.5 + Math.random() * 1.2;
+        const fadeSpeed = 0.008 + Math.random() * 0.004;
 
-        const offsetX = Math.cos(angle) * distance;
-        const offsetY = Math.sin(angle) * distance;
-
-        const radius = 2 + Math.random() * 5;
+        const radius =
+          Math.random() < 0.08 ? 6 + Math.random() * 3 : 2 + Math.random() * 3;
 
         const particleColor = Math.random() < 0.12 ? "#FF8200" : "#5AB3F2";
 
         particles.push(
           new Particle(
-            localX + offsetX,
-            localY + offsetY,
+            localX,
+            localY,
             radius,
             Math.random(),
-            0.01,
+            fadeSpeed,
             particleColor,
-            Math.cos(angle) * 0.8,
-            Math.sin(angle) * 0.8
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed
           )
         );
       }

@@ -11,6 +11,9 @@ export default class Particle {
   ) {}
 
   draw(ctx: CanvasRenderingContext2D) {
+    this.x += this.vx;
+    this.y += this.vy;
+
     ctx.beginPath();
     ctx.globalAlpha = this.alpha;
     ctx.fillStyle = this.color;
