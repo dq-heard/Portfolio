@@ -9,6 +9,8 @@ import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 const Avatar = ({ asset }: { asset: SanityImage }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const [showShockwave, setShowShockwave] = useState(false);
+  const [isIdle, setIsIdle] = useState(false);
+
   const impactRef = useRef<AvatarCanvasHandle>(null);
   const avatarRef = useFloatEffect({
     amplitude: 10,
@@ -18,7 +20,7 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
 
   const avatarClass = [
     "avatar",
-    prefersReducedMotion ? "avatar-thunk-reduced" : "avatar-thunk",
+    !isIdle && (prefersReducedMotion ? "avatar-thunk-reduced" : "avatar-thunk"),
   ]
     .filter(Boolean)
     .join(" ");
@@ -27,6 +29,9 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
     if (!prefersReducedMotion) {
       setShowShockwave(true);
       impactRef.current?.play();
+
+      // Wait until the impact has finished.
+      setTimeout(() => setIsIdle(true), 350);
     }
   };
 
@@ -44,7 +49,12 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
             onAnimationEnd={handleShockwaveComplete}
           />
 
-          <div className={avatarClass} onAnimationEnd={handleThunkComplete}>
+          <div
+            className={[avatarClass, isIdle && "avatar-idle"]
+              .filter(Boolean)
+              .join(" ")}
+            onAnimationEnd={handleThunkComplete}
+          >
             <Image
               src={urlFor(asset).url()}
               alt="Glitched mouse cursor with orange and blue highlights"
