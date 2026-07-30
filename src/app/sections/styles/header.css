@@ -15,19 +15,6 @@
   height: 150px;
 }
 
-.avatar-impact-wrapper {
-  position: absolute;
-  inset: -40px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.avatar-impact-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .avatar {
   width: 150px;
   height: 150px;

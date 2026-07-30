@@ -55,7 +55,7 @@ const InteractionCanvas = () => {
         const radius =
           Math.random() < 0.08 ? 6 + Math.random() * 3 : 2 + Math.random() * 3;
 
-        const particleColor = Math.random() < 0.18 ? "#FF8200" : "#5AB3F2";
+        const particleColor = Math.random() < 0.18 ? "#5AB3F2" : "#FF8200";
 
         particles.push(
           new Particle(

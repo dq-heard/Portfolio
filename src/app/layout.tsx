@@ -8,6 +8,7 @@ import {
   AmbientCanvas,
   InteractionCanvas,
   GlobalImpactListener,
+  TouchCanvas,
 } from "./components";
 import Banner from "./banner";
 import "./globals.css";
@@ -32,7 +33,11 @@ export default function RootLayout({
             <AmbientCanvas />
             <InteractionCanvas />
             <GlobalImpactListener />
+
+            <TouchCanvas />
+
             <div className="container">{children}</div>
+
             <ToastContainer position="bottom-right" />
             <Banner />
           </ParticleProvider>

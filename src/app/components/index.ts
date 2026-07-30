@@ -4,6 +4,7 @@ export { default as Preloader } from "./animations/Preloader";
 export { default as AmbientCanvas } from "./animations/AmbientCanvas";
 export { default as InteractionCanvas } from "./animations/InteractionCanvas";
 export { default as GlobalImpactListener } from "./animations/GlobalImpactListener";
+export { default as TouchCanvas } from "./animations/TouchCanvas";
 export { default as TiltedCard } from "./animations/TiltedCard";
 export { default as ContactForm } from "./contact/ContactForm";
 export { default as ContactItem } from "./contact/ContactItem";
