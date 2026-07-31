@@ -31,13 +31,14 @@ const ThemeToggle = () => {
 
   if (isDark === null) {
     return <div className="theme-toggle-placeholder" />;
-    return null;
   }
 
   return (
     <button
-      className="theme-toggle button-surface"
+      className={`theme-toggle button-surface ${isDark === null ? "is-loading" : ""}`}
       onClick={toggleTheme}
+      aria-hidden={isDark === null}
+      disabled={isDark === null}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       aria-pressed={isDark}
     >

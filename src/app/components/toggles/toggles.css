@@ -1,7 +1,6 @@
 /* Theme toggle & Mobile navigation */
 .theme-toggle,
-.mobile-nav-toggle,
-.theme-toggle-placeholder {
+.mobile-nav-toggle {
   position: fixed;
   z-index: 1000;
   width: 45px;
@@ -26,6 +25,10 @@
   left: 20px;
   font-size: 1.5rem;
   display: none;
+}
+
+.theme-toggle.is-loading {
+  visibility: hidden;
 }
 
 /* Media Queries */
