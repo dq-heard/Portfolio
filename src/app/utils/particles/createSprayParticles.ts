@@ -1,7 +1,6 @@
 import Particle from "@/app/components/animations/Particle";
 
 type CreateSprayParticlesOptions = {
-  particles: Particle[];
   x: number;
   y: number;
   quantity: number;
@@ -13,7 +12,6 @@ type CreateSprayParticlesOptions = {
 };
 
 export function createSprayParticles({
-  particles,
   x,
   y,
   quantity,
@@ -24,6 +22,7 @@ export function createSprayParticles({
   accentChance,
 }: CreateSprayParticlesOptions) {
   const spreadScale = spread / defaultSpread;
+  const particles: Particle[] = [];
 
   for (let i = 0; i < quantity; i++) {
     const offsetX = (Math.random() - 0.5) * Math.random() * spread;
@@ -54,4 +53,5 @@ export function createSprayParticles({
       )
     );
   }
+  return particles;
 }

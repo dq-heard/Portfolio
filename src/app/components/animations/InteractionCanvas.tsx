@@ -2,20 +2,16 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Particle from "./Particle";
+import ParticleSystem from "./ParticleSystem";
 import { useParticleBurst } from "@/app/context/ParticleContext";
 import { BurstOptions } from "@/app/utils/types";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks";
-import {
-  PARTICLE_BLUE,
-  PARTICLE_ORANGE,
-  updateAndRenderParticles,
-} from "@/app/utils/particles/";
+import { PARTICLE_BLUE, PARTICLE_ORANGE } from "@/app/utils/particles/";
 
 const InteractionCanvas = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const { canvasRef, ctxRef } = useCanvas("element");
-  const containerRef = useRef<HTMLDivElement>(null);
   const { registerBurst } = useParticleBurst();
 
   useLayoutEffect(() => {
@@ -27,7 +23,7 @@ const InteractionCanvas = () => {
 
     ctx.globalCompositeOperation = "screen";
 
-    let particles: Particle[] = [];
+    const system = new ParticleSystem();
     let animationId = 0;
 
     const burst = ({ x, y, quantity = 40 }: BurstOptions) => {
@@ -48,7 +44,7 @@ const InteractionCanvas = () => {
         const particleColor =
           Math.random() < 0.18 ? PARTICLE_BLUE : PARTICLE_ORANGE;
 
-        particles.push(
+        system.emit(
           new Particle(
             localX,
             localY,
@@ -69,7 +65,7 @@ const InteractionCanvas = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      updateAndRenderParticles(particles, ctx);
+      system.render(ctx);
 
       animationId = requestAnimationFrame(animate);
     };
@@ -79,11 +75,12 @@ const InteractionCanvas = () => {
     return () => {
       unregisterBurst();
       cancelAnimationFrame(animationId);
+      system.clear();
     };
   }, [prefersReducedMotion]);
 
   return (
-    <div ref={containerRef} className="impact-wrapper">
+    <div className="impact-wrapper">
       <canvas ref={canvasRef} className="impact-canvas" aria-hidden="true" />
     </div>
   );

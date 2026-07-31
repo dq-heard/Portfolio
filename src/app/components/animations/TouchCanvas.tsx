@@ -1,13 +1,12 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import Particle from "./Particle";
+import ParticleSystem from "./ParticleSystem";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks/";
 import {
   PARTICLE_BLUE,
   PARTICLE_ORANGE,
   createSprayParticles,
-  updateAndRenderParticles,
 } from "@/app/utils/particles/";
 
 const TouchCanvas = () => {
@@ -32,7 +31,7 @@ const TouchCanvas = () => {
 
     ctx.globalCompositeOperation = "screen";
 
-    let particle: Particle[] = [];
+    const system = new ParticleSystem();
 
     const randomizeParticles = (
       x: number,
@@ -40,17 +39,18 @@ const TouchCanvas = () => {
       quantity = amount,
       spread = DEFAULT_SPREAD
     ) => {
-      createSprayParticles({
-        particles: particle,
-        x,
-        y,
-        quantity,
-        spread,
-        defaultSpread: DEFAULT_SPREAD,
-        primaryColor: color,
-        accentColor: PARTICLE_ORANGE,
-        accentChance: 0.18,
-      });
+      system.emitMany(
+        createSprayParticles({
+          x,
+          y,
+          quantity,
+          spread,
+          defaultSpread: DEFAULT_SPREAD,
+          primaryColor: color,
+          accentColor: PARTICLE_ORANGE,
+          accentChance: 0.18,
+        })
+      );
     };
 
     let lastTouchBurst = 0;
@@ -112,7 +112,7 @@ const TouchCanvas = () => {
         }
       }
 
-      updateAndRenderParticles(particle, ctx);
+      system.render(ctx);
 
       animationId = requestAnimationFrame(animate);
     };
@@ -131,6 +131,7 @@ const TouchCanvas = () => {
       window.removeEventListener("touchcancel", handleTouchEnd);
 
       cancelAnimationFrame(animationId);
+      system.clear();
     };
   }, [prefersReducedMotion]);
 

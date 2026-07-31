@@ -6,11 +6,9 @@ import {
   useRef,
 } from "react";
 import Particle from "./Particle";
+import ParticleSystem from "./ParticleSystem";
 import { useCanvas } from "@/app/hooks";
-import {
-  PARTICLE_BLUE,
-  updateAndRenderParticles,
-} from "@/app/utils/particles/";
+import { PARTICLE_BLUE } from "@/app/utils/particles/";
 
 export type AvatarCanvasHandle = {
   play: () => void;
@@ -34,7 +32,7 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
     ctx.globalCompositeOperation = "screen";
 
-    let particle: Particle[] = [];
+    const system = new ParticleSystem();
     let animationId = 0;
 
     const burst = (quantity = 140) => {
@@ -53,7 +51,7 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
         const vx = Math.cos(angle) * speed;
         const vy = Math.sin(angle) * speed;
 
-        particle.push(
+        system.emit(
           new Particle(
             x + (Math.random() - 0.5) * spread,
             y + (Math.random() - 0.5) * spread,
@@ -70,18 +68,16 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
     burstRef.current = burst;
 
+    const updateAvatarParticle = (particle: Particle) => {
+      particle.vx *= 0.92;
+      particle.vy *= 0.92;
+      particle.vy += 0.04;
+    };
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particle = particle.filter((p) => p.alpha > 0.01);
-
-      for (const p of particle) {
-        p.vx *= 0.92;
-        p.vy *= 0.92;
-        p.vy += 0.04;
-      }
-
-      updateAndRenderParticles(particle, ctx);
+      system.render(ctx, updateAvatarParticle);
 
       animationId = requestAnimationFrame(animate);
     };

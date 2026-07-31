@@ -1,13 +1,12 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import Particle from "./Particle";
+import ParticleSystem from "./ParticleSystem";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks";
 import {
   PARTICLE_BLUE,
   PARTICLE_ORANGE,
   createSprayParticles,
-  updateAndRenderParticles,
 } from "@/app/utils/particles/";
 
 const AmbientCanvas = () => {
@@ -33,7 +32,7 @@ const AmbientCanvas = () => {
 
     ctx.globalCompositeOperation = "screen";
 
-    let particle: Particle[] = [];
+    const system = new ParticleSystem();
 
     const randomizeParticles = (
       x: number,
@@ -41,17 +40,18 @@ const AmbientCanvas = () => {
       quantity = amount,
       spread = DEFAULT_SPREAD
     ) => {
-      createSprayParticles({
-        particles: particle,
-        x,
-        y,
-        quantity,
-        spread,
-        defaultSpread: DEFAULT_SPREAD,
-        primaryColor: color,
-        accentColor: PARTICLE_ORANGE,
-        accentChance: 0.06,
-      });
+      system.emitMany(
+        createSprayParticles({
+          x,
+          y,
+          quantity,
+          spread,
+          defaultSpread: DEFAULT_SPREAD,
+          primaryColor: color,
+          accentColor: PARTICLE_ORANGE,
+          accentChance: 0.06,
+        })
+      );
     };
 
     let lastBurst = 0;
@@ -101,7 +101,7 @@ const AmbientCanvas = () => {
     const animate = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-      updateAndRenderParticles(particle, ctx);
+      system.render(ctx);
 
       animationId = requestAnimationFrame(animate);
     };
@@ -112,6 +112,7 @@ const AmbientCanvas = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
+      system.clear();
     };
   }, [prefersReducedMotion]);
 
