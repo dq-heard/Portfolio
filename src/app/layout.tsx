@@ -27,7 +27,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={body.className}>
+      <body className={body.className} suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (() => {
+              const savedTheme = localStorage.getItem("theme");
+      
+              const prefersDark =
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+      
+              if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+                document.body.classList.add("dark-mode");
+              }
+            })();
+          `,
+          }}
+        />
         <PostHogProvider>
           <ParticleProvider>
             <AmbientCanvas />
@@ -36,7 +52,7 @@ export default function RootLayout({
 
             <TouchCanvas />
 
-            <div className="container">{children}</div>
+            <main className="container">{children}</main>
 
             <ToastContainer position="bottom-right" />
             <Banner />

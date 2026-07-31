@@ -1,6 +1,6 @@
 import { Hero, SectionProps } from "@/app/utils/types";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 import { getReadableSocialLabel } from "../utils/aria";
 import { Avatar } from "../components";
 

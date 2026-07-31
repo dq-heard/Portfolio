@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useParticleBurst } from "@/app/context/ParticleContext";
-import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
+import { usePrefersReducedMotion } from "@/app/hooks";
 
 const GlobalImpactListener = () => {
   const { triggerBurst } = useParticleBurst();

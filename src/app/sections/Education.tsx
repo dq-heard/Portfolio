@@ -1,5 +1,5 @@
 import { Cert, Edu, SectionProps, Topics } from "../utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 
 import { BsAwardFill, BsMortarboardFill } from "react-icons/bs";
 import { stencil, heading } from "../utils/fonts";

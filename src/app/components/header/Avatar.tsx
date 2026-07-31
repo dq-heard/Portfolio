@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { useFloatEffect } from "@/app/hooks/useFloatEffect";
+import { useFloatEffect, usePrefersReducedMotion } from "@/app/hooks";
 import { SanityImage } from "@/app/utils/types";
 import AvatarCanvas, { AvatarCanvasHandle } from "../animations/AvatarCanvas";
-import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
 
 const Avatar = ({ asset }: { asset: SanityImage }) => {
   const prefersReducedMotion = usePrefersReducedMotion();

@@ -1,7 +1,6 @@
 import { Chat, Resume } from "@/app/utils/types";
 import { ContactForm, ContactItem, ResumeLink } from "@/app/components";
-import { useSectionReady } from "../hooks/useSectionReady";
-import { useContactForm } from "../hooks/useContactForm";
+import { useSectionReady, useContactForm } from "../hooks";
 import { stencil, heading } from "../utils/fonts";
 import { BsChatDotsFill } from "react-icons/bs";
 import "./styles/contact.css";

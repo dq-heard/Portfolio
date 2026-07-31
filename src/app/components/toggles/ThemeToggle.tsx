@@ -5,32 +5,34 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import "./toggles.css";
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
 
   const toggleTheme = () => {
     const newThemeIsDark = !isDark;
+
     setIsDark(newThemeIsDark);
+
     document.body.classList.toggle("dark-mode", newThemeIsDark);
-    localStorage.setItem("theme", newThemeIsDark ? "light" : "dark");
+
+    localStorage.setItem("theme", newThemeIsDark ? "dark" : "light");
   };
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme) {
-      // 1. If user previously selected a theme manually, use it
-      const isBright = savedTheme === "light";
-      setIsDark(isBright);
-      document.body.classList.toggle("dark-mode", isBright);
-    } else {
-      // 2. If first time visiting, match the OS system light preference
-      const systemPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setIsDark(systemPrefersDark);
-      document.body.classList.toggle("dark-mode", systemPrefersDark);
-    }
+    const shouldUseDark =
+      savedTheme === "dark" ||
+      (!savedTheme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    setIsDark(shouldUseDark);
+    document.body.classList.toggle("dark-mode", shouldUseDark);
   }, []);
+
+  if (isDark === null) {
+    return <div className="theme-toggle-placeholder" />;
+    return null;
+  }
 
   return (
     <button

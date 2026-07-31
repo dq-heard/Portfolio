@@ -11,7 +11,7 @@ export default class Particle {
     public friction = 1
   ) {}
 
-  draw(ctx: CanvasRenderingContext2D) {
+  update() {
     this.x += this.vx;
     this.y += this.vy;
 
@@ -20,7 +20,9 @@ export default class Particle {
 
     this.vx *= this.friction;
     this.vy *= this.friction;
+  }
 
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.beginPath();
     ctx.globalAlpha = this.alpha;
     ctx.fillStyle = this.color;

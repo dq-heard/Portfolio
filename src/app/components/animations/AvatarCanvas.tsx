@@ -6,13 +6,18 @@ import {
   useRef,
 } from "react";
 import Particle from "./Particle";
+import { useCanvas } from "@/app/hooks";
+import {
+  PARTICLE_BLUE,
+  updateAndRenderParticles,
+} from "@/app/utils/particles/";
 
 export type AvatarCanvasHandle = {
   play: () => void;
 };
 
 const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { canvasRef, ctxRef } = useCanvas("element");
   const burstRef = useRef<(() => void) | null>(null);
 
   useImperativeHandle(ref, () => ({
@@ -23,26 +28,11 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const ctx = ctxRef.current;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!canvas || !ctx) return;
 
     ctx.globalCompositeOperation = "screen";
-
-    const resizeCanvas = () => {
-      const dpr = window.devicePixelRatio || 1;
-
-      canvas.width = canvas.clientWidth * dpr;
-      canvas.height = canvas.clientHeight * dpr;
-
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(dpr, dpr);
-    };
-
-    resizeCanvas();
-
-    window.addEventListener("resize", resizeCanvas);
 
     let particle: Particle[] = [];
     let animationId = 0;
@@ -70,7 +60,7 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
             radius,
             Math.random(),
             0.01,
-            "#5AB3F2",
+            PARTICLE_BLUE,
             vx,
             vy
           )
@@ -85,19 +75,13 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
       particle = particle.filter((p) => p.alpha > 0.01);
 
-      particle.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
+      for (const p of particle) {
         p.vx *= 0.92;
         p.vy *= 0.92;
-
         p.vy += 0.04;
+      }
 
-        p.alpha -= p.fadeSpeed;
-
-        p.draw(ctx);
-      });
+      updateAndRenderParticles(particle, ctx);
 
       animationId = requestAnimationFrame(animate);
     };
@@ -106,7 +90,6 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
 

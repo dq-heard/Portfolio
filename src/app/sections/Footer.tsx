@@ -1,6 +1,6 @@
 import { getReadableSocialLabel } from "../utils/aria";
 import { Hero, SectionProps } from "../utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 import { DynamicIcon } from "@/app/components/DynamicIcon";
 
 import "./styles/header.css";

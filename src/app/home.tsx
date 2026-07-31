@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { usePortfolioData } from "@/app/hooks/usePortfolioData";
+import { usePortfolioData } from "@/app/hooks";
 import { sectionMap } from "./utils/sections";
 import { Header, Nav, Footer } from "./sections";
 import { PortfolioData } from "./utils/types";
@@ -19,8 +19,9 @@ export default function Home(props: PortfolioData) {
   const portfolioData = usePortfolioData(props);
   const totalSections = sectionMap.length;
 
-  const [loading, setLoading] = useState(true);
+  const [isReady, setIsReady] = useState(true);
   const [readyCount, setReadyCount] = useState(0);
+  const [showPreloader, setShowPreloader] = useState(false);
 
   const handleSectionLoaded = useCallback(() => {
     setReadyCount((prev) => {
@@ -35,16 +36,26 @@ export default function Home(props: PortfolioData) {
     ) as Record<keyof typeof portfolioData, () => void>;
   }, [handleSectionLoaded]);
 
+  useEffect(() => {
+    if (!isReady) {
+      const timer = setTimeout(() => {
+        setShowPreloader(false);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isReady]);
+
   // Trigger effects once all sections report readiness
   useEffect(() => {
     if (readyCount >= totalSections) {
-      setLoading(false);
+      setIsReady(false);
     }
   }, [readyCount, totalSections]);
 
   return (
     <>
-      {loading && <Preloader />}
+      {showPreloader && <Preloader exiting={!isReady} />}
 
       <MobileNav
         isActive={isMobileMenuActive}

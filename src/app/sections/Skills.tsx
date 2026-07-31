@@ -1,7 +1,7 @@
 import React, { ReactElement, useMemo } from "react";
 import { urlFor } from "@/sanity/lib/image";
 import { Skill, SectionProps } from "@/app/utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 
 import {
   BsGearFill,

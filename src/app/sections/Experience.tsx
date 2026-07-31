@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Exp, SectionProps } from "@/app/utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 import { AnimatePresence, motion } from "framer-motion";
 import { format } from "date-fns";
 

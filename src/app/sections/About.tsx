@@ -1,5 +1,5 @@
 import { Bio, SectionProps } from "@/app/utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 import { BsPersonFill } from "react-icons/bs";
 import { stencil } from "../utils/fonts";
 import "./styles/about.css";

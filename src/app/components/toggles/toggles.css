@@ -1,6 +1,7 @@
 /* Theme toggle & Mobile navigation */
 .theme-toggle,
-.mobile-nav-toggle {
+.mobile-nav-toggle,
+.theme-toggle-placeholder {
   position: fixed;
   z-index: 1000;
   width: 45px;

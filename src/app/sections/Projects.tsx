@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { urlFor } from "@/sanity/lib/image";
 import { Work, SectionProps } from "@/app/utils/types";
-import { useSectionReady } from "../hooks/useSectionReady";
+import { useSectionReady } from "../hooks";
 
 import {
   FaArrowLeft,

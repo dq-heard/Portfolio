@@ -1,12 +1,18 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import Particle from "./Particle";
-import { usePrefersReducedMotion } from "@/app/hooks/usePrefersReducedMotion";
+import { useCanvas, usePrefersReducedMotion } from "@/app/hooks/";
+import {
+  PARTICLE_BLUE,
+  PARTICLE_ORANGE,
+  createSprayParticles,
+  updateAndRenderParticles,
+} from "@/app/utils/particles/";
 
 const TouchCanvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const color = "#5AB3F2";
+  const { canvasRef, ctxRef } = useCanvas("viewport");
+  const color = PARTICLE_BLUE;
   const amount = 80;
 
   const DEFAULT_SPREAD = 110;
@@ -20,71 +26,31 @@ const TouchCanvas = () => {
     if (!isTouchDevice) return;
 
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.globalCompositeOperation = "screen";
-    } else return;
+    const ctx = ctxRef.current;
 
-    const dpr = window.devicePixelRatio || 1;
-    const setCanvasSize = () => {
-      ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
-    };
+    if (!canvas || !ctx) return;
 
-    setCanvasSize();
-    let resizeTimeout: number;
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(setCanvasSize, 150);
-    };
-    window.addEventListener("resize", handleResize);
+    ctx.globalCompositeOperation = "screen";
 
     let particle: Particle[] = [];
 
     const randomizeParticles = (
       x: number,
       y: number,
-      quantity: number = amount,
-      spread: number = DEFAULT_SPREAD
+      quantity = amount,
+      spread = DEFAULT_SPREAD
     ) => {
-      for (let i = 0; i < quantity; i++) {
-        const offsetX = (Math.random() - 0.5) * Math.random() * spread;
-        const offsetY = (Math.random() - 0.5) * Math.random() * spread;
-        const alpha = Math.random();
-        const fadeSpeed = 0.009 + Math.random() * 0.001;
-
-        let rad = 2 + Math.random() * 5;
-
-        if (spread > DEFAULT_SPREAD) {
-          rad = 4 + Math.random() * 12;
-        }
-
-        rad *= spread / DEFAULT_SPREAD;
-
-        if (Math.abs(offsetX) < 30 && Math.abs(offsetY) < 30)
-          rad = (2 + Math.random() * 12) * (spread / DEFAULT_SPREAD);
-        else if (Math.abs(offsetX) < 35 && Math.abs(offsetY) < 35)
-          rad = (1 + Math.random() * 3) * (spread / DEFAULT_SPREAD);
-
-        const particleColor = Math.random() < 0.18 ? "#FF8200" : color;
-
-        particle.push(
-          new Particle(
-            x + offsetX,
-            y + offsetY,
-            rad,
-            alpha,
-            fadeSpeed,
-            particleColor,
-            0,
-            0,
-            1
-          )
-        );
-      }
+      createSprayParticles({
+        particles: particle,
+        x,
+        y,
+        quantity,
+        spread,
+        defaultSpread: DEFAULT_SPREAD,
+        primaryColor: color,
+        accentColor: PARTICLE_ORANGE,
+        accentChance: 0.18,
+      });
     };
 
     let lastTouchBurst = 0;
@@ -145,11 +111,9 @@ const TouchCanvas = () => {
           lastTouchBurst = now;
         }
       }
-      particle = particle.filter((p) => p.alpha > 0.01);
-      particle.forEach((p) => {
-        p.alpha -= p.fadeSpeed;
-        p.draw(ctx);
-      });
+
+      updateAndRenderParticles(particle, ctx);
+
       animationId = requestAnimationFrame(animate);
     };
 
@@ -161,7 +125,6 @@ const TouchCanvas = () => {
     animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
