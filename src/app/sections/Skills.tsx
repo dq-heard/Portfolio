@@ -1,5 +1,6 @@
 import React, { ReactElement, useMemo } from "react";
-import { urlFor } from "@/sanity/lib/image";
+import Image from "next/image";
+import { optimizedImageUrl, urlFor } from "@/sanity/lib/image";
 import { Skill, SectionProps } from "@/app/utils/types";
 import { useSectionReady } from "../hooks";
 
@@ -98,10 +99,12 @@ const Skills = ({ data, onContentLoaded }: SectionProps<Skill[]>) => {
 
   const SkillItem = React.memo(({ skill }: { skill: Skill }) => (
     <div className="skills-item skills-tag">
-      <img
-        src={urlFor(skill.icon).url()}
+      <Image
+        src={optimizedImageUrl(skill.icon, 96)}
         alt={`${skill.name} logo`}
         className="skills-img"
+        width={96}
+        height={96}
         loading="lazy"
       />
       <span className="skills-title">{skill.name}</span>

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { urlFor } from "@/sanity/lib/image";
+import Image from "next/image";
+import { optimizedImageUrl, urlFor } from "@/sanity/lib/image";
 import { Work, SectionProps } from "@/app/utils/types";
 import { useSectionReady } from "../hooks";
 
@@ -116,9 +117,12 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
           {data.map((project, index) => (
             <SwiperSlide className="glass-inner-card card" key={index}>
               <div className="card-image">
-                <img
-                  src={urlFor(project.imgUrl).url()}
+                <Image
+                  src={optimizedImageUrl(project.imgUrl, 700)}
                   alt={`Screenshot of ${project.title} website`}
+                  width={700}
+                  height={525}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
                 />
               </div>

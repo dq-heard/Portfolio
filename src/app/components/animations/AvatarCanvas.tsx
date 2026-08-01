@@ -8,7 +8,7 @@ import {
 import Particle from "./Particle";
 import ParticleSystem from "./ParticleSystem";
 import { useCanvas } from "@/app/hooks";
-import { PARTICLE_BLUE } from "@/app/utils/particles/";
+import { AVATAR_PARTICLE_CONFIG } from "@/app/utils/particles/";
 
 export type AvatarCanvasHandle = {
   play: () => void;
@@ -35,11 +35,10 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
     const system = new ParticleSystem();
     let animationId = 0;
 
-    const burst = (quantity = 140) => {
+    const burst = () => {
+      const { quantity, spread, color } = AVATAR_PARTICLE_CONFIG;
       const x = canvas.clientWidth / 2;
       const y = canvas.clientHeight / 2;
-
-      const spread = 160;
 
       for (let i = 0; i < quantity; i++) {
         const radius =
@@ -58,7 +57,7 @@ const AvatarCanvas = forwardRef<AvatarCanvasHandle>((props, ref) => {
             radius,
             Math.random(),
             0.01,
-            PARTICLE_BLUE,
+            color,
             vx,
             vy
           )

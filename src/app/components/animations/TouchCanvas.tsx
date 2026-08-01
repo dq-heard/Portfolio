@@ -4,17 +4,14 @@ import { useLayoutEffect } from "react";
 import ParticleSystem from "./ParticleSystem";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks/";
 import {
-  PARTICLE_BLUE,
-  PARTICLE_ORANGE,
+  TOUCH_PARTICLE_CONFIG,
   createSprayParticles,
 } from "@/app/utils/particles/";
 
 const TouchCanvas = () => {
   const { canvasRef, ctxRef } = useCanvas("viewport");
-  const color = PARTICLE_BLUE;
-  const amount = 80;
-
-  const DEFAULT_SPREAD = 110;
+  const { amount, defaultSpread, primaryColor, accentColor, accentChance } =
+    TOUCH_PARTICLE_CONFIG;
 
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -37,7 +34,7 @@ const TouchCanvas = () => {
       x: number,
       y: number,
       quantity = amount,
-      spread = DEFAULT_SPREAD
+      spread = defaultSpread
     ) => {
       system.emitMany(
         createSprayParticles({
@@ -45,10 +42,10 @@ const TouchCanvas = () => {
           y,
           quantity,
           spread,
-          defaultSpread: DEFAULT_SPREAD,
-          primaryColor: color,
-          accentColor: PARTICLE_ORANGE,
-          accentChance: 0.18,
+          defaultSpread,
+          primaryColor,
+          accentColor,
+          accentChance,
         })
       );
     };
@@ -150,7 +147,6 @@ const TouchCanvas = () => {
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        role="img"
         style={{ width: "100%", height: "100%" }}
       ></canvas>
     </div>

@@ -10,38 +10,42 @@ import { cookieConsentGiven } from "./banner";
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    try {
-      const isLocalhost =
-        typeof window !== "undefined" &&
-        window.location.hostname === "localhost";
+    const timer = window.setTimeout(() => {
+      try {
+        const isLocalhost =
+          typeof window !== "undefined" &&
+          window.location.hostname === "localhost";
 
-      const isProduction = process.env.NODE_ENV === "production";
+        const isProduction = process.env.NODE_ENV === "production";
 
-      if (!isProduction || isLocalhost) {
-        console.info("PostHog not initialized: running in development.");
-        return;
+        if (!isProduction || isLocalhost) {
+          console.info("PostHog not initialized: running in development.");
+          return;
+        }
+
+        if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+          console.warn("PostHog key is missing.");
+          return;
+        }
+
+        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+          api_host:
+            process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+          person_profiles: "identified_only",
+          capture_pageleave: true,
+          capture_exceptions: true,
+          session_recording: {
+            maskAllInputs: false,
+          },
+          persistence:
+            cookieConsentGiven() === "yes" ? "localStorage+cookie" : "memory",
+        });
+      } catch (error) {
+        console.error("Failed to initialize PostHog:", error);
       }
+    }, 2000);
 
-      if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-        console.warn("PostHog key is missing.");
-        return;
-      }
-
-      posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-        api_host:
-          process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
-        person_profiles: "identified_only",
-        capture_pageleave: true,
-        capture_exceptions: true,
-        session_recording: {
-          maskAllInputs: false,
-        },
-        persistence:
-          cookieConsentGiven() === "yes" ? "localStorage+cookie" : "memory",
-      });
-    } catch (error) {
-      console.error("Failed to initialize PostHog:", error);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   return (

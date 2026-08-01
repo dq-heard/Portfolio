@@ -78,6 +78,10 @@ body {
   pointer-events: none;
 }
 
+.touch-canvas {
+  touch-action: none;
+}
+
 img {
   max-width: 100%;
 }
@@ -179,10 +183,6 @@ button {
   align-items: center;
   gap: 0.5rem;
 }
-
-/* .button-surface svg:not(.theme-toggle, .mobile-nav-toggle) {
-  margin-bottom: 0.25rem;
-} */
 
 .glass-button:hover,
 .dark-mode .glass-button:hover {
@@ -494,13 +494,13 @@ button {
 /* Pulse keyframes */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(90, 179, 242, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0.7);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(90, 179, 242, 0);
+    box-shadow: 0 0 0 10px rgba(255, 130, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(90, 179, 242, 0);
+    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0);
   }
 }
 

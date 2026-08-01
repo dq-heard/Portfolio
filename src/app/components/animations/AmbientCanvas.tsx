@@ -4,18 +4,20 @@ import { useLayoutEffect } from "react";
 import ParticleSystem from "./ParticleSystem";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks";
 import {
-  PARTICLE_BLUE,
-  PARTICLE_ORANGE,
+  AMBIENT_PARTICLE_CONFIG,
   createSprayParticles,
 } from "@/app/utils/particles/";
 
 const AmbientCanvas = () => {
   const { canvasRef, ctxRef } = useCanvas("viewport");
-  const color = PARTICLE_BLUE;
-  const amount = 80;
-
-  const DEFAULT_SPREAD = 110;
-  const MAX_SPREAD = 180;
+  const {
+    amount,
+    defaultSpread,
+    maxSpread,
+    primaryColor,
+    accentColor,
+    accentChance,
+  } = AMBIENT_PARTICLE_CONFIG;
 
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -38,7 +40,7 @@ const AmbientCanvas = () => {
       x: number,
       y: number,
       quantity = amount,
-      spread = DEFAULT_SPREAD
+      spread = defaultSpread
     ) => {
       system.emitMany(
         createSprayParticles({
@@ -46,10 +48,10 @@ const AmbientCanvas = () => {
           y,
           quantity,
           spread,
-          defaultSpread: DEFAULT_SPREAD,
-          primaryColor: color,
-          accentColor: PARTICLE_ORANGE,
-          accentChance: 0.06,
+          defaultSpread,
+          primaryColor,
+          accentColor,
+          accentChance,
         })
       );
     };
@@ -61,7 +63,7 @@ const AmbientCanvas = () => {
       x: number,
       y: number,
       quantity: number = amount,
-      spread: number = DEFAULT_SPREAD
+      spread: number = defaultSpread
     ) => {
       const now = performance.now();
       if (now - lastBurst >= mouseCooldown) {
@@ -72,8 +74,18 @@ const AmbientCanvas = () => {
 
     let lastX = 0;
     let lastY = 0;
+    let hasInitialized = false;
 
     const handleMouseMove = (e: MouseEvent) => {
+      // First mouse movement only establishes a starting point.
+      // It does not create particles.
+      if (!hasInitialized) {
+        lastX = e.clientX;
+        lastY = e.clientY;
+        hasInitialized = true;
+        return;
+      }
+
       const dx = e.clientX - lastX;
       const dy = e.clientY - lastY;
       const speed = Math.sqrt(dx * dx + dy * dy);
@@ -82,12 +94,13 @@ const AmbientCanvas = () => {
       lastY = e.clientY;
 
       const angle = Math.atan2(dy, dx);
-      const offsetFactor = Math.min(speed / 4, 20); // to avoid overshooting
+      const offsetFactor = Math.min(speed / 4, 20);
       const offsetX = Math.cos(angle) * offsetFactor;
       const offsetY = Math.sin(angle) * offsetFactor;
 
       const boostedAmount = Math.max(amount, Math.floor(speed / 2) + amount);
-      const spread = Math.min(DEFAULT_SPREAD + speed / 2, MAX_SPREAD);
+      const spread = Math.min(defaultSpread + speed / 2, maxSpread);
+
       throttledRandomize(
         e.clientX + offsetX,
         e.clientY + offsetY,
@@ -131,7 +144,6 @@ const AmbientCanvas = () => {
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        role="img"
         style={{ width: "100%", height: "100%" }}
       ></canvas>
     </div>

@@ -6,12 +6,16 @@
   padding: 0;
 }
 
+.card-image {
+  padding: 10px;
+  aspect-ratio: 4 / 3;
+}
+
 .card-image img {
   width: 100%;
-  padding: 10px;
+  height: 100%;
   border-radius: 22px;
   object-fit: cover;
-  aspect-ratio: 4 / 3;
 }
 
 .card-content {

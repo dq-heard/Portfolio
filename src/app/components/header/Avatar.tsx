@@ -57,10 +57,10 @@ const Avatar = ({ asset }: { asset: SanityImage }) => {
             <Image
               src={urlFor(asset).url()}
               alt="Glitched mouse cursor with orange and blue highlights"
-              width={150}
-              height={150}
-              className="avatar-img"
-              priority={true}
+              width={115}
+              height={140}
+              priority
+              fetchPriority="high"
             />
           </div>
         </div>
