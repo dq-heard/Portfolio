@@ -22,8 +22,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const socialImage = await getSocialImage(params.slug);
 
   return {
-    title: socialImage?.title || "Default Title",
-    description: socialImage?.description || "Default Description",
+    // Existing metadata (for the website)
+    title: "D. Heard | Web Experience Specialist",
+    description:
+      "A modern technologist with a real thing for clean structure and loud ideas.",
+    authors: [{ name: "DeQuentin Heard", url: "https://dqheard.com" }],
+    //  keywords: ['keyword1', 'keyword2'],
+
+    // Open Graph metadata (for social previews)
     openGraph: {
       title: socialImage?.title || "Default Title",
       description: socialImage?.description || "Default Description",
@@ -39,13 +45,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
   };
 }
-
-export const metadata: Metadata = {
-  title: "D. Heard | Web Experience Specialist",
-  authors: [{ name: "DeQuentin Heard" }],
-  description:
-    "A modern technologist with a real thing for clean structure and loud ideas.",
-};
 
 export default function RootLayout({
   children,
