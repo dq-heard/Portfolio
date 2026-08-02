@@ -8,6 +8,7 @@ import education from "./education";
 import contact from "./contact";
 import resume from "./resume";
 import inbox from "./inbox";
+import preview from "./preview";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     contact,
     resume,
     inbox,
+    preview,
   ],
 };

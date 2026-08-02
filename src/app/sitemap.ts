@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://dq-heard.vercel.app",
+      url: "https://www.dqheard.com",
       lastModified: new Date(),
     },
   ];
