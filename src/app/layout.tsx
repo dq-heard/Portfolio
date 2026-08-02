@@ -19,6 +19,14 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // Skip the query for the /_not-found page
+  if (params.slug === "_not-found") {
+    return {
+      title: "Page Not Found",
+      description: "The page you are looking for does not exist.",
+    };
+  }
+
   const socialImage = await getSocialImage(params.slug);
 
   return {

@@ -17,7 +17,7 @@ interface SocialImage {
 }
 
 export async function getSocialImage(
-  slug: string
+  slug: string = ""
 ): Promise<SocialImage | null> {
   const query = `*[_type == "socialImage" && slug.current == $slug]{
     title,
