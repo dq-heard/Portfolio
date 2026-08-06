@@ -1,10 +1,11 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 type CanvasSizeMode = "viewport" | "element";
 
 export function useCanvas(mode: CanvasSizeMode = "element") {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const [ready, setReady] = useState(false);
 
   useLayoutEffect(() => {
     const canvas = canvasRef.current;
@@ -14,6 +15,7 @@ export function useCanvas(mode: CanvasSizeMode = "element") {
     if (!ctx) return;
 
     ctxRef.current = ctx;
+    setReady(true);
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -60,5 +62,6 @@ export function useCanvas(mode: CanvasSizeMode = "element") {
   return {
     canvasRef,
     ctxRef,
+    ready,
   };
 }

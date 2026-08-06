@@ -1,15 +1,17 @@
+import Script from "next/script";
 import type { Metadata } from "next";
 import { getSocialImage } from "@/sanity/lib/client";
 import { body } from "./utils/fonts";
 import { ToastContainer } from "react-toastify";
 
 import { PostHogProvider } from "./provider";
-import { ParticleProvider } from "./context/ParticleContext";
+import { ParticleProvider, ThemeTransitionProvider } from "./context";
 import {
   AmbientCanvas,
   InteractionCanvas,
   GlobalImpactListener,
   TouchCanvas,
+  ThemeTransitionOverlay,
 } from "./components";
 import Banner from "./banner";
 import "./globals.css";
@@ -60,36 +62,41 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={body.className} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            (() => {
-              const savedTheme = localStorage.getItem("theme");
-      
-              const prefersDark =
-                window.matchMedia("(prefers-color-scheme: dark)").matches;
-      
-              if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-                document.body.classList.add("dark-mode");
-              }
-            })();
-          `,
+          (() => {
+            const savedTheme = localStorage.getItem("theme");
+
+            const prefersDark =
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+              document.documentElement.classList.add("dark-mode");
+            }
+          })();
+        `,
           }}
         />
+      </head>
+      <body className={body.className}>
         <PostHogProvider>
           <ParticleProvider>
-            <AmbientCanvas />
-            <InteractionCanvas />
-            <GlobalImpactListener />
+            <ThemeTransitionProvider>
+              <AmbientCanvas />
+              <InteractionCanvas />
+              <GlobalImpactListener />
+              <TouchCanvas />
 
-            <TouchCanvas />
+              <ThemeTransitionOverlay />
 
-            <main className="container">{children}</main>
+              <main className="container">{children}</main>
 
-            <ToastContainer position="bottom-right" />
-            <Banner />
+              <ToastContainer position="bottom-right" />
+              <Banner />
+            </ThemeTransitionProvider>
           </ParticleProvider>
         </PostHogProvider>
       </body>

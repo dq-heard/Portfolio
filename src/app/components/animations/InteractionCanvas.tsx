@@ -1,9 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect } from "react";
 import Particle from "./Particle";
 import ParticleSystem from "./ParticleSystem";
-import { useParticleBurst } from "@/app/context/ParticleContext";
+import { useParticleBurst } from "@/app/context";
 import { BurstOptions } from "@/app/utils/types";
 import { useCanvas, usePrefersReducedMotion } from "@/app/hooks";
 import { PARTICLE_BLUE, PARTICLE_ORANGE } from "@/app/utils/particles/";

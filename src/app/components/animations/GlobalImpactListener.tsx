@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useParticleBurst } from "@/app/context/ParticleContext";
+import { useParticleBurst } from "@/app/context";
 import { usePrefersReducedMotion } from "@/app/hooks";
 
 const GlobalImpactListener = () => {
