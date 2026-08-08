@@ -8,10 +8,10 @@ import {
 } from "@/app/sections";
 
 export type SectionKey =
-  | "about"
-  | "experience"
-  | "projects"
   | "skills"
+  | "about"
+  | "projects"
+  | "experience"
   | "education"
   | "contact";
 

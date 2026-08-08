@@ -77,7 +77,7 @@ export default function Home(props: PortfolioData) {
         onLinkClick={() => setMobileMenuActive(false)}
       />
 
-      <section id="main">
+      <main id="main">
         {sectionMap.map(({ key, id, component: Section }) => (
           <TiltedCard key={key} id={id ?? undefined}>
             <Section
@@ -86,7 +86,7 @@ export default function Home(props: PortfolioData) {
             />
           </TiltedCard>
         ))}
-      </section>
+      </main>
       {portfolioData.header && (
         <TiltedCard as="footer">
           <Footer

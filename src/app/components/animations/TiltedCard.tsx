@@ -1,9 +1,17 @@
-import { useEffect, useRef, ElementType, ComponentPropsWithRef } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  ElementType,
+  ComponentPropsWithRef,
+} from "react";
+import { usePrefersReducedMotion } from "@/app/hooks";
 
 type TiltedCardProps<T extends ElementType> = {
   children: React.ReactNode;
   className?: string;
   as?: T;
+  reveal?: "normal" | "quiet";
 } & ComponentPropsWithRef<T>;
 
 export const TiltedCard = <T extends ElementType = "section">({
@@ -13,12 +21,40 @@ export const TiltedCard = <T extends ElementType = "section">({
   ...props
 }: TiltedCardProps<T>) => {
   const Tag = as || "section";
-  const ref = useRef<HTMLElement | null>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
+  const [revealed, setRevealed] = useState(false);
+  const [motionChecked, setMotionChecked] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    const card = ref.current;
+    if (prefersReducedMotion) return;
+
+    const node = revealRef.current;
+    if (!node) return;
+    if (revealed) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        setRevealed(true);
+        observer.disconnect();
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [revealed, prefersReducedMotion]);
+
+  useEffect(() => {
+    const card = cardRef.current;
     if (!card) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (prefersReducedMotion) return;
 
     // 🦊 FIREFOX ESCAPE HATCH: Skip tilt logic entirely if the browser is Firefox
     const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
@@ -68,12 +104,19 @@ export const TiltedCard = <T extends ElementType = "section">({
       card.removeEventListener("mousemove", handleTilt);
       card.removeEventListener("mouseleave", handleLeave);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
-    <Tag ref={ref} className={`glass-card ${className}`} {...props}>
-      {children}
-    </Tag>
+    <div
+      ref={revealRef}
+      className={["reveal-shell", revealed && "revealed"]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <Tag ref={cardRef} className={`glass-card ${className}`} {...props}>
+        {children}
+      </Tag>
+    </div>
   );
 
   function calculateShine(

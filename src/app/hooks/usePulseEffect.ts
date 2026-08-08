@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 export function usePulseEffect(selector = ".timeline-dot") {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const prefersReducedMotion = usePrefersReducedMotion();
+
+    if (prefersReducedMotion) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

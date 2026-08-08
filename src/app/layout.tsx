@@ -92,7 +92,7 @@ export default function RootLayout({
 
               <ThemeTransitionOverlay />
 
-              <main className="container">{children}</main>
+              <div className="container">{children}</div>
 
               <ToastContainer position="bottom-right" />
               <Banner />

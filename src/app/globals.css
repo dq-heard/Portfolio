@@ -486,6 +486,20 @@ button {
   opacity: 0.12;
 }
 
+/* Sectiom fog effect */
+.reveal-shell {
+  position: relative;
+}
+
+.reveal-shell .glass-card {
+  filter: blur(8px) brightness(0.94);
+  transition: filter 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal-shell.revealed .glass-card {
+  filter: blur(0) brightness(1);
+}
+
 /* Pulse animation when visible */
 .animated.timeline-dot {
   animation: pulse 3s ease-in-out infinite;
@@ -534,6 +548,11 @@ button {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .glass-card {
+    filter: none !important;
+    transition: none !important;
   }
 }
 

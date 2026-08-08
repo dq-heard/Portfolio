@@ -13,6 +13,7 @@ import {
 import { BsFolderFill } from "react-icons/bs";
 import { stencil, heading } from "../utils/fonts";
 import "./styles/projects.css";
+import { usePrefersReducedMotion } from "@/app/hooks";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -24,14 +25,12 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
   useSectionReady(onContentLoaded);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const sectionEl = sectionRef.current;
     if (!sectionEl) return;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
     if (prefersReducedMotion) return;
 
     const observer = new IntersectionObserver(
