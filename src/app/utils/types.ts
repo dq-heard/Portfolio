@@ -1,9 +1,9 @@
 export interface PortfolioData {
   header: Hero;
+  skills: Skill[];
   about: Bio;
   experience: Exp[];
   projects: Work[];
-  skills: Skill[];
   education: Edu[];
   contact: {
     contact: Chat;

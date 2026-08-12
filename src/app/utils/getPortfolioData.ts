@@ -24,10 +24,10 @@ export async function getPortfolioData(): Promise<PortfolioData> {
 
   const props: PortfolioData = {
     header: rawData.header as Hero,
+    skills: rawData.skills as Skill[],
     about: rawData.about as Bio,
     experience: rawData.experience as Exp[],
     projects: rawData.projects as Work[],
-    skills: rawData.skills as Skill[],
     education: rawData.education as Edu[],
     contact: {
       contact: rawData.contact as Chat,

@@ -5,6 +5,10 @@ export const queryMap = {
     query: `*[_type == "header"][0]`,
     type: {} as Hero,
   },
+  skills: {
+    query: `*[_type == "skills"]`,
+    type: {} as Skill[],
+  },
   about: {
     query: `*[_type == "about"][0]`,
     type: {} as Bio,
@@ -16,10 +20,6 @@ export const queryMap = {
   projects: {
     query: `*[_type == "projects"] | order(_updatedAt desc)`,
     type: {} as Work[],
-  },
-  skills: {
-    query: `*[_type == "skills"]`,
-    type: {} as Skill[],
   },
   education: {
     query: `*[_type == "education"]`,

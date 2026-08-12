@@ -85,15 +85,16 @@ const Nav: React.FC<NavProps & { onLinkClick?: () => void }> = ({
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const getScrollOffset = () => {
-        return window.innerWidth <= 768 ? 40 : 100;
-      };
+      const offset = window.innerWidth <= 768 ? 40 : 110;
+      const top = window.scrollY + section.getBoundingClientRect().top - offset;
+
       window.scrollTo({
-        top: section.offsetTop - getScrollOffset(),
+        top,
         behavior: "smooth",
       });
     }
-    if (onLinkClick) onLinkClick();
+
+    onLinkClick?.();
   };
 
   return (

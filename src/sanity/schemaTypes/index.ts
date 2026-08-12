@@ -13,10 +13,10 @@ import preview from "./preview";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     header,
+    skills,
     about,
     experience,
     projects,
-    skills,
     education,
     contact,
     resume,
