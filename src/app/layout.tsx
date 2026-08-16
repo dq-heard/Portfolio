@@ -41,14 +41,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     // Open Graph metadata (for social previews)
     openGraph: {
-      title: socialImage?.title || "Default Title",
-      description: socialImage?.description || "Default Description",
+      title: "D. Heard | Web Experience Specialist",
+      description:
+        "A modern technologist with a real thing for clean structure and loud ideas.",
       images: [
         {
           url: socialImage?.imageUrl || "/images/default-og-image.png",
           width: 1200,
           height: 630,
-          alt: socialImage?.imageAlt || "Default alt text",
+          alt: "Screenshot of D. Heard's Portfolio Website",
         },
       ],
       type: "website",
