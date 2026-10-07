@@ -16,10 +16,11 @@ import "./styles/projects.css";
 import { usePrefersReducedMotion } from "@/app/hooks";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
   useSectionReady(onContentLoaded);
@@ -81,7 +82,7 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
         <BsFolderFill aria-hidden="true" focusable="false" />
         Projects
       </h2>
-      <p className="sr-only mobile-swipe-instruction">
+      <p className="sr-only mobile-swipe">
         Swipe left or right to explore projects
       </p>
       <button className="swiper-btn prev" aria-label="Previous project">
@@ -96,17 +97,17 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           loop={true}
-          spaceBetween={30}
           navigation={{
             nextEl: ".next",
             prevEl: ".prev",
           }}
+          pagination={{ clickable: true, dynamicBullets: true }}
           breakpoints={{
-            0: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            0: { slidesPerView: 1.1, spaceBetween: 16 }, // Peek next slide!
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 30 },
           }}
           className="section-content"
           aria-label="Project showcase carousel"

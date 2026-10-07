@@ -91,6 +91,10 @@
   right: -1.5rem;
 }
 
+.section-content .swiper-pagination {
+  display: none;
+}
+
 /*==================== MEDIA QUERIES ====================*/
 @media screen and (max-width: 1052px) {
   .card .glass-button svg {
@@ -105,27 +109,40 @@
   .swiper-btn {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s ease;
   }
 
-  .swiper-btn.flash {
+  /* Swiper Pagination Container Positioning */
+  .section-content .swiper-pagination {
+    display: block;
+    position: relative;
+    margin-top: 1.5rem;
+    bottom: 0 !important; /* Overrides Swiper's absolute positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Individual Inactive Bullets */
+  .section-content .swiper-pagination-bullet {
+    width: 2px;
+    height: 15px;
+    background: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    opacity: 0.9;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  /* Hover State */
+  .section-content .swiper-pagination-bullet:hover {
     opacity: 1;
-    pointer-events: auto;
-    animation: flashButtons 3s ease forwards;
+    background: var(--secondary);
   }
 
-  @keyframes flashButtons {
-    0% {
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  /* Active Bullet State */
+  .section-content .swiper-pagination-bullet-active {
+    background: var(--primary);
+    opacity: 1;
   }
 }
