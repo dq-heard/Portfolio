@@ -46,7 +46,7 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
     >
       <h2 id="work-heading" className={`${stencil.className} section-title`}>
         <BsBriefcaseFill aria-hidden="true" focusable="false" />
-        Case Studies
+        Professional Experience
       </h2>
 
       <div className="section-content">
