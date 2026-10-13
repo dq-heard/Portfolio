@@ -19,6 +19,14 @@ export interface Hero {
   socials: Social[];
 }
 
+export interface Skill {
+  _id: string;
+  _type: string;
+  name: string;
+  icon: string;
+  category: string;
+}
+
 export interface Bio {
   p1: string;
   p2: string;
@@ -26,20 +34,16 @@ export interface Bio {
 
 export interface Exp {
   _id: string;
-  startDate: Date;
-  endDate: Date;
   role: string;
-  name: string;
-  location: string;
-  tasks: Array<string>;
-}
-
-export interface Skill {
-  _id: string;
-  _type: string;
-  name: string;
-  icon: string;
-  category: string;
+  company: string;
+  period: string; // e.g., "2023 — Present"
+  order?: number;
+  summary: string;
+  highlights?: string[];
+  keyDeliverable?: string;
+  techStack?: string[];
+  demoUrl?: string;
+  githubUrl?: string;
 }
 
 export interface Edu {
@@ -66,7 +70,14 @@ export interface Work {
   code?: string;
   imgUrl: typeof Image;
   tech: string[];
-  _updatedAt: string;
+  slug?: { current: string };
+  category: "web-admin" | "front-end" | "email-dev";
+  emailTemplates?: EmailTemplate[];
+}
+
+export interface EmailTemplate {
+  label: string;
+  fileName: string; // e.g. "welcome.html"
 }
 
 interface Item {

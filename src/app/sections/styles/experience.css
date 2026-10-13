@@ -1,3 +1,7 @@
+/* ==========================================================================
+  TIMELINE TRACK & DOTS
+========================================================================== */
+
 .timeline {
   position: relative;
 }
@@ -35,19 +39,145 @@
 .timeline-date {
   color: var(--primary);
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.timeline-content {
-  position: relative;
+/* ==========================================================================
+  ACCORDION HEADER & TRIGGER
+========================================================================== */
+
+.accordion-card {
+  padding: 1.25rem;
+  overflow: hidden;
 }
 
-.more-experiences {
-  display: none;
+.accordion-summary {
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
-/*==================== MEDIA QUERIES ====================*/
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timeline-role {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.timeline-company {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Indicator Icon */
+.accordion-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--glass-alt-light);
+  border: 1px solid var(--glass-border);
+  color: var(--text-light);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.chevron-icon {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion-summary:hover .accordion-indicator,
+.accordion-indicator.open {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--glass-alt-mid);
+}
+
+.accordion-indicator.open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+  ACCORDION BODY
+========================================================================== */
+
+.accordion-body-wrapper {
+  overflow: hidden;
+}
+
+.accordion-body {
+  padding-top: 1rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-summary {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.timeline-highlights {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin: 0;
+}
+
+.key-deliverable-note {
+  color: var(--text-primary);
+  background: var(--glass-alt-mid);
+  border-left: 3px solid var(--primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ==========================================================================
+  SHOW MORE BUTTON ALIGNMENT
+========================================================================== */
+
+.timeline-toggle-btn {
+  margin: 1.5rem 0 0 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 @media screen and (max-width: 600px) {
-  .timeline-content ul {
-    display: none;
+  .timeline-toggle-btn {
+    margin-left: 0;
+  }
+}
+
+/* Pulse Keyframes */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 130, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 130, 0, 0);
   }
 }

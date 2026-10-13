@@ -3,36 +3,38 @@ export default {
   title: "Experience",
   type: "document",
   fields: [
+    { name: "role", title: "Role / Title", type: "string" },
+    { name: "company", title: "Company / Organization", type: "string" },
     {
-      name: "startDate",
-      title: "Start Date",
-      type: "date",
-    },
-    {
-      name: "endDate",
-      title: "End Date",
-      type: "date",
-    },
-    {
-      name: "role",
-      title: "Role",
+      name: "period",
+      title: "Time Period (e.g., 2023 — Present)",
       type: "string",
     },
+    { name: "order", title: "Display Order", type: "number" },
     {
-      name: "name",
-      title: "Company",
-      type: "string",
+      name: "summary",
+      title: "Short Summary",
+      type: "text",
+      rows: 3,
     },
     {
-      name: "location",
-      title: "Location",
-      type: "string",
-    },
-    {
-      name: "tasks",
-      title: "Tasks",
+      name: "highlights",
+      title: "Key Highlights / Outcomes",
       type: "array",
       of: [{ type: "string" }],
+    },
+    {
+      name: "keyDeliverable",
+      title: "Key Project Note",
+      type: "string",
+      description: "What was accomplished here?",
+    },
+  ],
+  orderings: [
+    {
+      title: "Display Order",
+      name: "orderAsc",
+      by: [{ field: "order", direction: "asc" }],
     },
   ],
 };
