@@ -1,13 +1,24 @@
 import { useRef, useState } from "react";
-import { Exp, SectionProps } from "@/app/utils/types";
+import { Exp, SectionProps } from "../utils/types";
 import { useSectionReady } from "../hooks";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Transition } from "framer-motion";
 import { FaArrowRotateLeft, FaArrowRotateRight } from "react-icons/fa6";
 import { BsBriefcaseFill, BsChevronDown } from "react-icons/bs";
 import { stencil, heading } from "../utils/fonts";
 import "./styles/experience.css";
 
 const INITIAL_COUNT = 3;
+
+// Tight, non-bouncy spring for list items
+const itemTransition: Transition = {
+  type: "spring",
+  stiffness: 260,
+  damping: 32,
+  mass: 0.8,
+};
+
+// Fast, snappy ease for internal accordion drop
+const accordionEase = [0.16, 1, 0.3, 1] as const;
 
 const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
   useSectionReady(onContentLoaded);
@@ -35,86 +46,98 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
     >
       <h2 id="work-heading" className={`${stencil.className} section-title`}>
         <BsBriefcaseFill aria-hidden="true" focusable="false" />
-        Professional Experience
+        Case Studies
       </h2>
 
       <div className="section-content">
         <div className="timeline">
-          {visibleData.map((item) => {
-            const isOpen = openId === item._id;
-            const headerId = `accordion-header-${item._id}`;
-            const bodyId = `accordion-body-${item._id}`;
+          <AnimatePresence initial={false}>
+            {visibleData.map((item) => {
+              const isOpen = openId === item._id;
+              const headerId = `accordion-header-${item._id}`;
+              const bodyId = `accordion-body-${item._id}`;
 
-            return (
-              <div key={item._id} className="timeline-item">
-                <div className="timeline-dot" aria-hidden="true" />
-                <div className="timeline-date font-mono">{item.period}</div>
+              return (
+                <motion.div
+                  key={item._id}
+                  layout
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={itemTransition}
+                  className="timeline-item"
+                >
+                  <div className="timeline-dot" aria-hidden="true" />
+                  <div className="timeline-date font-mono">{item.period}</div>
 
-                <article className="timeline-content glass-inner-card accordion-card">
-                  {/* Accessible Accordion Header Trigger */}
-                  <button
-                    type="button"
-                    id={headerId}
-                    className="timeline-header accordion-summary"
-                    onClick={() => toggleAccordion(item._id)}
-                    aria-expanded={isOpen}
-                    aria-controls={bodyId}
-                  >
-                    <div className="header-info">
-                      <h3 className={`${heading.className} timeline-role`}>
-                        {item.role}
-                      </h3>
-                      <p className="timeline-company">{item.company}</p>
-                    </div>
-                    <div
-                      className={`accordion-indicator ${isOpen ? "open" : ""}`}
-                      aria-hidden="true"
+                  <article className="timeline-content glass-inner-card accordion-card">
+                    {/* Header Trigger */}
+                    <button
+                      type="button"
+                      id={headerId}
+                      className="timeline-header accordion-summary"
+                      onClick={() => toggleAccordion(item._id)}
+                      aria-expanded={isOpen}
+                      aria-controls={bodyId}
                     >
-                      <BsChevronDown className="chevron-icon" />
-                    </div>
-                  </button>
-
-                  {/* Smooth Framer Motion Body with ARIA Linking */}
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
+                      <div className="header-info">
+                        <h3 className={`${heading.className} timeline-role`}>
+                          {item.role}
+                        </h3>
+                        <p className="timeline-company">{item.company}</p>
+                      </div>
                       <motion.div
-                        id={bodyId}
-                        role="region"
-                        aria-labelledby={headerId}
-                        className="accordion-body-wrapper"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className={`accordion-indicator ${isOpen ? "open" : ""}`}
+                        aria-hidden="true"
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
                       >
-                        <div className="accordion-body">
-                          <p className="timeline-summary">{item.summary}</p>
-
-                          {item.highlights && item.highlights.length > 0 && (
-                            <ul className="timeline-highlights">
-                              {item.highlights.map((highlight, idx) => (
-                                <li key={idx}>{highlight}</li>
-                              ))}
-                            </ul>
-                          )}
-
-                          {item.keyDeliverable && (
-                            <div className="key-deliverable-note">
-                              <strong>Key Deliverable:</strong>{" "}
-                              {item.keyDeliverable}
-                            </div>
-                          )}
-                        </div>
+                        <BsChevronDown className="chevron-icon" />
                       </motion.div>
-                    )}
-                  </AnimatePresence>
-                </article>
-              </div>
-            );
-          })}
+                    </button>
+
+                    {/* Accordion Body Height Drop */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          id={bodyId}
+                          role="region"
+                          aria-labelledby={headerId}
+                          className="accordion-body-wrapper"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.22, ease: accordionEase }}
+                        >
+                          <div className="accordion-body">
+                            <p className="timeline-summary">{item.summary}</p>
+
+                            {item.highlights && item.highlights.length > 0 && (
+                              <ul className="timeline-highlights">
+                                {item.highlights.map((highlight, idx) => (
+                                  <li key={idx}>{highlight}</li>
+                                ))}
+                              </ul>
+                            )}
+
+                            {item.keyDeliverable && (
+                              <div className="key-deliverable-note">
+                                <strong>Key Deliverable:</strong>{" "}
+                                {item.keyDeliverable}
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </article>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
-        {/* Left-Aligned Show More / Less Button */}
+        {/* Clean, Non-Bouncing Show More / Show Less Button */}
         {hasMoreItems && (
           <motion.button
             aria-expanded={showMore}
@@ -123,7 +146,9 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
             }
             className="glass-button button-surface timeline-toggle-btn"
             onClick={() => setShowMore((prev) => !prev)}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ duration: 0.15 }}
           >
             {showMore ? (
               <>
