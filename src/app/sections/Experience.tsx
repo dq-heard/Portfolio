@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Exp, SectionProps } from "../utils/types";
 import { useSectionReady } from "../hooks";
 import { AnimatePresence, motion, Transition } from "framer-motion";
@@ -8,6 +8,7 @@ import { stencil, heading } from "../utils/fonts";
 import "./styles/experience.css";
 
 const INITIAL_COUNT = 3;
+const MOBILE_BREAKPOINT = 600; // Adjust threshold if needed (e.g., 600 or 768)
 
 // Tight, non-bouncy spring for list items
 const itemTransition: Transition = {
@@ -25,9 +26,18 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   const [showMore, setShowMore] = useState(false);
-  const [openId, setOpenId] = useState<string | null>(
-    data && data.length > 0 ? data[0]._id : null
-  );
+
+  // Initialize openId: open first item on desktop, close all on mobile screens (< 600px)
+  const [openId, setOpenId] = useState<string | null>(() => {
+    if (!data || data.length === 0) return null;
+    if (
+      typeof window !== "undefined" &&
+      window.innerWidth < MOBILE_BREAKPOINT
+    ) {
+      return null;
+    }
+    return data[0]._id;
+  });
 
   if (!data) return null;
 
@@ -137,7 +147,7 @@ const Experience = ({ data, onContentLoaded }: SectionProps<Exp[]>) => {
           </AnimatePresence>
         </div>
 
-        {/* Clean, Non-Bouncing Show More / Show Less Button */}
+        {/* Show More / Show Less Button */}
         {hasMoreItems && (
           <motion.button
             aria-expanded={showMore}
