@@ -41,7 +41,7 @@ const Nav: React.FC<NavProps & { onLinkClick?: () => void }> = ({
       Boolean
     ) as HTMLElement[];
 
-    const offset = window.innerWidth <= 768 ? 40 : 100;
+    const offset = window.innerWidth <= 768 ? 40 : 90;
     const trigger = offset + 20;
 
     let ticking = false;
@@ -85,7 +85,7 @@ const Nav: React.FC<NavProps & { onLinkClick?: () => void }> = ({
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const offset = window.innerWidth <= 768 ? 40 : 110;
+      const offset = window.innerWidth <= 768 ? 40 : 100;
       const top = window.scrollY + section.getBoundingClientRect().top - offset;
 
       window.scrollTo({
