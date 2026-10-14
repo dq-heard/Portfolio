@@ -153,8 +153,8 @@ button {
   transition: var(--transition);
 }
 
-.button-surface:not(.scroll-toggle),
-.dark-mode .button-surface:not(.scroll-toggle) {
+.button-surface:not(.scroll-toggle, .category-btn.active),
+.dark-mode .button-surface:not(.scroll-toggle, .category-btn.active) {
   background-color: var(--glass-background);
   color: var(--primary);
 }

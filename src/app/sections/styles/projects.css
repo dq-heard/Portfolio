@@ -110,7 +110,9 @@
 }
 
 .category-btn.active {
-  border-color: var(--primary-light);
+  background-color: var(--primary-darker);
+  color: white;
+  border-color: var(--primary-darker);
   box-shadow: 0 0 10px var(--glass-alt-dark);
 }
 
