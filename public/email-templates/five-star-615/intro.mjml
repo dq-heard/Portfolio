@@ -1,0 +1,185 @@
+<mjml>
+  <mj-head>
+    <mj-title>Do You Believe In Nashville?</mj-title>
+
+    <mj-preview>
+      Custom apparel, team uniforms, and merchandise designed in Nashville.
+    </mj-preview>
+
+    <mj-font name="Alfa Slab One" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&amp;display=swap" />
+
+    <mj-attributes>
+      <mj-all font-family="Trebuchet MS, Arial, sans-serif" />
+      <mj-text color="#333333" font-size="16px" line-height="24px" />
+      <mj-button background-color="#FED001" color="#333333" border-radius="4px" font-weight="bold" font-size="16px" inner-padding="14px 28px" />
+    </mj-attributes>
+
+    <mj-style inline="inline">
+      .heading {
+        font-family: 'Alfa Slab One', Georgia, serif !important;
+        letter-spacing: 1px;
+      }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#f5f5f5">
+
+    <!-- HEADER -->
+    <mj-section background-color="#333333" padding="24px 20px">
+      <mj-column>
+        <mj-image src="images/logo.png" alt="Five Star Custom Design" width="100px" padding-bottom="10px" align="center" />
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-weight="bold" color="#ffffff" font-size="18px">
+          FIVE STAR CUSTOM DESIGN
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- HERO -->
+    <mj-hero mode="fixed-height" height="480px" background-url="images/hero-darkened.jpg" background-width="1200px" background-height="800px" background-color="#000000" padding="40px 20px">
+      <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" color="#ffffff" align="center" font-size="36px" line-height="1.2">
+        DO YOU BELIEVE IN NASHVILLE?
+      </mj-text>
+
+      <mj-text color="#ffffff" align="center" font-size="18px" padding-top="16px">
+        Upholding an unheralded culture in the face of an ever-changing city.
+      </mj-text>
+
+      <mj-text color="#ffffff" align="center" padding="10px 30px 24px">
+        Five Star creates custom apparel, team uniforms, and merchandise inspired by the communities that continue to shape Nashville's identity.
+      </mj-text>
+
+      <mj-button href="mailto:fivestar.615tn@gmail.com" align="center">
+        START YOUR PROJECT
+      </mj-button>
+    </mj-hero>
+
+    <!-- MISSION -->
+    <mj-section background-color="#ffffff" padding="50px 30px">
+      <mj-column>
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-size="28px" color="#C1895C" padding-bottom="12px">
+          OUR MISSION
+        </mj-text>
+
+        <mj-image src="images/group.jpg" alt="Group of teens wearing Ardee Moore sweatsuits" width="240px" border-radius="4px" padding-bottom="20px" align="center" />
+
+        <mj-text align="center" padding-bottom="12px">
+          Five Star was built on the belief that local culture, community pride, and personal identity deserve to be celebrated.
+        </mj-text>
+
+        <mj-text align="center">
+          From custom apparel and team uniforms to promotional merchandise, every project is designed to help schools, organizations, businesses, and athletes represent what matters most to them.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- FEATURED WORK TITLE -->
+    <mj-section background-color="#EBCA3F" padding="30px 20px">
+      <mj-column>
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-size="30px" color="#333333">
+          FEATURED WORK
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- PRODUCT 1 -->
+    <mj-section background-color="#ffffff" padding="40px 30px 20px">
+      <mj-column>
+        <mj-image src="images/tsu-hoodies.jpg" alt="TSU Collection" border-radius="4px" align="center" />
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-size="22px" color="#C1895C" padding-top="20px">
+          TSU COLLECTION
+        </mj-text>
+        <mj-text align="center">
+          Custom apparel designed to stand out on campus and beyond.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- PRODUCT 2 -->
+    <mj-section background-color="#ffffff" padding="20px 30px">
+      <mj-column>
+        <mj-image src="images/t3-1.jpg" alt="Triple Threat Athletics" border-radius="4px" align="center" />
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-size="22px" color="#C1895C" padding-top="20px">
+          TRIPLE THREAT ATHLETICS
+        </mj-text>
+        <mj-text align="center">
+          Performance-focused apparel built for competition.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- PRODUCT 3 -->
+    <mj-section background-color="#ffffff" padding="20px 30px 50px">
+      <mj-column>
+        <mj-image src="images/east-merch.jpg" alt="School Spirit Wear" border-radius="4px" align="center" />
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" font-size="22px" color="#C1895C" padding-top="20px">
+          SCHOOL SPIRIT WEAR
+        </mj-text>
+        <mj-text align="center">
+          Local pride brought to life through custom design.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- MEET ARDEE -->
+    <mj-section background-color="#f9f9f9" padding="50px 30px">
+      <mj-column width="40%">
+        <mj-image src="images/bio.jpg" alt="Roger Ardee Moore" border-radius="50%" padding-bottom="20px" align="center" />
+      </mj-column>
+
+      <mj-column width="60%">
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" font-size="26px" color="#C1895C" padding-bottom="10px">
+          MEET ARDEE
+        </mj-text>
+
+        <mj-text padding-bottom="10px">
+          Five Star was founded by Nashville native Roger "Ardee" Moore with a passion for great design, strong communities, and helping others bring their ideas to life.
+        </mj-text>
+
+        <mj-text padding-bottom="10px">
+          Whether working with schools, athletes, businesses, or local organizations, his goal remains the same:
+        </mj-text>
+
+        <mj-text font-weight="bold" color="#333333">
+          Create something worth representing.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- FINAL CTA -->
+    <mj-section background-color="#333333" padding="60px 30px">
+      <mj-column>
+        <mj-text font-family="'Alfa Slab One', Georgia, serif" css-class="heading" align="center" color="#ffffff" font-size="30px" line-height="1.3">
+          READY TO BUILD SOMETHING OF YOUR OWN?
+        </mj-text>
+
+        <mj-text align="center" color="#ffffff" padding-top="10px" padding-bottom="24px">
+          Whether you're creating merchandise for your business, uniforms for your team, or apparel for your community, Five Star is ready to help.
+        </mj-text>
+
+        <mj-button href="mailto:fivestar.615tn@gmail.com" align="center">
+          CONTACT ARDEE
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- FOOTER -->
+    <mj-section background-color="#222222" padding="40px 20px">
+      <mj-column>
+        <mj-text align="center" color="#cccccc" font-size="14px" line-height="20px">
+          Five Star Custom Design<br />
+          Nashville, Tennessee
+        </mj-text>
+
+        <mj-text align="center" color="#cccccc" font-size="14px" line-height="20px" padding-top="10px">
+          (615) 389-4529<br />
+          <a href="mailto:fivestar.615tn@gmail.com" style="color: #cccccc; text-decoration: underline;">fivestar.615tn@gmail.com</a>
+        </mj-text>
+
+        <mj-text align="center" color="#FED001" font-size="14px" padding-top="15px">
+          Facebook • Instagram
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>

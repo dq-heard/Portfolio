@@ -51,10 +51,27 @@ const Projects = ({ data, onContentLoaded }: SectionProps<Work[]>) => {
     }
   }, []);
 
-  const filteredProjects =
+  const CATEGORY_PRIORITY: Record<string, number> = {
+    "web-admin": 1,
+    "front-end": 2,
+    "email-dev": 3,
+  };
+
+  const filteredProjects = (
     activeCategory === "all"
       ? data
-      : data?.filter((project) => project.category === activeCategory);
+      : data?.filter((project) => project.category === activeCategory)
+  )
+    ?.slice()
+    .sort((a, b) => {
+      // Primary: Sort by Category Priority (Ascending: Web Admin -> Front End -> E-mail Dev)
+      const priorityA = CATEGORY_PRIORITY[a.category] ?? 99;
+      const priorityB = CATEGORY_PRIORITY[b.category] ?? 99;
+      if (priorityA !== priorityB) return priorityA - priorityB;
+
+      // Secondary: Sort Display Order in DESCENDING order (4, 3, 2, 1)
+      return (b.order ?? 0) - (a.order ?? 0);
+    });
 
   const isCarouselActive = filteredProjects && filteredProjects.length >= 3;
 

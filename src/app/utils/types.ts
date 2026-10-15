@@ -72,6 +72,7 @@ export interface Work {
   tech: string[];
   slug?: { current: string };
   category: "web-admin" | "front-end" | "email-dev";
+  order: number;
   emailTemplates?: EmailTemplate[];
 }
 

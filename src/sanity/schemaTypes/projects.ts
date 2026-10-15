@@ -55,6 +55,12 @@ export default {
       },
     },
     {
+      name: "order",
+      title: "Order",
+      type: "number",
+      description: "Controls display order (e.g., 1, 2, 3...)",
+    },
+    {
       name: "emailTemplates",
       title: "Email Templates",
       type: "array",
@@ -78,6 +84,13 @@ export default {
           ],
         },
       ],
+    },
+  ],
+  orderings: [
+    {
+      title: "Display Order",
+      name: "orderDesc",
+      by: [{ field: "order", direction: "desc" }],
     },
   ],
 };
